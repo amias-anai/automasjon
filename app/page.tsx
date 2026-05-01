@@ -25,28 +25,28 @@ import { ReactiveHeroField } from "./components/ReactiveHeroField";
 
 const services = [
   {
-    title: "Admin-automatisering",
+    title: "Befaring → tilbudsutkast",
     image: "/landing/admin-automation.png",
     icon: FileSearch,
     href: "/admin-automatisering",
-    price: "fra 5 000 kr/mnd",
-    body: "Reduser repetitivt manuelt arbeid med smart automatisering for dokumenter, data, rapportering og oppfølging.",
+    price: "Start med én arbeidsflyt",
+    body: "Gjør notater, bilder og kundebehov fra befaring om til strukturert tilbudsutkast, sjekkliste og oppfølgingsmelding.",
   },
   {
-    title: "Automatisert kundeservice",
+    title: "Kundehenvendelser og oppfølging",
     image: "/landing/customer-service.png",
     icon: MessageCircle,
     href: "/automatisert-kundeservice",
-    price: "fra 7 500 kr/mnd",
-    body: "AI-chat og supportflyter som håndterer vanlige spørsmål, løser saker og eskalerer når det trengs.",
+    price: "Færre glemte leads",
+    body: "Sorter henvendelser, lag svarutkast, still oppfølgingsspørsmål og unngå at potensielle kunder blir glemt.",
   },
   {
-    title: "Skreddersydde AI-agenter",
+    title: "Prosjektdokumentasjon",
     image: "/landing/ai-agents.png",
     icon: Bot,
     href: "/skreddersydde-ai-agenter",
-    price: "fra 15 000 kr/mnd",
-    body: "AI-agenter bygget for interne oppgaver eller kundedialog, tilpasset arbeidsflytene og målene deres.",
+    price: "Mindre manuelt arbeid",
+    body: "Gjør møtenotater, prosjektoppdateringer og bilder om til oppgaver, statusrapporter og kundeoppdateringer.",
   },
 ];
 
@@ -54,29 +54,29 @@ const process = [
   {
     title: "Kartlegg arbeidsflyten",
     icon: FileSearch,
-    body: "Vi analyserer prosessene deres, finner flaskehalser og peker ut muligheter for automatisering.",
+    body: "Vi starter med en gratis AI-kartlegging og finner én konkret arbeidsflyt som tar unødvendig mye tid.",
   },
   {
-    title: "Design AI-løsningen",
+    title: "Velg én tydelig tidstyv",
     icon: PenLine,
-    body: "Vi modellerer riktige arbeidsflyter og AI-agenter rundt behovene, systemene og målene deres.",
+    body: "Vi prioriterer lavrisiko arbeidsflyter som tilbudsutkast, kundehenvendelser, dokumentasjon eller prosjektoppfølging.",
   },
   {
     title: "Implementer og integrer",
     icon: Code2,
-    body: "Vi bygger, tester og kobler løsningen sømløst inn i verktøyene og systemene dere allerede bruker.",
+    body: "Vi bygger, tester og kobler løsningen inn i verktøyene dere allerede bruker — med mennesker som godkjenner viktige steg.",
   },
   {
-    title: "Optimaliser løpende",
+    title: "Forbedre løpende",
     icon: LineChart,
-    body: "Vi måler ytelse, lærer av bruken og forbedrer løsningen slik at resultatene blir enda bedre.",
+    body: "Vi følger opp bruken, justerer løsningene og forbedrer arbeidsflyten etter hvert som dere ser hva som gir mest verdi.",
   },
 ];
 
 const footerGroups = [
   {
-    title: "Tjenester",
-    links: ["Admin-automatisering", "Automatisert kundeservice", "Skreddersydde AI-agenter"],
+    title: "Bruksområder",
+    links: ["Befaring → tilbud", "Kundehenvendelser", "Prosjektdokumentasjon"],
   },
   {
     title: "Selskap",
@@ -127,7 +127,7 @@ export default function Home() {
             <div className="hidden items-center gap-10 text-sm font-medium text-[#173348] md:flex">
               <details className="group relative">
                 <summary className="flex cursor-pointer list-none items-center gap-1.5 transition hover:text-[#c95720]">
-                  Tjenester
+                  Bruksområder
                   <ChevronDown className="h-4 w-4 transition group-open:rotate-180" />
                 </summary>
                 <div className="absolute left-1/2 top-8 w-72 -translate-x-1/2 rounded-lg border border-[#dfd0c2] bg-[#fffaf4]/95 p-2 shadow-[0_18px_45px_rgba(15,45,66,0.16)] backdrop-blur-xl">
@@ -160,28 +160,29 @@ export default function Home() {
           <div className="max-w-2xl">
             <div className="mb-8 flex items-center gap-3 text-sm font-medium text-[#173348]">
               <NorwegianFlag />
-              <span>Hjelper norske bedrifter å jobbe raskere med praktisk AI.</span>
+              <span>Hjelper bygg- og håndverksbedrifter å spare tid med praktisk AI.</span>
             </div>
             <h1 className="font-display text-6xl leading-[0.94] tracking-normal text-[#0b3048] sm:text-7xl lg:text-[5.7rem]">
-              AI-automatisering for ambisiøse bedrifter
+              Praktiske AI-løsninger for bygg- og håndverksbedrifter
             </h1>
             <p className="mt-7 max-w-xl text-lg leading-8 text-[#1c3c52]">
-              ANAi hjelper bedrifter med å implementere AI som frigjør tid, reduserer
-              administrativt arbeid, forbedrer kundeservice og bygger skreddersydde AI-agenter.
+              ANAi hjelper bygg- og håndverksbedrifter med å spare tid på tilbud,
+              kundehenvendelser, dokumentasjon og prosjektoppfølging — med trygge AI-løsninger
+              som passer inn i arbeidsflyten deres.
             </p>
             <div className="mt-8 flex flex-col gap-4 sm:flex-row">
               <a
                 href="#kontakt"
                 className="inline-flex h-14 items-center justify-center gap-3 rounded-md bg-[#c95720] px-8 text-base font-semibold text-white shadow-[0_18px_40px_rgba(201,87,32,0.28)] transition hover:bg-[#b74a18]"
               >
-                Kom i gang
+                Book gratis AI-kartlegging
                 <ArrowRight className="h-4 w-4" />
               </a>
               <a
                 href="#tjenester"
                 className="inline-flex h-14 items-center justify-center rounded-md border border-[#0f2d42]/45 bg-[#f7f1ea]/70 px-8 text-base font-semibold text-[#0f2d42] backdrop-blur transition hover:border-[#c95720] hover:text-[#c95720]"
               >
-                Se tjenester
+                Se hva vi kan automatisere
               </a>
             </div>
             <div className="mt-14 grid max-w-2xl gap-4 text-xs font-medium text-[#24465a] sm:grid-cols-3">
@@ -208,7 +209,7 @@ export default function Home() {
 
       <section id="tjenester" className="mx-auto max-w-7xl px-6 py-10 lg:px-10">
         <h2 className="text-center font-display text-4xl text-[#0b3048] sm:text-5xl">
-          AI-løsninger som gir målbar effekt
+          AI-løsninger for bygg- og håndverksbedrifter
         </h2>
         <div className="mt-8 grid gap-6 lg:grid-cols-3">
           {services.map((service) => (
@@ -252,9 +253,9 @@ export default function Home() {
           </div>
           <div className="grid gap-6 p-8 md:grid-cols-3">
             {[
-              ["50%", "mindre admintid", Clock3, "Automatiser repetitive oppgaver og frigjør teamet til arbeid som skaper verdi."],
-              ["24/7", "kundesvar", Headphones, "Gi raske og presise svar hele døgnet, uten at kvaliteten faller."],
-              ["Tilpasset", "arbeidsflytene deres", Target, "Løsninger designet rundt prosessene, systemene og målene deres."],
+              ["50%", "mindre tid på admin", Clock3, "Reduser tid brukt på tilbud, oppfølging, dokumentasjon og repetitive kundehenvendelser."],
+              ["24/7", "raskere svar", Headphones, "Lag gode svarutkast på vanlige henvendelser, med menneskelig kontroll før noe sendes."],
+              ["Tilpasset", "deres fag og rutiner", Target, "AI-løsninger bygget rundt befaringer, tilbud, prosjekter, dokumentasjon og eksisterende systemer."],
             ].map(([value, label, Icon, body]) => (
               <div key={value as string} className="border-[#dfd0c2] md:border-l md:pl-8">
                 <div className="flex items-start gap-4">
@@ -275,7 +276,7 @@ export default function Home() {
 
       <section id="prosess" className="mx-auto max-w-7xl px-6 py-6 lg:px-10">
         <h2 className="text-center font-display text-4xl text-[#0b3048]">
-          En enkel prosess. Praktisk effekt.
+          Fra tidstyv til fungerende AI-løsning
         </h2>
         <div className="mt-8 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
           {process.map((step, index) => (
@@ -308,11 +309,11 @@ export default function Home() {
               </div>
               <div>
                 <h2 className="font-display text-4xl text-[#0b3048] md:text-5xl">
-                  Klar for å bygge AI inn i bedriften din?
+                  Hva er din største tidstyv?
                 </h2>
                 <p className="mt-4 text-base leading-7 text-[#24465a]">
-                  La oss lage automatisering som sparer tid, forbedrer kundeopplevelsen og gir
-                  målbar effekt i hverdagen.
+                  Er det tilbud, befaringer, kundehenvendelser, dokumentasjon eller
+                  prosjektoppfølging som stjeler mest tid? Start med en gratis AI-kartlegging.
                 </p>
               </div>
             </div>
@@ -321,7 +322,7 @@ export default function Home() {
               className="inline-flex h-14 shrink-0 items-center justify-center gap-3 rounded-md bg-[#c95720] px-8 text-base font-semibold text-white shadow-[0_18px_40px_rgba(201,87,32,0.28)] transition hover:bg-[#b74a18]"
             >
               <CalendarDays className="h-5 w-5" />
-              Book en strategisamtale
+              Book gratis AI-kartlegging
               <ArrowRight className="h-4 w-4" />
             </a>
           </div>
@@ -339,7 +340,7 @@ export default function Home() {
               sizes="176px"
             />
           </div>
-          <p className="mt-2">Norsk AI-automatiseringsbyrå</p>
+          <p className="mt-2">Praktiske AI-løsninger for bygg og håndverk</p>
           <div className="mt-5 flex gap-3">
             <span className="flex h-8 w-8 items-center justify-center rounded border border-[#d8c7b8]">in</span>
             <span className="flex h-8 w-8 items-center justify-center rounded border border-[#d8c7b8]">
