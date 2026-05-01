@@ -6,7 +6,10 @@ type Dot = {
   id: string;
   x: number;
   y: number;
-  depth: number;
+  radius: number;
+  opacity: number;
+  delay: number;
+  duration: number;
   glow: number;
 };
 
@@ -19,20 +22,28 @@ export function ReactiveHeroField() {
 
   const dots = useMemo<Dot[]>(() => {
     const items: Dot[] = [];
+    const centerX = 50;
+    const centerY = 50;
+    const fieldRadius = 45.5;
 
-    for (let row = 0; row < 18; row += 1) {
-      for (let col = 0; col < 27; col += 1) {
-        const x = 10 + col * 3.05;
-        const wave = Math.sin(col * 0.42) * 9 + Math.cos(row * 0.52) * 4;
-        const y = 9 + row * 4.55 + wave;
-        const centerDistance = Math.hypot(x - 58, y - 52);
+    for (let row = 0; row < 21; row += 1) {
+      const y = 4.4 + row * 4.55;
+      const rowOffset = row % 2 === 0 ? 0 : 2.18;
 
-        if (y > 6 && y < 92 && centerDistance < 55) {
+      for (let col = 0; col < 22; col += 1) {
+        const x = 5.2 + col * 4.35 + rowOffset;
+        const centerDistance = Math.hypot(x - centerX, y - centerY);
+        const edge = clamp(centerDistance / fieldRadius, 0, 1);
+
+        if (centerDistance <= fieldRadius) {
           items.push({
             id: `${row}-${col}`,
             x,
             y,
-            depth: 1 - clamp(centerDistance / 58, 0, 1),
+            radius: 0.16 + Math.pow(edge, 1.7) * 1.48,
+            opacity: 0.24 + Math.pow(edge, 1.18) * 0.7,
+            delay: -((row * 0.19 + col * 0.13 + edge * 1.8) % 3.4),
+            duration: 2.25 + ((row + col) % 6) * 0.18 + edge * 0.56,
             glow: 0,
           });
         }
@@ -48,35 +59,23 @@ export function ReactiveHeroField() {
         const dx = pointer.x - dot.x;
         const dy = pointer.y - dot.y;
         const distance = Math.hypot(dx, dy);
-        const influence = pointer.active ? clamp(1 - distance / 34, 0, 1) : 0;
-        const swirl = influence * 7;
-        const pull = influence * 4.4;
+        const influence = pointer.active ? clamp(1 - distance / 28, 0, 1) : 0;
+        const swirl = influence * 3.2;
+        const pull = influence * 2.1;
 
         return {
           ...dot,
-          x: dot.x + dx * 0.11 * pull - dy * 0.055 * swirl,
-          y: dot.y + dy * 0.11 * pull + dx * 0.055 * swirl,
+          x: dot.x + dx * 0.045 * pull - dy * 0.035 * swirl,
+          y: dot.y + dy * 0.045 * pull + dx * 0.035 * swirl,
           glow: influence,
         };
       }),
     [dots, pointer],
   );
 
-  const lineSegments = useMemo(() => {
-    const segments: Array<[Dot, Dot]> = [];
-    for (let index = 0; index < warpedDots.length - 1; index += 1) {
-      const current = warpedDots[index];
-      const next = warpedDots[index + 1];
-      if (Math.abs(current.y - next.y) < 8 && index % 3 === 0) {
-        segments.push([current, next]);
-      }
-    }
-    return segments;
-  }, [warpedDots]);
-
   return (
     <div
-      className="absolute right-[1%] top-[-2%] h-[520px] w-[620px] max-w-[54vw] cursor-crosshair select-none"
+      className="absolute right-[5%] top-[2%] h-[500px] w-[500px] max-w-[46vw] cursor-crosshair select-none"
       aria-hidden="true"
       onPointerEnter={() => setPointer((current) => ({ ...current, active: true }))}
       onPointerLeave={() => setPointer((current) => ({ ...current, active: false }))}
@@ -98,20 +97,19 @@ export function ReactiveHeroField() {
         });
       }}
     >
-      <div className="absolute inset-0 rounded-full bg-[radial-gradient(circle_at_60%_52%,rgba(255,194,130,0.24),rgba(255,244,231,0.10)_35%,transparent_67%)] blur-sm" />
       <svg
         viewBox="0 0 100 100"
-        className="relative h-full w-full overflow-visible drop-shadow-[0_18px_50px_rgba(201,87,32,0.26)]"
+        className="relative h-full w-full overflow-visible drop-shadow-[0_20px_44px_rgba(15,45,66,0.16)]"
         role="presentation"
       >
         <defs>
           <radialGradient id="heroPointerGlow">
-            <stop offset="0%" stopColor="#fff8eb" stopOpacity="1" />
-            <stop offset="46%" stopColor="#f7b267" stopOpacity="0.72" />
+            <stop offset="0%" stopColor="#fffaf4" stopOpacity="0.92" />
+            <stop offset="52%" stopColor="#f7b267" stopOpacity="0.28" />
             <stop offset="100%" stopColor="#c95720" stopOpacity="0" />
           </radialGradient>
-          <filter id="dotGlow" x="-80%" y="-80%" width="260%" height="260%">
-            <feGaussianBlur stdDeviation="0.55" result="blur" />
+          <filter id="heroDotGlow" x="-70%" y="-70%" width="240%" height="240%">
+            <feGaussianBlur stdDeviation="0.22" result="blur" />
             <feMerge>
               <feMergeNode in="blur" />
               <feMergeNode in="SourceGraphic" />
@@ -122,35 +120,26 @@ export function ReactiveHeroField() {
         <circle
           cx={pointer.x}
           cy={pointer.y}
-          r={pointer.active ? 12 : 8}
+          r={pointer.active ? 13 : 6}
           fill="url(#heroPointerGlow)"
-          opacity={pointer.active ? 0.46 : 0.22}
+          opacity={pointer.active ? 0.44 : 0.12}
           className="transition-[r,opacity] duration-300"
         />
 
-        <g stroke="#f0b26e" strokeLinecap="round">
-          {lineSegments.map(([from, to]) => (
-            <line
-              key={`${from.id}-${to.id}`}
-              x1={from.x}
-              y1={from.y}
-              x2={to.x}
-              y2={to.y}
-              strokeWidth={0.1 + Math.max(from.glow, to.glow) * 0.22}
-              opacity={0.08 + Math.max(from.depth, to.depth) * 0.18 + Math.max(from.glow, to.glow) * 0.42}
-            />
-          ))}
-        </g>
-
-        <g filter="url(#dotGlow)">
+        <g filter="url(#heroDotGlow)">
           {warpedDots.map((dot) => (
             <circle
               key={dot.id}
               cx={dot.x}
               cy={dot.y}
-              r={0.25 + dot.depth * 0.18 + dot.glow * 0.32}
-              fill={dot.glow > 0.18 ? "#fff5df" : "#ffe0b5"}
-              opacity={0.52 + dot.depth * 0.28 + dot.glow * 0.2}
+              r={dot.radius + dot.glow * 0.42}
+              fill={dot.glow > 0.12 ? "#c95720" : "#090a1d"}
+              opacity={Math.min(1, dot.opacity + dot.glow * 0.22)}
+              className="hero-halftone-dot"
+              style={{
+                animationDelay: `${dot.delay}s`,
+                animationDuration: `${dot.duration}s`,
+              }}
             />
           ))}
         </g>

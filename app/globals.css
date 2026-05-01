@@ -71,6 +71,14 @@ body {
   animation: liftIn 0.8s 0.12s ease both;
 }
 
+.hero-halftone-dot {
+  animation-name: heroDotPulse;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
 @keyframes scan {
   0% {
     transform: translateX(0);
@@ -110,6 +118,22 @@ body {
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@keyframes heroDotPulse {
+  0%,
+  100% {
+    filter: brightness(0.9);
+    transform: scale(0.92);
+  }
+  46% {
+    filter: brightness(1.32);
+    transform: scale(1.22);
+  }
+  64% {
+    filter: brightness(1.06);
+    transform: scale(1.04);
   }
 }
 
