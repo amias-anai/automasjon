@@ -170,7 +170,7 @@ export default function Home() {
         </div>
 
         <div className="relative z-10 mx-auto grid max-w-7xl gap-8 px-6 pb-16 pt-28 lg:grid-cols-[0.9fr_1.1fr] lg:px-10 lg:pb-20 lg:pt-36">
-          <div className="max-w-2xl">
+          <div className="relative z-20 max-w-2xl">
             <div className="mb-8 flex items-center gap-3 text-sm font-medium text-[#173348]">
               <NorwegianFlag />
               <span>Praktiske AI-løsninger for norske bedrifter</span>
@@ -215,7 +215,7 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="relative hidden min-h-[460px] lg:block">
+          <div className="relative z-10 hidden min-h-[460px] lg:block">
             <ReactiveHeroField />
           </div>
         </div>
