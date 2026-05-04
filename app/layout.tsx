@@ -19,9 +19,9 @@ const cormorant = Cormorant_Garamond({
 });
 
 export const metadata: Metadata = {
-  title: "ANAi | AI-automatisering for norske bedrifter",
+  title: "ANAi — Praktiske AI-løsninger for norske bedrifter",
   description:
-    "ANAi hjelper norske bedrifter med AI-automatisering, kundeservice og skreddersydde AI-agenter.",
+    "ANAi hjelper norske bedrifter med praktiske AI-løsninger, automasjoner og AI-assistenter som reduserer manuelt arbeid, forbedrer arbeidsflyter og skaper målbar verdi.",
 };
 
 export default function RootLayout({

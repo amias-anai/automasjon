@@ -25,66 +25,80 @@ import { ReactiveHeroField } from "./components/ReactiveHeroField";
 
 const services = [
   {
-    title: "Befaring → tilbudsutkast",
-    image: "/landing/admin-automation.png",
-    icon: FileSearch,
-    href: "/admin-automatisering",
-    price: "Start med én arbeidsflyt",
-    body: "Gjør notater, bilder og kundebehov fra befaring om til strukturert tilbudsutkast, sjekkliste og oppfølgingsmelding.",
-  },
-  {
     title: "Kundehenvendelser og oppfølging",
-    image: "/landing/customer-service.png",
+    image: "/landing/admin-automation.png",
     icon: MessageCircle,
-    href: "/automatisert-kundeservice",
-    price: "Færre glemte leads",
-    body: "Sorter henvendelser, lag svarutkast, still oppfølgingsspørsmål og unngå at potensielle kunder blir glemt.",
+    href: "/admin-automatisering",
+    price: "Raskere svar",
+    body: "Sorter henvendelser, lag svarutkast, oppsummer kundedialog og foreslå neste steg — slik at kunder får raskere oppfølging og færre saker faller mellom stolene.",
   },
   {
-    title: "Prosjektdokumentasjon",
+    title: "Administrasjon og dokumentasjon",
+    image: "/landing/customer-service.png",
+    icon: FileSearch,
+    href: "/automatisert-kundeservice",
+    price: "Mindre manuelt arbeid",
+    body: "Gjør notater, skjemaer, møtereferater og løse beskjeder om til strukturerte utkast, sjekklister, rapporter og oppgaver.",
+  },
+  {
+    title: "Salg, tilbud og rapportering",
     image: "/landing/ai-agents.png",
     icon: Bot,
     href: "/skreddersydde-ai-agenter",
-    price: "Mindre manuelt arbeid",
-    body: "Gjør møtenotater, prosjektoppdateringer og bilder om til oppgaver, statusrapporter og kundeoppdateringer.",
+    price: "Bedre oppfølging",
+    body: "Lag bedre salgsoppfølging, tilbudsutkast, CRM-notater, statusoppdateringer og rapporter — med AI som hjelper teamet å holde flyt og oversikt.",
   },
+];
+
+const useCases = [
+  "Kundehenvendelser",
+  "Administrasjon og dokumentasjon",
+  "Salg og oppfølging",
+  "Intern kunnskap",
+  "AI-automatisering",
 ];
 
 const process = [
   {
     title: "Kartlegg arbeidsflyten",
     icon: FileSearch,
-    body: "Vi starter med en gratis AI-kartlegging og finner én konkret arbeidsflyt som tar unødvendig mye tid.",
+    body: "Vi starter med å forstå hvor tiden forsvinner: manuelle oppgaver, gjentakende spørsmål, dokumentasjon, rapportering, oppfølging eller koordinering.",
   },
   {
-    title: "Velg én tydelig tidstyv",
+    title: "Velg riktig startpunkt",
     icon: PenLine,
-    body: "Vi prioriterer lavrisiko arbeidsflyter som tilbudsutkast, kundehenvendelser, dokumentasjon eller prosjektoppfølging.",
+    body: "Sammen velger vi én konkret arbeidsflyt med tydelig verdi og lav risiko. Målet er å skape nytte raskt — ikke å gjøre alt på én gang.",
   },
   {
-    title: "Implementer og integrer",
+    title: "Utvikle og test løsningen",
     icon: Code2,
-    body: "Vi bygger, tester og kobler løsningen inn i verktøyene dere allerede bruker — med mennesker som godkjenner viktige steg.",
+    body: "Vi utvikler en praktisk AI-assistent eller automasjon som passer inn i dagens rutiner, med menneskelig kontroll og tydelige rammer.",
   },
   {
-    title: "Forbedre løpende",
+    title: "Forbedre og utvid",
     icon: LineChart,
-    body: "Vi følger opp bruken, justerer løsningene og forbedrer arbeidsflyten etter hvert som dere ser hva som gir mest verdi.",
+    body: "Når løsningen fungerer i praksis, måler vi effekt, justerer arbeidsflyten og vurderer neste område hvor AI kan skape verdi.",
   },
 ];
 
 const footerGroups = [
   {
     title: "Bruksområder",
-    links: ["Befaring → tilbud", "Kundehenvendelser", "Prosjektdokumentasjon"],
+    links: [
+      "Kundehenvendelser",
+      "Administrasjon",
+      "Salg og oppfølging",
+      "Intern kunnskap",
+      "AI-automatisering",
+    ],
   },
   {
     title: "Selskap",
-    links: ["Slik fungerer det", "Om ANAi"],
+    links: ["Slik fungerer det", "Om ANAi", "AI-kartlegging", "Kontakt"],
   },
   {
     title: "Ressurser",
-    links: ["Blogg", "Guider", "Personvern"],
+    links: ["Blogg", "Guider", "Personvern", "Eksempler"],
   },
 ];
 
@@ -131,14 +145,13 @@ export default function Home() {
                   <ChevronDown className="h-4 w-4 transition group-open:rotate-180" />
                 </summary>
                 <div className="absolute left-1/2 top-8 w-72 -translate-x-1/2 rounded-lg border border-[#dfd0c2] bg-[#fffaf4]/95 p-2 shadow-[0_18px_45px_rgba(15,45,66,0.16)] backdrop-blur-xl">
-                  {services.map((service) => (
+                  {useCases.map((useCase) => (
                     <Link
-                      key={service.title}
-                      href={service.href}
+                      key={useCase}
+                      href="#tjenester"
                       className="block rounded-md px-4 py-3 transition hover:bg-[#f0e4d8]"
                     >
-                      <span className="block font-semibold text-[#0f2d42]">{service.title}</span>
-                      <span className="mt-1 block text-xs font-medium text-[#c95720]">{service.price}</span>
+                      <span className="block font-semibold text-[#0f2d42]">{useCase}</span>
                     </Link>
                   ))}
                 </div>
@@ -146,8 +159,8 @@ export default function Home() {
               <a href="#prosess" className="transition hover:text-[#c95720]">
                 Slik fungerer det
               </a>
-              <a href="#losninger" className="transition hover:text-[#c95720]">
-                Løsninger
+              <a href="#kontakt" className="transition hover:text-[#c95720]">
+                AI-kartlegging
               </a>
               <a href="#kontakt" className="transition hover:text-[#c95720]">
                 Kontakt
@@ -160,15 +173,16 @@ export default function Home() {
           <div className="max-w-2xl">
             <div className="mb-8 flex items-center gap-3 text-sm font-medium text-[#173348]">
               <NorwegianFlag />
-              <span>Hjelper bygg- og håndverksbedrifter å spare tid med praktisk AI.</span>
+              <span>Praktiske AI-løsninger for norske bedrifter</span>
             </div>
             <h1 className="font-display text-6xl leading-[0.94] tracking-normal text-[#0b3048] sm:text-7xl lg:text-[5.7rem]">
-              Praktiske AI-løsninger for bygg- og håndverksbedrifter
+              Få AI til å skape faktisk verdi i bedriften
             </h1>
             <p className="mt-7 max-w-xl text-lg leading-8 text-[#1c3c52]">
-              ANAi hjelper bygg- og håndverksbedrifter med å spare tid på tilbud,
-              kundehenvendelser, dokumentasjon og prosjektoppfølging — med trygge AI-løsninger
-              som passer inn i arbeidsflyten deres.
+              Mange bedrifter vet at AI kan spare tid, men er usikre på hvor de skal starte.
+              ANAi hjelper dere å finne, utvikle og ta i bruk konkrete AI-løsninger som
+              reduserer manuelt arbeid, forbedrer arbeidsflyten og gir teamet mer tid til
+              det som skaper verdi.
             </p>
             <div className="mt-8 flex flex-col gap-4 sm:flex-row">
               <a
@@ -192,11 +206,11 @@ export default function Home() {
               </div>
               <div className="flex items-center gap-2">
                 <Users className="h-4 w-4" />
-                Bygget i Norge
+                Mennesker i kontroll
               </div>
               <div className="flex items-center gap-2">
                 <Sparkles className="h-4 w-4" />
-                For vekstklare team
+                Laget for norske SMB-er
               </div>
             </div>
           </div>
@@ -209,8 +223,13 @@ export default function Home() {
 
       <section id="tjenester" className="mx-auto max-w-7xl px-6 py-10 lg:px-10">
         <h2 className="text-center font-display text-4xl text-[#0b3048] sm:text-5xl">
-          AI-løsninger for bygg- og håndverksbedrifter
+          AI-løsninger for arbeidsflytene som tar mest tid
         </h2>
+        <p className="mx-auto mt-4 max-w-3xl text-center text-base leading-7 text-[#24465a]">
+          Vi lager praktiske AI-assistenter og automasjoner rundt oppgavene som allerede finnes
+          i bedriften — fra kundeoppfølging og dokumentasjon til salg, rapportering og intern
+          kunnskap.
+        </p>
         <div className="mt-8 grid gap-6 lg:grid-cols-3">
           {services.map((service) => (
             <Link
@@ -249,13 +268,19 @@ export default function Home() {
       <section id="losninger" className="mx-auto max-w-7xl px-6 pb-6 lg:px-10">
         <div className="grid overflow-hidden rounded-xl border border-[#dfd0c2] bg-[#fbf6f0] shadow-[0_18px_50px_rgba(15,45,66,0.06)] lg:grid-cols-[1fr_2.35fr]">
           <div className="relative min-h-56">
-            <Image src="/landing/cta-coast.png" alt="Norsk kyst og moderne bygg" fill className="object-cover" />
+            <Image
+              src="/landing/cta-coast.png"
+              alt="Norsk kyst og moderne arbeidsplass"
+              fill
+              className="object-cover"
+              sizes="(min-width: 1024px) 30vw, 100vw"
+            />
           </div>
           <div className="grid gap-6 p-8 md:grid-cols-3">
             {[
-              ["50%", "mindre tid på admin", Clock3, "Reduser tid brukt på tilbud, oppfølging, dokumentasjon og repetitive kundehenvendelser."],
-              ["24/7", "raskere svar", Headphones, "Lag gode svarutkast på vanlige henvendelser, med menneskelig kontroll før noe sendes."],
-              ["Tilpasset", "deres fag og rutiner", Target, "AI-løsninger bygget rundt befaringer, tilbud, prosjekter, dokumentasjon og eksisterende systemer."],
+              ["Timer spart", "mindre manuelt arbeid", Clock3, "Reduser tid brukt på repeterende oppgaver som skriving, sortering, oppsummering, dokumentasjon og oppfølging."],
+              ["Trygt i bruk", "menneskelig kontroll", Headphones, "AI-en lager forslag og utkast. Mennesker godkjenner før noe sendes, deles eller brukes i viktige beslutninger."],
+              ["Tilpasset dere", "deres rutiner og systemer", Target, "Løsningene tilpasses deres faktiske rutiner, systemer og arbeidsflyter — ikke som en generisk chatbot."],
             ].map(([value, label, Icon, body]) => (
               <div key={value as string} className="border-[#dfd0c2] md:border-l md:pl-8">
                 <div className="flex items-start gap-4">
@@ -276,7 +301,7 @@ export default function Home() {
 
       <section id="prosess" className="mx-auto max-w-7xl px-6 py-6 lg:px-10">
         <h2 className="text-center font-display text-4xl text-[#0b3048]">
-          Fra tidstyv til fungerende AI-løsning
+          Fra idé til fungerende AI-løsning
         </h2>
         <div className="mt-8 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
           {process.map((step, index) => (
@@ -309,16 +334,20 @@ export default function Home() {
               </div>
               <div>
                 <h2 className="font-display text-4xl text-[#0b3048] md:text-5xl">
-                  Hva er din største tidstyv?
+                  Hvor kan AI spare mest tid hos dere?
                 </h2>
                 <p className="mt-4 text-base leading-7 text-[#24465a]">
-                  Er det tilbud, befaringer, kundehenvendelser, dokumentasjon eller
-                  prosjektoppfølging som stjeler mest tid? Start med en gratis AI-kartlegging.
+                  Book en gratis AI-kartlegging, så finner vi konkrete arbeidsflyter hvor AI kan
+                  redusere manuelt arbeid, forbedre oppfølgingen eller gi bedre oversikt — uten
+                  at dere trenger å lage alt på nytt.
+                </p>
+                <p className="mt-3 text-sm font-semibold text-[#c95720]">
+                  Vi starter med én konkret arbeidsflyt og viser hva som er mulig.
                 </p>
               </div>
             </div>
             <a
-              href="mailto:system@anai.no"
+              href="mailto:styrtarn@anai.no"
               className="inline-flex h-14 shrink-0 items-center justify-center gap-3 rounded-md bg-[#c95720] px-8 text-base font-semibold text-white shadow-[0_18px_40px_rgba(201,87,32,0.28)] transition hover:bg-[#b74a18]"
             >
               <CalendarDays className="h-5 w-5" />
@@ -340,7 +369,10 @@ export default function Home() {
               sizes="176px"
             />
           </div>
-          <p className="mt-2">Praktiske AI-løsninger for bygg og håndverk</p>
+          <p className="mt-2">
+            ANAi hjelper norske bedrifter med praktiske AI-løsninger, automasjoner og
+            AI-assistenter som sparer tid og forbedrer arbeidsflyten.
+          </p>
           <div className="mt-5 flex gap-3">
             <span className="flex h-8 w-8 items-center justify-center rounded border border-[#d8c7b8]">in</span>
             <span className="flex h-8 w-8 items-center justify-center rounded border border-[#d8c7b8]">
@@ -372,7 +404,7 @@ export default function Home() {
             </li>
             <li className="flex items-center gap-3">
               <Mail className="h-4 w-4" />
-              system@anai.no
+              styrtarn@anai.no
             </li>
             <li className="flex items-center gap-3">
               <MapPin className="h-4 w-4" />
@@ -380,7 +412,7 @@ export default function Home() {
             </li>
           </ul>
           <div className="mt-8 flex items-center gap-2 justify-start lg:justify-end">
-            Bygget i Norge
+            Utviklet i Norge
             <NorwegianFlag />
           </div>
         </div>
