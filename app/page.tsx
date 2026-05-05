@@ -21,7 +21,6 @@ import {
   Target,
   Users,
 } from "lucide-react";
-import { ReactiveHeroField } from "./components/ReactiveHeroField";
 
 const services = [
   {
@@ -119,19 +118,11 @@ const footerGroups = [
   {
     title: "Selskap",
     links: [
-      ["Slik fungerer det", "#prosess"],
-      ["Om ANAi", "#"],
-      ["AI-kartlegging", "#kontakt"],
-      ["Kontakt", "#kontakt"],
-    ],
-  },
-  {
-    title: "Ressurser",
-    links: [
-      ["Blogg", "#"],
-      ["Guider", "#"],
-      ["Personvern", "#"],
-      ["Eksempler", "#tjenester"],
+      ["Slik fungerer det", "/slik-fungerer-det"],
+      ["Om ANAi", "/om-anai"],
+      ["AI-kartlegging", "/ai-kartlegging"],
+      ["Kontakt", "/kontakt"],
+      ["Personvern", "/personvern"],
     ],
   },
 ];
@@ -190,26 +181,26 @@ export default function Home() {
                   ))}
                 </div>
               </details>
-              <a href="#prosess" className="transition hover:text-[#c95720]">
+              <Link href="/slik-fungerer-det" className="transition hover:text-[#c95720]">
                 Slik fungerer det
-              </a>
-              <a href="#kontakt" className="transition hover:text-[#c95720]">
+              </Link>
+              <Link href="/ai-kartlegging" className="transition hover:text-[#c95720]">
                 AI-kartlegging
-              </a>
-              <a href="#kontakt" className="transition hover:text-[#c95720]">
+              </Link>
+              <Link href="/kontakt" className="transition hover:text-[#c95720]">
                 Kontakt
-              </a>
+              </Link>
             </div>
           </nav>
         </div>
 
-        <div className="relative z-10 mx-auto grid max-w-7xl gap-8 px-6 pb-16 pt-28 lg:grid-cols-[0.9fr_1.1fr] lg:px-10 lg:pb-20 lg:pt-36">
+        <div className="relative z-10 mx-auto max-w-7xl px-6 pb-16 pt-28 lg:px-10 lg:pb-20 lg:pt-36">
           <div className="relative z-20 max-w-2xl">
             <div className="mb-8 flex items-center gap-3 text-sm font-medium text-[#173348]">
               <NorwegianFlag />
               <span>Praktiske AI-løsninger for norske bedrifter</span>
             </div>
-            <h1 className="font-display text-6xl leading-[0.94] tracking-normal text-[#0b3048] sm:text-7xl lg:text-[5.7rem]">
+            <h1 className="font-display text-5xl leading-[0.98] tracking-normal text-[#0b3048] sm:text-7xl sm:leading-[0.94] lg:text-[5.7rem]">
               Få AI til å skape faktisk verdi i bedriften
             </h1>
             <p className="mt-7 max-w-xl text-lg leading-8 text-[#1c3c52]">
@@ -219,13 +210,13 @@ export default function Home() {
               det som skaper verdi.
             </p>
             <div className="mt-8 flex flex-col gap-4 sm:flex-row">
-              <a
-                href="#kontakt"
+              <Link
+                href="/book-gratis-ai-kartlegging"
                 className="inline-flex h-14 items-center justify-center gap-3 rounded-md bg-[#c95720] px-8 text-base font-semibold text-white shadow-[0_18px_40px_rgba(201,87,32,0.28)] transition hover:bg-[#b74a18]"
               >
                 Book gratis AI-kartlegging
                 <ArrowRight className="h-4 w-4" />
-              </a>
+              </Link>
               <a
                 href="#tjenester"
                 className="inline-flex h-14 items-center justify-center rounded-md border border-[#0f2d42]/45 bg-[#f7f1ea]/70 px-8 text-base font-semibold text-[#0f2d42] backdrop-blur transition hover:border-[#c95720] hover:text-[#c95720]"
@@ -247,10 +238,6 @@ export default function Home() {
                 Laget for norske SMB-er
               </div>
             </div>
-          </div>
-
-          <div className="relative z-10 hidden min-h-[460px] lg:block">
-            <ReactiveHeroField />
           </div>
         </div>
       </section>
@@ -380,19 +367,19 @@ export default function Home() {
                 </p>
               </div>
             </div>
-            <a
-              href="mailto:styrtarn@anai.no"
+            <Link
+              href="/book-gratis-ai-kartlegging"
               className="inline-flex h-14 shrink-0 items-center justify-center gap-3 rounded-md bg-[#c95720] px-8 text-base font-semibold text-white shadow-[0_18px_40px_rgba(201,87,32,0.28)] transition hover:bg-[#b74a18]"
             >
               <CalendarDays className="h-5 w-5" />
               Book gratis AI-kartlegging
               <ArrowRight className="h-4 w-4" />
-            </a>
+            </Link>
           </div>
         </div>
       </section>
 
-      <footer className="mx-auto grid max-w-7xl gap-9 px-6 pb-10 pt-8 text-sm text-[#24465a] lg:grid-cols-[1.4fr_1fr_1fr_1fr_1.2fr] lg:px-10">
+      <footer className="mx-auto grid max-w-7xl gap-9 px-6 pb-10 pt-8 text-sm text-[#24465a] lg:grid-cols-[1.4fr_1fr_1fr_1.2fr] lg:px-10">
         <div>
           <div className="relative h-14 w-44" aria-label="ANAi">
             <Image
@@ -421,9 +408,9 @@ export default function Home() {
             <ul className="mt-4 space-y-3">
               {group.links.map(([link, href]) => (
                 <li key={link}>
-                  <a href={href} className="transition hover:text-[#c95720]">
-                    {link}
-                  </a>
+              <Link href={href} className="transition hover:text-[#c95720]">
+                {link}
+              </Link>
                 </li>
               ))}
             </ul>
@@ -438,7 +425,7 @@ export default function Home() {
             </li>
             <li className="flex items-center gap-3">
               <Mail className="h-4 w-4" />
-              styrtarn@anai.no
+              system@anai.no
             </li>
             <li className="flex items-center gap-3">
               <MapPin className="h-4 w-4" />

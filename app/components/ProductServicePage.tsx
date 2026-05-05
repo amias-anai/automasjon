@@ -47,13 +47,13 @@ export function ProductServicePage({ product }: { product: ProductPageContent })
             <Link href="/#tjenester" className="transition hover:text-[#c95720]">
               Bruksområder
             </Link>
-            <Link href="/#prosess" className="transition hover:text-[#c95720]">
+            <Link href="/slik-fungerer-det" className="transition hover:text-[#c95720]">
               Slik fungerer det
             </Link>
-            <Link href="/#kontakt" className="transition hover:text-[#c95720]">
+            <Link href="/ai-kartlegging" className="transition hover:text-[#c95720]">
               AI-kartlegging
             </Link>
-            <Link href="/#kontakt" className="transition hover:text-[#c95720]">
+            <Link href="/kontakt" className="transition hover:text-[#c95720]">
               Kontakt
             </Link>
           </div>
@@ -81,13 +81,13 @@ export function ProductServicePage({ product }: { product: ProductPageContent })
               Tilbake til forsiden
             </Link>
             <p className="text-sm font-bold text-[#c95720]">{product.eyebrow}</p>
-            <h1 className="mt-4 max-w-3xl font-display text-5xl leading-[0.98] text-[#0b3048] sm:text-6xl lg:text-[5.5rem]">
+            <h1 className="mt-4 max-w-3xl font-display text-4xl leading-[1.02] text-[#0b3048] sm:text-6xl sm:leading-[0.98] lg:text-[5.5rem]">
               {product.title}
             </h1>
             <p className="mt-7 max-w-2xl text-lg leading-8 text-[#24465a]">{product.intro}</p>
             <div className="mt-8 flex flex-col gap-4 sm:flex-row">
               <Link
-                href="/#kontakt"
+                href="/book-gratis-ai-kartlegging"
                 className="inline-flex h-14 items-center justify-center gap-3 rounded-md bg-[#c95720] px-8 text-base font-semibold text-white shadow-[0_18px_40px_rgba(201,87,32,0.28)] transition hover:bg-[#b74a18]"
               >
                 Book gratis AI-kartlegging
@@ -142,7 +142,7 @@ export function ProductServicePage({ product }: { product: ProductPageContent })
       <section className="mx-auto max-w-7xl px-6 py-20 lg:px-10">
         <div className="max-w-3xl">
           <p className="text-sm font-bold text-[#c95720]">Verdi for teamet</p>
-          <h2 className="mt-3 font-display text-5xl text-[#0b3048]">Hva løsningen hjelper dere med</h2>
+          <h2 className="mt-3 font-display text-4xl text-[#0b3048] sm:text-5xl">Hva løsningen hjelper dere med</h2>
         </div>
         <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
           {product.valueCards.map((item) => (
@@ -159,7 +159,7 @@ export function ProductServicePage({ product }: { product: ProductPageContent })
         <div className="mx-auto max-w-7xl px-6 py-20 lg:px-10">
           <div className="max-w-3xl">
             <p className="text-sm font-bold text-[#e8a05c]">Fra behov til drift</p>
-            <h2 className="mt-3 font-display text-5xl">Slik bygger vi løsningen</h2>
+            <h2 className="mt-3 font-display text-4xl sm:text-5xl">Slik bygger vi løsningen</h2>
           </div>
           <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
             {product.process.map((step) => (
@@ -176,7 +176,7 @@ export function ProductServicePage({ product }: { product: ProductPageContent })
       <section id="eksempler" className="mx-auto max-w-7xl px-6 py-20 lg:px-10">
         <div className="max-w-3xl">
           <p className="text-sm font-bold text-[#c95720]">Eksempler</p>
-          <h2 className="mt-3 font-display text-5xl text-[#0b3048]">Typiske bruksområder</h2>
+          <h2 className="mt-3 font-display text-4xl text-[#0b3048] sm:text-5xl">Typiske bruksområder</h2>
         </div>
         <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {product.examples.map((item) => (
@@ -193,7 +193,7 @@ export function ProductServicePage({ product }: { product: ProductPageContent })
         <div className="mx-auto grid max-w-7xl gap-10 px-6 py-20 lg:grid-cols-[0.85fr_1.15fr] lg:px-10 lg:items-center">
           <div>
             <p className="text-sm font-bold text-[#c95720]">Trygg innføring</p>
-            <h2 className="mt-3 font-display text-5xl text-[#0b3048]">Mennesker beholder kontrollen</h2>
+            <h2 className="mt-3 font-display text-4xl text-[#0b3048] sm:text-5xl">Mennesker beholder kontrollen</h2>
             <p className="mt-5 leading-8 text-[#24465a]">{product.safety}</p>
           </div>
           <div className="rounded-xl border border-[#dfd0c2] bg-[#fbf6f0] p-6 shadow-[0_18px_50px_rgba(15,45,66,0.06)]">
@@ -215,7 +215,7 @@ export function ProductServicePage({ product }: { product: ProductPageContent })
       </section>
 
       <section className="mx-auto max-w-7xl px-6 py-20 lg:px-10">
-        <h2 className="font-display text-5xl text-[#0b3048]">Ofte stilte spørsmål</h2>
+        <h2 className="font-display text-4xl text-[#0b3048] sm:text-5xl">Ofte stilte spørsmål</h2>
         <div className="mt-10 grid gap-x-12 gap-y-2 md:grid-cols-2">
           {product.faqs.map((faq) => (
             <details key={faq.question} className="group border-b border-[#d8c7b8] py-5">
@@ -239,7 +239,7 @@ export function ProductServicePage({ product }: { product: ProductPageContent })
               <p className="mt-4 text-base leading-7 text-[#24465a]">{product.ctaBody}</p>
             </div>
             <Link
-              href="/#kontakt"
+              href="/book-gratis-ai-kartlegging"
               className="inline-flex h-14 shrink-0 items-center justify-center gap-3 rounded-md bg-[#c95720] px-8 text-base font-semibold text-white shadow-[0_18px_40px_rgba(201,87,32,0.28)] transition hover:bg-[#b74a18]"
             >
               <CalendarDays className="h-5 w-5" />
@@ -264,7 +264,7 @@ export function ProductServicePage({ product }: { product: ProductPageContent })
             </li>
             <li className="flex items-center gap-3">
               <Mail className="h-4 w-4" />
-              styrtarn@anai.no
+              system@anai.no
             </li>
             <li className="flex items-center gap-3">
               <MapPin className="h-4 w-4" />
