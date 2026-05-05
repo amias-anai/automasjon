@@ -28,7 +28,7 @@ const services = [
     title: "Kundehenvendelser og oppfølging",
     image: "/landing/admin-automation.png",
     icon: MessageCircle,
-    href: "/admin-automatisering",
+    href: "/kundehenvendelser-og-oppfolging",
     price: "Raskere svar",
     body: "Sorter henvendelser, lag svarutkast, oppsummer kundedialog og foreslå neste steg — slik at kunder får raskere oppfølging og færre saker faller mellom stolene.",
   },
@@ -36,7 +36,7 @@ const services = [
     title: "Administrasjon og dokumentasjon",
     image: "/landing/customer-service.png",
     icon: FileSearch,
-    href: "/automatisert-kundeservice",
+    href: "/administrasjon-og-dokumentasjon",
     price: "Mindre manuelt arbeid",
     body: "Gjør notater, skjemaer, møtereferater og løse beskjeder om til strukturerte utkast, sjekklister, rapporter og oppgaver.",
   },
@@ -44,7 +44,7 @@ const services = [
     title: "Salg, tilbud og rapportering",
     image: "/landing/ai-agents.png",
     icon: Bot,
-    href: "/skreddersydde-ai-agenter",
+    href: "/salg-tilbud-og-rapportering",
     price: "Bedre oppfølging",
     body: "Lag bedre salgsoppfølging, tilbudsutkast, CRM-notater, statusoppdateringer og rapporter — med AI som hjelper teamet å holde flyt og oversikt.",
   },
@@ -52,7 +52,7 @@ const services = [
     title: "Intern kunnskap",
     image: "/landing/internal-knowledge.png",
     icon: FileSearch,
-    href: "#kontakt",
+    href: "/intern-kunnskap",
     price: "Raskere svar internt",
     body: "Gjør dokumenter, rutiner, maler og erfaringer enklere å finne igjen — med AI-assistenter som gir relevante utkast og peker teamet mot riktig kunnskap.",
   },
@@ -60,7 +60,7 @@ const services = [
     title: "AI-automatisering",
     image: "/landing/ai-automation.png",
     icon: Code2,
-    href: "#kontakt",
+    href: "/ai-automatisering",
     price: "Mer flyt mellom systemer",
     body: "Koble sammen manuelle steg, varsler, oppgaver og informasjonsflyt slik at mindre tid går til kopiering, sortering og oppfølging på tvers av verktøy.",
   },
@@ -68,18 +68,18 @@ const services = [
     title: "Skreddersydde AI-løsninger",
     image: "/landing/custom-ai-solutions.png",
     icon: Sparkles,
-    href: "/skreddersydde-ai-agenter",
+    href: "/skreddersydde-ai-losninger",
     price: "Tilpasset arbeidsflyten",
     body: "Utvikle kontrollerte AI-løsninger rundt deres egne prosesser, data og rutiner — fra første pilot til en trygg løsning teamet faktisk tar i bruk.",
   },
 ];
 
 const useCases = [
-  "Kundehenvendelser",
-  "Administrasjon og dokumentasjon",
-  "Salg og oppfølging",
-  "Intern kunnskap",
-  "AI-automatisering",
+  ["Kundehenvendelser", "/kundehenvendelser-og-oppfolging"],
+  ["Administrasjon og dokumentasjon", "/administrasjon-og-dokumentasjon"],
+  ["Salg og oppfølging", "/salg-tilbud-og-rapportering"],
+  ["Intern kunnskap", "/intern-kunnskap"],
+  ["AI-automatisering", "/ai-automatisering"],
 ];
 
 const process = [
@@ -109,20 +109,30 @@ const footerGroups = [
   {
     title: "Bruksområder",
     links: [
-      "Kundehenvendelser",
-      "Administrasjon",
-      "Salg og oppfølging",
-      "Intern kunnskap",
-      "AI-automatisering",
+      ["Kundehenvendelser", "/kundehenvendelser-og-oppfolging"],
+      ["Administrasjon", "/administrasjon-og-dokumentasjon"],
+      ["Salg og oppfølging", "/salg-tilbud-og-rapportering"],
+      ["Intern kunnskap", "/intern-kunnskap"],
+      ["AI-automatisering", "/ai-automatisering"],
     ],
   },
   {
     title: "Selskap",
-    links: ["Slik fungerer det", "Om ANAi", "AI-kartlegging", "Kontakt"],
+    links: [
+      ["Slik fungerer det", "#prosess"],
+      ["Om ANAi", "#"],
+      ["AI-kartlegging", "#kontakt"],
+      ["Kontakt", "#kontakt"],
+    ],
   },
   {
     title: "Ressurser",
-    links: ["Blogg", "Guider", "Personvern", "Eksempler"],
+    links: [
+      ["Blogg", "#"],
+      ["Guider", "#"],
+      ["Personvern", "#"],
+      ["Eksempler", "#tjenester"],
+    ],
   },
 ];
 
@@ -169,10 +179,10 @@ export default function Home() {
                   <ChevronDown className="h-4 w-4 transition group-open:rotate-180" />
                 </summary>
                 <div className="absolute left-1/2 top-8 w-72 -translate-x-1/2 rounded-lg border border-[#dfd0c2] bg-[#fffaf4]/95 p-2 shadow-[0_18px_45px_rgba(15,45,66,0.16)] backdrop-blur-xl">
-                  {useCases.map((useCase) => (
+                  {useCases.map(([useCase, href]) => (
                     <Link
                       key={useCase}
-                      href="#tjenester"
+                      href={href}
                       className="block rounded-md px-4 py-3 transition hover:bg-[#f0e4d8]"
                     >
                       <span className="block font-semibold text-[#0f2d42]">{useCase}</span>
@@ -409,9 +419,9 @@ export default function Home() {
           <div key={group.title}>
             <h3 className="font-bold text-[#0f2d42]">{group.title}</h3>
             <ul className="mt-4 space-y-3">
-              {group.links.map((link) => (
+              {group.links.map(([link, href]) => (
                 <li key={link}>
-                  <a href="#" className="transition hover:text-[#c95720]">
+                  <a href={href} className="transition hover:text-[#c95720]">
                     {link}
                   </a>
                 </li>
