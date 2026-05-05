@@ -48,6 +48,30 @@ const services = [
     price: "Bedre oppfølging",
     body: "Lag bedre salgsoppfølging, tilbudsutkast, CRM-notater, statusoppdateringer og rapporter — med AI som hjelper teamet å holde flyt og oversikt.",
   },
+  {
+    title: "Intern kunnskap",
+    image: "/landing/internal-knowledge.png",
+    icon: FileSearch,
+    href: "#kontakt",
+    price: "Raskere svar internt",
+    body: "Gjør dokumenter, rutiner, maler og erfaringer enklere å finne igjen — med AI-assistenter som gir relevante utkast og peker teamet mot riktig kunnskap.",
+  },
+  {
+    title: "AI-automatisering",
+    image: "/landing/ai-automation.png",
+    icon: Code2,
+    href: "#kontakt",
+    price: "Mer flyt mellom systemer",
+    body: "Koble sammen manuelle steg, varsler, oppgaver og informasjonsflyt slik at mindre tid går til kopiering, sortering og oppfølging på tvers av verktøy.",
+  },
+  {
+    title: "Skreddersydde AI-løsninger",
+    image: "/landing/custom-ai-solutions.png",
+    icon: Sparkles,
+    href: "/skreddersydde-ai-agenter",
+    price: "Tilpasset arbeidsflyten",
+    body: "Utvikle kontrollerte AI-løsninger rundt deres egne prosesser, data og rutiner — fra første pilot til en trygg løsning teamet faktisk tar i bruk.",
+  },
 ];
 
 const useCases = [
