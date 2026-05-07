@@ -6,6 +6,7 @@ import {
   FileSearch,
 } from "lucide-react";
 import {
+  BookingEmbed,
   ContactForm,
   MarketingPage,
   PageHero,
@@ -45,7 +46,7 @@ export default function BookingPage() {
         intro="I en kort kartlegging ser vi på hvor manuelt arbeid, oppfølging eller dokumentasjon tar tid i dag, og vurderer hva som kan forbedres med en kontrollert AI-arbeidsflyt."
       />
 
-      <section className="mx-auto grid max-w-7xl gap-10 px-6 py-16 lg:grid-cols-[0.95fr_1.05fr] lg:px-10">
+      <section className="mx-auto grid max-w-7xl gap-10 px-6 py-16 lg:grid-cols-[0.8fr_1.2fr] lg:px-10">
         <div>
           <p className="text-sm font-bold text-[#c95720]">Uforpliktende og praktisk</p>
           <h2 className="mt-3 font-display text-4xl text-[#0b3048] sm:text-5xl">Hva skjer i kartleggingen?</h2>
@@ -67,7 +68,11 @@ export default function BookingPage() {
             ))}
           </div>
         </div>
-        <ContactForm title="Book gratis AI-kartlegging" />
+        <BookingEmbed />
+      </section>
+
+      <section className="mx-auto max-w-7xl px-6 pb-16 lg:px-10">
+        <ContactForm title="Send informasjon før kartleggingen" />
       </section>
 
       <section className="bg-[#efe8df]">

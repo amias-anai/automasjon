@@ -7,25 +7,9 @@ import {
   CalendarDays,
   CheckCircle2,
   ChevronRight,
-  Mail,
-  MapPin,
-  Phone,
-  ShieldCheck,
 } from "lucide-react";
 import type { ProductPageContent } from "../product-content";
-
-function Logo() {
-  return (
-    <Image
-      src="/landing/anai-logo.png"
-      alt="ANAi"
-      width={176}
-      height={58}
-      className="h-12 w-auto object-contain"
-      priority
-    />
-  );
-}
+import { SiteFooter, SiteHeader } from "./MarketingPage";
 
 function ProductIcon({ icon: Icon }: { icon: LucideIcon }) {
   return (
@@ -38,27 +22,7 @@ function ProductIcon({ icon: Icon }: { icon: LucideIcon }) {
 export function ProductServicePage({ product }: { product: ProductPageContent }) {
   return (
     <main className="min-h-screen bg-[#f7f1ea] text-[#0f2d42]">
-      <header className="absolute inset-x-0 top-0 z-30">
-        <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-7 lg:px-10">
-          <Link href="/" aria-label="ANAi forside">
-            <Logo />
-          </Link>
-          <div className="hidden items-center gap-9 text-sm font-medium text-[#173348] md:flex">
-            <Link href="/#tjenester" className="transition hover:text-[#c95720]">
-              Bruksområder
-            </Link>
-            <Link href="/slik-fungerer-det" className="transition hover:text-[#c95720]">
-              Slik fungerer det
-            </Link>
-            <Link href="/ai-kartlegging" className="transition hover:text-[#c95720]">
-              AI-kartlegging
-            </Link>
-            <Link href="/kontakt" className="transition hover:text-[#c95720]">
-              Kontakt
-            </Link>
-          </div>
-        </nav>
-      </header>
+      <SiteHeader />
 
       <section className="relative overflow-hidden border-b border-[#dfd0c2]">
         <Image
@@ -71,7 +35,7 @@ export function ProductServicePage({ product }: { product: ProductPageContent })
         />
         <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(247,241,234,0.98)_0%,rgba(247,241,234,0.92)_42%,rgba(247,241,234,0.48)_72%,rgba(247,241,234,0.16)_100%)]" />
         <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(247,241,234,0.36),rgba(247,241,234,0.88))]" />
-        <div className="relative mx-auto grid max-w-7xl gap-10 px-6 pb-20 pt-32 lg:grid-cols-[0.92fr_1.08fr] lg:px-10 lg:pb-28 lg:pt-40">
+        <div className="relative mx-auto grid max-w-7xl gap-10 px-6 py-20 lg:grid-cols-[0.92fr_1.08fr] lg:px-10 lg:py-28">
           <div>
             <Link
               href="/"
@@ -250,37 +214,7 @@ export function ProductServicePage({ product }: { product: ProductPageContent })
         </div>
       </section>
 
-      <footer className="mx-auto grid max-w-7xl gap-10 px-6 pb-10 pt-8 text-sm text-[#24465a] lg:grid-cols-[1.4fr_1fr_1fr] lg:px-10">
-        <div>
-          <Logo />
-          <p className="mt-3 max-w-xs">Praktiske AI-løsninger for norske bedrifter som vil spare tid og forbedre arbeidsflyten.</p>
-        </div>
-        <div>
-          <h3 className="font-bold text-[#0f2d42]">Kontakt</h3>
-          <ul className="mt-4 space-y-3">
-            <li className="flex items-center gap-3">
-              <Phone className="h-4 w-4" />
-              +47 41 40 97 53
-            </li>
-            <li className="flex items-center gap-3">
-              <Mail className="h-4 w-4" />
-              system@anai.no
-            </li>
-            <li className="flex items-center gap-3">
-              <MapPin className="h-4 w-4" />
-              Bergen, Norge
-            </li>
-          </ul>
-        </div>
-        <div>
-          <h3 className="font-bold text-[#0f2d42]">Trygg AI</h3>
-          <div className="mt-4 flex items-start gap-3">
-            <ShieldCheck className="mt-0.5 h-5 w-5 text-[#c95720]" />
-            <p>Vi starter avgrenset, logger viktige steg og legger inn menneskelig godkjenning der det trengs.</p>
-          </div>
-          <p className="mt-6 text-xs">© 2026 ANAi AS. Alle rettigheter reservert.</p>
-        </div>
-      </footer>
+      <SiteFooter />
     </main>
   );
 }

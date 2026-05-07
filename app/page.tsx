@@ -4,23 +4,20 @@ import {
   ArrowRight,
   Bot,
   CalendarDays,
-  ChevronDown,
   Clock3,
   Code2,
   FileSearch,
   Headphones,
   LineChart,
-  Mail,
-  MapPin,
   MessageCircle,
   PenLine,
-  Phone,
   Rocket,
   ShieldCheck,
   Sparkles,
   Target,
   Users,
 } from "lucide-react";
+import { SiteFooter, SiteHeader } from "./components/MarketingPage";
 
 const services = [
   {
@@ -73,14 +70,6 @@ const services = [
   },
 ];
 
-const useCases = [
-  ["Kundehenvendelser", "/kundehenvendelser-og-oppfolging"],
-  ["Administrasjon og dokumentasjon", "/administrasjon-og-dokumentasjon"],
-  ["Salg og oppfølging", "/salg-tilbud-og-rapportering"],
-  ["Intern kunnskap", "/intern-kunnskap"],
-  ["AI-automatisering", "/ai-automatisering"],
-];
-
 const process = [
   {
     title: "Kartlegg arbeidsflyten",
@@ -104,29 +93,6 @@ const process = [
   },
 ];
 
-const footerGroups = [
-  {
-    title: "Bruksområder",
-    links: [
-      ["Kundehenvendelser", "/kundehenvendelser-og-oppfolging"],
-      ["Administrasjon", "/administrasjon-og-dokumentasjon"],
-      ["Salg og oppfølging", "/salg-tilbud-og-rapportering"],
-      ["Intern kunnskap", "/intern-kunnskap"],
-      ["AI-automatisering", "/ai-automatisering"],
-    ],
-  },
-  {
-    title: "Selskap",
-    links: [
-      ["Slik fungerer det", "/slik-fungerer-det"],
-      ["Om ANAi", "/om-anai"],
-      ["AI-kartlegging", "/ai-kartlegging"],
-      ["Kontakt", "/kontakt"],
-      ["Personvern", "/personvern"],
-    ],
-  },
-];
-
 function NorwegianFlag() {
   return (
     <span className="relative inline-block h-3.5 w-5 overflow-hidden rounded-[2px] bg-[#ef2b2d] shadow-sm ring-1 ring-black/10">
@@ -141,6 +107,7 @@ function NorwegianFlag() {
 export default function Home() {
   return (
     <main className="min-h-screen bg-[#f7f1ea] text-[#0f2d42]">
+      <SiteHeader />
       <section className="relative min-h-[680px] overflow-hidden border-b border-[#d8c7b8] lg:min-h-[760px]">
         <Image
           src="/landing/hero-fjord.png"
@@ -151,50 +118,8 @@ export default function Home() {
           sizes="100vw"
         />
         <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(250,242,233,0.94)_0%,rgba(250,242,233,0.78)_35%,rgba(250,242,233,0.18)_64%,rgba(15,45,66,0.10)_100%)]" />
-        <div className="absolute inset-x-0 top-0 z-20">
-          <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-7 lg:px-10">
-            <a href="#" className="relative block h-16 w-52 md:h-20 md:w-64" aria-label="ANAi">
-              <Image
-                src="/landing/anai-logo.png"
-                alt="ANAi"
-                fill
-                priority
-                className="object-contain object-left"
-                sizes="(min-width: 768px) 256px, 208px"
-              />
-            </a>
-            <div className="hidden items-center gap-10 text-sm font-medium text-[#173348] md:flex">
-              <details className="group relative">
-                <summary className="flex cursor-pointer list-none items-center gap-1.5 transition hover:text-[#c95720]">
-                  Bruksområder
-                  <ChevronDown className="h-4 w-4 transition group-open:rotate-180" />
-                </summary>
-                <div className="absolute left-1/2 top-8 w-72 -translate-x-1/2 rounded-lg border border-[#dfd0c2] bg-[#fffaf4]/95 p-2 shadow-[0_18px_45px_rgba(15,45,66,0.16)] backdrop-blur-xl">
-                  {useCases.map(([useCase, href]) => (
-                    <Link
-                      key={useCase}
-                      href={href}
-                      className="block rounded-md px-4 py-3 transition hover:bg-[#f0e4d8]"
-                    >
-                      <span className="block font-semibold text-[#0f2d42]">{useCase}</span>
-                    </Link>
-                  ))}
-                </div>
-              </details>
-              <Link href="/slik-fungerer-det" className="transition hover:text-[#c95720]">
-                Slik fungerer det
-              </Link>
-              <Link href="/ai-kartlegging" className="transition hover:text-[#c95720]">
-                AI-kartlegging
-              </Link>
-              <Link href="/kontakt" className="transition hover:text-[#c95720]">
-                Kontakt
-              </Link>
-            </div>
-          </nav>
-        </div>
 
-        <div className="relative z-10 mx-auto max-w-7xl px-6 pb-16 pt-28 lg:px-10 lg:pb-20 lg:pt-36">
+        <div className="relative z-10 mx-auto max-w-7xl px-6 py-20 lg:px-10 lg:py-28">
           <div className="relative z-20 max-w-2xl">
             <div className="mb-8 flex items-center gap-3 text-sm font-medium text-[#173348]">
               <NorwegianFlag />
@@ -379,65 +304,7 @@ export default function Home() {
         </div>
       </section>
 
-      <footer className="mx-auto grid max-w-7xl gap-9 px-6 pb-10 pt-8 text-sm text-[#24465a] lg:grid-cols-[1.4fr_1fr_1fr_1.2fr] lg:px-10">
-        <div>
-          <div className="relative h-14 w-44" aria-label="ANAi">
-            <Image
-              src="/landing/anai-logo.png"
-              alt="ANAi"
-              fill
-              className="object-contain object-left"
-              sizes="176px"
-            />
-          </div>
-          <p className="mt-2">
-            ANAi hjelper norske bedrifter med praktiske AI-løsninger, automasjoner og
-            AI-assistenter som sparer tid og forbedrer arbeidsflyten.
-          </p>
-          <div className="mt-5 flex gap-3">
-            <span className="flex h-8 w-8 items-center justify-center rounded border border-[#d8c7b8]">in</span>
-            <span className="flex h-8 w-8 items-center justify-center rounded border border-[#d8c7b8]">
-              <Mail className="h-4 w-4" />
-            </span>
-          </div>
-          <p className="mt-6 text-xs">© 2026 ANAi AS. Alle rettigheter reservert.</p>
-        </div>
-        {footerGroups.map((group) => (
-          <div key={group.title}>
-            <h3 className="font-bold text-[#0f2d42]">{group.title}</h3>
-            <ul className="mt-4 space-y-3">
-              {group.links.map(([link, href]) => (
-                <li key={link}>
-              <Link href={href} className="transition hover:text-[#c95720]">
-                {link}
-              </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-        ))}
-        <div>
-          <h3 className="font-bold text-[#0f2d42]">Kontakt</h3>
-          <ul className="mt-4 space-y-3">
-            <li className="flex items-center gap-3">
-              <Phone className="h-4 w-4" />
-              +47 41 40 97 53
-            </li>
-            <li className="flex items-center gap-3">
-              <Mail className="h-4 w-4" />
-              system@anai.no
-            </li>
-            <li className="flex items-center gap-3">
-              <MapPin className="h-4 w-4" />
-              Bergen, Norge
-            </li>
-          </ul>
-          <div className="mt-8 flex items-center gap-2 justify-start lg:justify-end">
-            Utviklet i Norge
-            <NorwegianFlag />
-          </div>
-        </div>
-      </footer>
+      <SiteFooter />
     </main>
   );
 }

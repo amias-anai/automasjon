@@ -24,7 +24,7 @@ const sections = [
     title: "2. Innsamling",
     body: [
       "Når du kontakter oss eller booker en AI-kartlegging, kan vi samle inn navn, bedrift, rolle, bransje, e-postadresse, telefonnummer og en kort beskrivelse av behovet.",
-      "Vi kan også motta tekniske opplysninger som IP-adresse, nettleser og tidspunkt dersom dette registreres av drift, sikkerhet eller enkel analyse av nettsiden.",
+      "Kontaktskjema lagres i Supabase-prosjektet vårt i EU-regionen eu-central-1. Kalenderbooking skjer via Cal.eu. Vi kan også motta tekniske opplysninger som IP-adresse, nettleser og tidspunkt dersom dette registreres av drift, sikkerhet eller enkel analyse av nettsiden.",
     ],
   },
   {
@@ -66,13 +66,13 @@ const sections = [
     title: "8. Lagring",
     body: [
       "Henvendelser lagres så lenge det er nødvendig for å følge opp dialogen og et eventuelt kundeforhold. Opplysninger som ikke lenger er nødvendige, slettes eller anonymiseres.",
-      "Regnskaps- og avtaledokumentasjon lagres i den perioden vi er pålagt etter lov eller trenger for å dokumentere avtaleforholdet.",
+      "Booking- og kontakthenvendelser gjennom nettsiden lagres i europeiske systemer. Regnskaps- og avtaledokumentasjon lagres i den perioden vi er pålagt etter lov eller trenger for å dokumentere avtaleforholdet.",
     ],
   },
   {
     title: "9. Tredjeparter",
     body: [
-      "Vi kan bruke leverandører for drift av nettside, e-post, booking, analyse, prosjektverktøy, økonomi og sikkerhet. Slike leverandører får bare tilgang til opplysninger de trenger for å levere tjenesten.",
+      "Vi kan bruke leverandører for drift av nettside, e-post, booking, analyse, prosjektverktøy, økonomi og sikkerhet. For nettsidehenvendelser bruker vi Supabase i EU-regionen eu-central-1, og for kalenderbooking bruker vi Cal.eu. Slike leverandører får bare tilgang til opplysninger de trenger for å levere tjenesten.",
       "Vi selger ikke personopplysninger. Opplysninger deles ikke med andre med mindre det er nødvendig for å levere tjenesten, følge opp en avtale eller oppfylle lovpålagte krav.",
     ],
   },
@@ -87,14 +87,14 @@ const sections = [
     title: "11. Internasjonale overføringer",
     body: [
       "Noen leverandører kan behandle data utenfor Norge eller EU/EØS. Der dette skjer, skal det foreligge et gyldig overføringsgrunnlag og relevante sikkerhetstiltak.",
-      "I kundeprosjekter vurderes leverandører, databehandleravtaler og overføringer som del av løsningen der det er relevant.",
+      "Nettsidehenvendelser og booking er satt opp med europeiske leverandører og EU-region der dette er tilgjengelig. I kundeprosjekter vurderes leverandører, databehandleravtaler og overføringer som del av løsningen der det er relevant.",
     ],
   },
   {
     title: "12. Endringer",
     body: [
       "Vi kan oppdatere denne personvernerklæringen når tjenester, leverandører eller regelverk endres. Vesentlige endringer bør kommuniseres tydelig til berørte personer der det er relevant.",
-      "Sist oppdatert: 5. mai 2026.",
+      "Sist oppdatert: 6. mai 2026.",
     ],
   },
   {
@@ -107,7 +107,7 @@ const sections = [
   {
     title: "14. Tredjeparts databehandlere",
     body: [
-      "Aktuelle databehandlere kan omfatte leverandører av hosting, e-post, analyse, booking, regnskap, CRM, prosjektstyring og AI-infrastruktur.",
+      "Aktuelle databehandlere kan omfatte leverandører av hosting, e-post, analyse, booking, regnskap, CRM, prosjektstyring og AI-infrastruktur. For nettsiden er Supabase og Cal.eu relevante for henholdsvis kontaktskjema og booking.",
       "I kundeprosjekter avklarer vi hvilke leverandører som brukes, hvilke data som behandles og om databehandleravtale er nødvendig.",
     ],
   },

@@ -9,9 +9,11 @@ import {
   Phone,
   ShieldCheck,
 } from "lucide-react";
+import { LeadForm } from "./LeadForm";
 
 export const contactEmail = "system@anai.no";
 export const contactPhone = "+47 41 40 97 53";
+export const bookingUrl = "https://cal.eu/anai-no/30min";
 
 const navLinks = [
   ["Bruksområder", "/#tjenester"],
@@ -170,54 +172,24 @@ export function PageHero({
 }
 
 export function ContactForm({ title = "Fortell kort hva dere vil se på" }: { title?: string }) {
+  return <LeadForm title={title} source={title.toLowerCase().includes("book") ? "booking" : "contact"} />;
+}
+
+export function BookingEmbed() {
   return (
-    <form
-      action={`mailto:${contactEmail}`}
-      method="post"
-      encType="text/plain"
-      className="rounded-xl border border-[#dfd0c2] bg-[#fbf6f0] p-6 shadow-[0_18px_50px_rgba(15,45,66,0.08)]"
-    >
-      <h2 className="font-display text-3xl text-[#0b3048]">{title}</h2>
-      <div className="mt-6 grid gap-4 sm:grid-cols-2">
-        {[
-          ["Navn", "name", "text"],
-          ["Bedrift", "company", "text"],
-          ["E-post", "email", "email"],
-          ["Telefon", "phone", "tel"],
-          ["Rolle", "role", "text"],
-          ["Bransje", "industry", "text"],
-        ].map(([label, name, type]) => (
-          <label key={name} className="text-sm font-semibold text-[#173348]">
-            {label}
-            <input
-              name={name}
-              type={type}
-              required={["name", "company", "email"].includes(name)}
-              className="mt-2 h-12 w-full rounded-md border border-[#d8c7b8] bg-white/70 px-4 text-base font-normal outline-none transition focus:border-[#c95720]"
-            />
-          </label>
-        ))}
+    <div className="overflow-hidden rounded-xl border border-[#dfd0c2] bg-[#fbf6f0] shadow-[0_18px_50px_rgba(15,45,66,0.08)]">
+      <div className="border-b border-[#dfd0c2] px-6 py-5">
+        <p className="text-sm font-bold text-[#c95720]">Direkte booking</p>
+        <h2 className="mt-1 font-display text-3xl text-[#0b3048]">Velg tidspunkt i kalenderen</h2>
       </div>
-      <label className="mt-4 block text-sm font-semibold text-[#173348]">
-        Kort beskrivelse
-        <textarea
-          name="description"
-          rows={5}
-          placeholder="Hvilken arbeidsflyt tar mye tid i dag?"
-          className="mt-2 w-full rounded-md border border-[#d8c7b8] bg-white/70 px-4 py-3 text-base font-normal outline-none transition focus:border-[#c95720]"
-        />
-      </label>
-      <button
-        type="submit"
-        className="mt-6 inline-flex h-14 items-center justify-center gap-3 rounded-md bg-[#c95720] px-8 text-base font-semibold text-white shadow-[0_18px_40px_rgba(201,87,32,0.24)] transition hover:bg-[#b74a18]"
-      >
-        Send forespørsel
-        <ArrowRight className="h-4 w-4" />
-      </button>
-      <p className="mt-4 text-xs leading-6 text-[#24465a]">
-        Opplysningene brukes bare til å svare på henvendelsen og avtale eventuell kartlegging.
-      </p>
-    </form>
+      <iframe
+        title="Book gratis AI-kartlegging hos ANAi"
+        src={bookingUrl}
+        className="h-[720px] w-full bg-white"
+        loading="lazy"
+        referrerPolicy="strict-origin-when-cross-origin"
+      />
+    </div>
   );
 }
 
@@ -238,7 +210,7 @@ export function CtaBand() {
             </p>
           </div>
           <Link
-            href="/book-gratis-ai-kartlegging"
+            href={bookingUrl}
             className="inline-flex h-14 shrink-0 items-center justify-center gap-3 rounded-md bg-[#c95720] px-8 text-base font-semibold text-white shadow-[0_18px_40px_rgba(201,87,32,0.28)] transition hover:bg-[#b74a18]"
           >
             <CalendarDays className="h-5 w-5" />
