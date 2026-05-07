@@ -93,6 +93,24 @@ const process = [
   },
 ];
 
+const workflowExamples = [
+  {
+    title: "Befaring → tilbudsutkast",
+    body: "Notater, bilder eller skjema fra befaring struktureres til et første tilbudsutkast som teamet kvalitetssikrer før kunden får noe.",
+    icon: PenLine,
+  },
+  {
+    title: "Kundehenvendelse → svarutkast",
+    body: "En innkommende e-post eller skjemasak oppsummeres, får forslag til svar og relevante oppfølgingsspørsmål før menneskelig godkjenning.",
+    icon: MessageCircle,
+  },
+  {
+    title: "Møtenotater → oppgaver og kundeoppdatering",
+    body: "Løse møtenotater blir til oppgaver, ansvarlige og et kort kundeutkast som kan redigeres og sendes av ansvarlig person.",
+    icon: FileSearch,
+  },
+];
+
 function NorwegianFlag() {
   return (
     <span className="relative inline-block h-3.5 w-5 overflow-hidden rounded-[2px] bg-[#ef2b2d] shadow-sm ring-1 ring-black/10">
@@ -207,6 +225,42 @@ export default function Home() {
                 </div>
               </div>
             </Link>
+          ))}
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-7xl px-6 py-10 lg:px-10">
+        <div className="flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
+          <div className="max-w-3xl">
+            <p className="text-sm font-bold text-[#c95720]">Arbeidsflyter</p>
+            <h2 className="mt-3 font-display text-4xl text-[#0b3048] sm:text-5xl">
+              Eksempler på AI-arbeidsflyter
+            </h2>
+            <p className="mt-4 text-base leading-7 text-[#24465a]">
+              Dette er illustrative eksempler på hvordan ANAi kan støtte eksisterende rutiner.
+              De er ikke kundecaser eller dokumenterte resultater.
+            </p>
+          </div>
+          <Link
+            href="/eksempler-pa-arbeidsflyter"
+            className="inline-flex h-12 shrink-0 items-center justify-center gap-3 rounded-md border border-[#0f2d42]/35 px-5 text-sm font-semibold text-[#0f2d42] transition hover:border-[#c95720] hover:text-[#c95720]"
+          >
+            Se flere detaljer
+            <ArrowRight className="h-4 w-4" />
+          </Link>
+        </div>
+        <div className="mt-8 grid gap-6 md:grid-cols-3">
+          {workflowExamples.map((example) => (
+            <article
+              key={example.title}
+              className="rounded-lg border border-[#dfd0c2] bg-[#fbf6f0] p-7 shadow-[0_14px_38px_rgba(15,45,66,0.06)]"
+            >
+              <span className="flex h-12 w-12 items-center justify-center rounded-full border border-[#d8c7b8] bg-white/60 text-[#0f2d42]">
+                <example.icon className="h-5 w-5" />
+              </span>
+              <h3 className="mt-5 text-xl font-bold text-[#0b3048]">{example.title}</h3>
+              <p className="mt-3 text-sm leading-7 text-[#24465a]">{example.body}</p>
+            </article>
           ))}
         </div>
       </section>

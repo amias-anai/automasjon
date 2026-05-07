@@ -141,6 +141,36 @@ export function ProductServicePage({ product }: { product: ProductPageContent })
         <div className="max-w-3xl">
           <p className="text-sm font-bold text-[#c95720]">Eksempler</p>
           <h2 className="mt-3 font-display text-4xl text-[#0b3048] sm:text-5xl">Typiske bruksområder</h2>
+          <p className="mt-4 text-base leading-7 text-[#24465a]">
+            Eksemplene viser mulige arbeidsflyter, ikke kundecaser eller garanterte resultater.
+          </p>
+        </div>
+        <div className="mt-10 rounded-xl border border-[#dfd0c2] bg-[#fbf6f0] p-7 shadow-[0_18px_50px_rgba(15,45,66,0.08)] md:p-9">
+          <div className="grid gap-8 lg:grid-cols-[0.85fr_1.15fr]">
+            <div>
+              <p className="text-xs font-bold uppercase tracking-[0.14em] text-[#c95720]">Mini-eksempel</p>
+              <h3 className="mt-4 font-display text-3xl text-[#0b3048]">{product.miniExample.title}</h3>
+              <Link
+                href="/eksempler-pa-arbeidsflyter"
+                className="mt-5 inline-flex items-center gap-2 text-sm font-bold text-[#c95720] transition hover:text-[#b74a18]"
+              >
+                Se flere arbeidsflyteksempler
+                <ArrowRight className="h-4 w-4" />
+              </Link>
+            </div>
+            <div className="grid gap-4 md:grid-cols-3">
+              {[
+                ["Typisk input", product.miniExample.input],
+                ["AI-assistert utkast", product.miniExample.output],
+                ["Menneskelig kontroll", product.miniExample.control],
+              ].map(([label, body]) => (
+                <div key={label} className="rounded-lg border border-[#dfd0c2] bg-white/55 p-5">
+                  <p className="text-xs font-bold uppercase tracking-[0.12em] text-[#24465a]">{label}</p>
+                  <p className="mt-3 text-sm leading-7 text-[#24465a]">{body}</p>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
         <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {product.examples.map((item) => (

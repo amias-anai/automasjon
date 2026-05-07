@@ -46,6 +46,13 @@ type Example = {
   body: string;
 };
 
+type MiniExample = {
+  title: string;
+  input: string;
+  output: string;
+  control: string;
+};
+
 type Faq = {
   question: string;
   answer: string;
@@ -66,6 +73,7 @@ export type ProductPageContent = {
   solution: string;
   valueCards: IconCard[];
   process: ProcessStep[];
+  miniExample: MiniExample;
   examples: Example[];
   safety: string;
   flow: string[];
@@ -149,6 +157,12 @@ export const productPages: Record<string, ProductPageContent> = {
       { title: "Sporbarhet", body: "Viktige forslag og beslutninger kan logges slik at teamet vet hva som er gjort.", icon: ClipboardCheck },
     ],
     process: standardProcess,
+    miniExample: {
+      title: "Henvendelse → svarutkast + oppfølgingsspørsmål",
+      input: "En kunde sender en e-post eller et skjema med behov, spørsmål og litt ustrukturert kontekst.",
+      output: "AI foreslår et kort sammendrag, et svarutkast i deres tone og relevante spørsmål før saken følges opp.",
+      control: "Teamet redigerer, vurderer fakta og godkjenner før svaret sendes til kunden.",
+    },
     examples: [
       { label: "E-post", title: "Svarutkast på vanlige spørsmål", body: "AI foreslår svar på pris, levering, booking, status eller dokumentasjon." },
       { label: "Salg", title: "Leads som trenger oppfølging", body: "Nye henvendelser kan oppsummeres og sendes til riktig person med anbefalt neste steg." },
@@ -195,6 +209,12 @@ export const productPages: Record<string, ProductPageContent> = {
       { title: "Dokumentflyt", body: "Dokumenter kan klassifiseres, oppsummeres og rutes til riktig person.", icon: Route },
     ],
     process: standardProcess,
+    miniExample: {
+      title: "Møtenotater/prosjektnotater → oppgaver + kundeoppdatering",
+      input: "Løse notater fra et internt møte, prosjektmøte eller kundemøte.",
+      output: "AI strukturerer beslutninger, ansvarlige, frister og et kort utkast til kundeoppdatering.",
+      control: "Ansvarlig person kontrollerer innholdet, justerer formuleringer og avgjør hva som deles.",
+    },
     examples: [
       { label: "Møter", title: "Fra notat til oppgaveliste", body: "AI trekker ut beslutninger, frister og ansvarlige fra uferdige notater." },
       { label: "Skjema", title: "Standardiserte utkast", body: "Skjemasvar og løse beskrivelser blir til ryddige interne dokumenter." },
@@ -241,6 +261,12 @@ export const productPages: Record<string, ProductPageContent> = {
       { title: "Rapporter", body: "Salgs- og aktivitetsdata kan bli til korte rapporter for ledelsen.", icon: LineChart },
     ],
     process: standardProcess,
+    miniExample: {
+      title: "Lead/kundemøte → oppfølgingsutkast + CRM-notat",
+      input: "Et nytt lead, møtepunkt eller en oppsummering fra kundedialog.",
+      output: "AI lager forslag til oppfølgingsmelding, neste steg og et strukturert CRM-notat.",
+      control: "Salgsansvarlig kvalitetssikrer behov, pris, løfter og timing før noe sendes eller registreres.",
+    },
     examples: [
       { label: "Tilbud", title: "Førsteutkast med riktig struktur", body: "Teamet får et utkast de kan redigere, kvalitetssikre og sende." },
       { label: "CRM", title: "Mindre friksjon etter møter", body: "Notater, neste steg og oppgaver kan opprettes raskere etter kundemøter." },
@@ -287,6 +313,12 @@ export const productPages: Record<string, ProductPageContent> = {
       { title: "Rutiner", body: "Interne prosesser kan forklares i klare steg basert på oppdatert dokumentasjon.", icon: Workflow },
     ],
     process: standardProcess,
+    miniExample: {
+      title: "Rutiner/FAQ/dokumenter → intern kunnskapsassistent med kilder",
+      input: "Interne rutiner, FAQ-er, maler og dokumenter som ansatte ofte leter etter.",
+      output: "AI svarer på interne spørsmål med henvisning til relevante kilder og dokumenter.",
+      control: "Ansatte ser kildene, vurderer om svaret passer situasjonen og bruker etablerte rutiner ved tvil.",
+    },
     examples: [
       { label: "HR", title: "Svar på rutiner og policy", body: "Ansatte kan spørre om ferie, reiseregninger, onboarding eller interne regler." },
       { label: "Drift", title: "Finn riktig prosess", body: "Teamet kan få steg-for-steg hjelp basert på egne prosedyrer og maler." },
@@ -333,6 +365,12 @@ export const productPages: Record<string, ProductPageContent> = {
       { title: "Feilhåndtering", body: "Avvik kan stoppes, flagges og sendes til manuell kontroll.", icon: ShieldCheck },
     ],
     process: standardProcess,
+    miniExample: {
+      title: "Befaring/notater/skjema → strukturert oppgave, varsel eller tilbudsutkast",
+      input: "Notater, bilder eller skjemasvar fra befaring, oppdrag eller innkommende forespørsel.",
+      output: "AI strukturerer behov, lager oppgave eller varsel og kan foreslå et første tilbudsutkast.",
+      control: "Riktig person kontrollerer fakta, omfang og pris før oppgaven lukkes eller tilbud sendes.",
+    },
     examples: [
       { label: "Salg", title: "Kontaktskjema til CRM", body: "Nye leads registreres, oppsummeres og varsles til riktig person." },
       { label: "Admin", title: "Dokumenter til riktig mappe", body: "Vedlegg kan klassifiseres, navngis og sendes til kontroll før arkivering." },
@@ -379,6 +417,12 @@ export const productPages: Record<string, ProductPageContent> = {
       { title: "Adopsjon", body: "Vi hjelper teamet å forstå, bruke og forbedre løsningen over tid.", icon: Users },
     ],
     process: standardProcess,
+    miniExample: {
+      title: "Kartlegging → prototype → godkjenningsflyt",
+      input: "Én valgt arbeidsflyt med dagens steg, eksempler på input og tydelige regler for hva AI ikke skal gjøre.",
+      output: "En liten prototype som tolker input, lager forslag og sender viktige steg til godkjenning.",
+      control: "Piloten testes med teamet, justeres på reelle eksempler og utvides først når kontrollpunktene fungerer.",
+    },
     examples: [
       { label: "Drift", title: "AI-assistent for en intern prosess", body: "En assistent kan veilede ansatte gjennom rutiner, dokumentasjon og beslutninger." },
       { label: "Ledelse", title: "Beslutningsstøtte", body: "AI kan samle grunnlag og lage oversikt før mennesker tar beslutningen." },

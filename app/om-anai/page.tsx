@@ -44,6 +44,14 @@ export default function AboutPage() {
         <div>
           <p className="text-sm font-bold text-[#c95720]">Misjon</p>
           <h2 className="mt-3 font-display text-4xl text-[#0b3048] sm:text-5xl">AI som faktisk passer inn i arbeidsdagen</h2>
+          <div className="mt-8 rounded-lg border border-[#dfd0c2] bg-[#fbf6f0] p-6 text-sm leading-7 text-[#24465a]">
+            <p>
+              <span className="font-bold text-[#0f2d42]">Grunnlegger:</span> Amias Nasser Aspenes
+            </p>
+            <p>
+              <span className="font-bold text-[#0f2d42]">Basert i:</span> Bergen, Norge
+            </p>
+          </div>
         </div>
         <div className="space-y-5 text-base leading-8 text-[#24465a]">
           <p>
