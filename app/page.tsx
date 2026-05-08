@@ -22,51 +22,87 @@ import { SiteFooter, SiteHeader } from "./components/MarketingPage";
 const services = [
   {
     title: "Kundehenvendelser og oppfølging",
-    image: "/landing/admin-automation.png",
+    image: "/landing/service-customer-inquiries.png",
+    imageAlt: "Innboks og AI-assistert svarutkast for kundehenvendelser",
     icon: MessageCircle,
     href: "/kundehenvendelser-og-oppfolging",
     price: "Raskere svar",
     body: "Sorter henvendelser, lag svarutkast, oppsummer kundedialog og foreslå neste steg — slik at kunder får raskere oppfølging og færre saker faller mellom stolene.",
+    visual: {
+      label: "Innboks",
+      title: "Svarutkast klart",
+      body: "Oppsummering, neste steg og forslag til svar.",
+    },
   },
   {
     title: "Administrasjon og dokumentasjon",
-    image: "/landing/customer-service.png",
+    image: "/landing/service-admin-documentation.png",
+    imageAlt: "Notater og skjemaer strukturert til rapport og sjekkliste",
     icon: FileSearch,
     href: "/administrasjon-og-dokumentasjon",
     price: "Mindre manuelt arbeid",
     body: "Gjør notater, skjemaer, møtereferater og løse beskjeder om til strukturerte utkast, sjekklister, rapporter og oppgaver.",
+    visual: {
+      label: "Notater",
+      title: "Rapport + sjekkliste",
+      body: "Løse punkter blir ansvar, frister og struktur.",
+    },
   },
   {
     title: "Salg, tilbud og rapportering",
-    image: "/landing/ai-agents.png",
+    image: "/landing/service-sales-crm.png",
+    imageAlt: "Befaringsnotater gjort om til tilbudsutkast og CRM-notat",
     icon: Bot,
     href: "/salg-tilbud-og-rapportering",
     price: "Bedre oppfølging",
     body: "Lag bedre salgsoppfølging, tilbudsutkast, CRM-notater, statusoppdateringer og rapporter — med AI som hjelper teamet å holde flyt og oversikt.",
+    visual: {
+      label: "Befaring",
+      title: "Tilbud + CRM-notat",
+      body: "Behov, omfang og oppfølging samles raskere.",
+    },
   },
   {
     title: "Intern kunnskap",
-    image: "/landing/internal-knowledge.png",
+    image: "/landing/service-internal-knowledge.png",
+    imageAlt: "Intern kunnskapssøk med svar fra rutiner og kilder",
     icon: FileSearch,
     href: "/intern-kunnskap",
     price: "Raskere svar internt",
     body: "Gjør dokumenter, rutiner, maler og erfaringer enklere å finne igjen — med AI-assistenter som gir relevante utkast og peker teamet mot riktig kunnskap.",
+    visual: {
+      label: "Spørsmål",
+      title: "Hvordan gjør vi dette?",
+      body: "Svar fra rutiner, maler og dokumenter.",
+    },
   },
   {
     title: "AI-automatisering",
-    image: "/landing/ai-automation.png",
+    image: "/landing/service-ai-automation-flow.png",
+    imageAlt: "Enkel flyt mellom e-post, CRM, oppgaver og dokumenter",
     icon: Code2,
     href: "/ai-automatisering",
     price: "Mer flyt mellom systemer",
     body: "Koble sammen manuelle steg, varsler, oppgaver og informasjonsflyt slik at mindre tid går til kopiering, sortering og oppfølging på tvers av verktøy.",
+    visual: {
+      label: "Flyt",
+      title: "E-post → CRM → Oppgave",
+      body: "Dokumenter og varsler følger riktig prosess.",
+    },
   },
   {
     title: "Skreddersydde AI-løsninger",
-    image: "/landing/custom-ai-solutions.png",
+    image: "/landing/service-custom-workflow-map.png",
+    imageAlt: "Whiteboard med arbeidsflytkart og prosessdiagram",
     icon: Sparkles,
     href: "/skreddersydde-ai-losninger",
     price: "Tilpasset arbeidsflyten",
     body: "Utvikle kontrollerte AI-løsninger rundt deres egne prosesser, data og rutiner — fra første pilot til en trygg løsning teamet faktisk tar i bruk.",
+    visual: {
+      label: "Skreddersøm",
+      title: "Kartlegg → Pilot → Godkjenn",
+      body: "En løsning rundt måten teamet faktisk jobber.",
+    },
   },
 ];
 
@@ -128,14 +164,14 @@ export default function Home() {
       <SiteHeader />
       <section className="relative min-h-[680px] overflow-hidden border-b border-[#d8c7b8] lg:min-h-[760px]">
         <Image
-          src="/landing/hero-fjord.png"
-          alt="Moderne arbeidsplass ved en norsk fjord"
+          src="/landing/frontpage-human-workflow-hero-v2.png"
+          alt="Norsk bedriftsleder som går gjennom arbeidsflyter med laptop og notater"
           fill
           priority
-          className="object-cover"
+          className="object-cover object-center"
           sizes="100vw"
         />
-        <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(250,242,233,0.94)_0%,rgba(250,242,233,0.78)_35%,rgba(250,242,233,0.18)_64%,rgba(15,45,66,0.10)_100%)]" />
+        <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(250,242,233,0.97)_0%,rgba(250,242,233,0.86)_38%,rgba(250,242,233,0.38)_68%,rgba(15,45,66,0.08)_100%)]" />
 
         <div className="relative z-10 mx-auto max-w-7xl px-6 py-20 lg:px-10 lg:py-28">
           <div className="relative z-20 max-w-2xl">
@@ -204,11 +240,18 @@ export default function Home() {
               <div className="relative h-64 overflow-hidden">
                 <Image
                   src={service.image}
-                  alt={service.title}
+                  alt={service.imageAlt}
                   fill
                   className="object-cover transition duration-700 hover:scale-105"
                   sizes="(min-width: 1024px) 33vw, 100vw"
                 />
+                <div className="absolute inset-x-4 bottom-4 rounded-lg border border-white/65 bg-[#fffaf4]/88 p-4 text-[#0f2d42] shadow-[0_16px_34px_rgba(15,45,66,0.16)] backdrop-blur-md">
+                  <p className="text-[0.68rem] font-bold uppercase tracking-[0.13em] text-[#c95720]">
+                    {service.visual.label}
+                  </p>
+                  <p className="mt-1 text-sm font-bold leading-5">{service.visual.title}</p>
+                  <p className="mt-1 text-xs leading-5 text-[#24465a]">{service.visual.body}</p>
+                </div>
                 <div className="absolute left-5 top-5 flex h-14 w-14 items-center justify-center rounded-full border border-white/60 bg-[#0f2d42] text-white shadow-lg">
                   <service.icon className="h-6 w-6" />
                 </div>
@@ -320,13 +363,13 @@ export default function Home() {
       <section id="kontakt" className="mx-auto max-w-7xl px-6 py-8 lg:px-10">
         <div className="relative overflow-hidden rounded-xl border border-[#dfd0c2] bg-[#fbf6f0] p-8 shadow-[0_18px_50px_rgba(15,45,66,0.08)] md:p-12">
           <Image
-            src="/landing/cta-coast.png"
-            alt=""
+            src="/landing/frontpage-ai-kartlegging-checklist.png"
+            alt="Person som går gjennom sjekkliste for AI-kartlegging"
             fill
-            className="object-cover opacity-45"
+            className="object-cover opacity-70"
             sizes="100vw"
           />
-          <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(251,246,240,0.96),rgba(251,246,240,0.82)_48%,rgba(251,246,240,0.18))]" />
+          <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(251,246,240,0.98),rgba(251,246,240,0.88)_50%,rgba(251,246,240,0.24))]" />
           <div className="relative z-10 flex flex-col gap-8 md:flex-row md:items-center md:justify-between">
             <div className="flex max-w-2xl gap-8">
               <div className="hidden h-24 w-24 shrink-0 items-center justify-center rounded-full border border-[#0f2d42]/50 md:flex">
