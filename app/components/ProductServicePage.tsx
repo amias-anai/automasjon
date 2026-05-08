@@ -19,6 +19,53 @@ function ProductIcon({ icon: Icon }: { icon: LucideIcon }) {
   );
 }
 
+function ConcreteExampleMockup({ product }: { product: ProductPageContent }) {
+  return (
+    <section id="konkret-eksempel" className="bg-[#efe8df]">
+      <div className="mx-auto grid max-w-7xl gap-10 px-6 py-20 lg:grid-cols-[0.88fr_1.12fr] lg:px-10 lg:items-center">
+        <div>
+          <p className="text-sm font-bold text-[#c95720]">{product.concreteExample.eyebrow}</p>
+          <h2 className="mt-3 font-display text-4xl text-[#0b3048] sm:text-5xl">
+            {product.concreteExample.title}
+          </h2>
+          <p className="mt-5 max-w-xl leading-8 text-[#24465a]">
+            {product.concreteExample.scenario}
+          </p>
+          <p className="mt-5 max-w-xl rounded-lg border border-[#dfd0c2] bg-[#fbf6f0] px-5 py-4 text-sm leading-7 text-[#24465a]">
+            {product.concreteExample.note}
+          </p>
+        </div>
+        <div className="rounded-xl border border-[#dfd0c2] bg-[#fbf6f0] p-5 shadow-[0_18px_50px_rgba(15,45,66,0.08)]">
+          <div className="flex items-center justify-between border-b border-[#dfd0c2] pb-4">
+            <div>
+              <p className="text-xs font-bold uppercase tracking-[0.14em] text-[#c95720]">Demo</p>
+              <h3 className="mt-1 text-lg font-bold text-[#0b3048]">Kontrollert AI-forslag</h3>
+            </div>
+            <span className="rounded-full border border-[#d8c7b8] bg-white/65 px-3 py-1 text-xs font-bold text-[#24465a]">
+              Utkast
+            </span>
+          </div>
+          <div className="mt-5 space-y-4">
+            {product.concreteExample.steps.map((step, index) => (
+              <div key={step.label} className="grid gap-4 rounded-lg border border-[#dfd0c2] bg-white/60 p-4 sm:grid-cols-[7rem_1fr]">
+                <div>
+                  <span className="flex h-8 w-8 items-center justify-center rounded-full bg-[#0f2d42] text-sm font-bold text-white">
+                    {index + 1}
+                  </span>
+                  <p className="mt-3 text-xs font-bold uppercase tracking-[0.12em] text-[#c95720]">
+                    {step.label}
+                  </p>
+                </div>
+                <p className="text-sm leading-7 text-[#24465a]">{step.body}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 export function ProductServicePage({ product }: { product: ProductPageContent }) {
   return (
     <main className="min-h-screen bg-[#f7f1ea] text-[#0f2d42]">
@@ -117,7 +164,24 @@ export function ProductServicePage({ product }: { product: ProductPageContent })
             </article>
           ))}
         </div>
+        <div className="mt-10 rounded-xl border border-[#dfd0c2] bg-[#fbf6f0] p-7 shadow-[0_14px_38px_rgba(15,45,66,0.06)] md:flex md:items-center md:justify-between md:gap-8">
+          <div className="max-w-2xl">
+            <h3 className="text-2xl font-bold text-[#0b3048]">Se hvordan dette kan se ut i praksis</h3>
+            <p className="mt-3 text-sm leading-7 text-[#24465a]">
+              Neste seksjon viser et konkret, fiktivt eksempel på input, AI-forslag og hvor menneskelig kontroll ligger.
+            </p>
+          </div>
+          <a
+            href="#konkret-eksempel"
+            className="mt-5 inline-flex h-12 shrink-0 items-center justify-center gap-3 rounded-md bg-[#c95720] px-6 text-sm font-semibold text-white shadow-[0_14px_30px_rgba(201,87,32,0.22)] transition hover:bg-[#b74a18] md:mt-0"
+          >
+            Gå til eksempel
+            <ArrowRight className="h-4 w-4" />
+          </a>
+        </div>
       </section>
+
+      <ConcreteExampleMockup product={product} />
 
       <section className="bg-[#0f2d42] text-white">
         <div className="mx-auto max-w-7xl px-6 py-20 lg:px-10">

@@ -4,7 +4,6 @@ import type { ReactNode } from "react";
 import {
   ArrowRight,
   CalendarDays,
-  ChevronDown,
   Mail,
   MapPin,
   Phone,
@@ -12,6 +11,7 @@ import {
 } from "lucide-react";
 import { productList } from "../product-content";
 import { LeadForm } from "./LeadForm";
+import { ProductDropdown } from "./ProductDropdown";
 
 export const contactEmail = "system@anai.no";
 export const contactPhone = "+47 41 40 97 53";
@@ -44,35 +44,6 @@ const footerGroups = [
   },
 ];
 
-function ProductDropdown({ className = "" }: { className?: string }) {
-  return (
-    <details className={`group relative ${className}`}>
-      <summary className="flex cursor-pointer list-none items-center gap-1.5 transition hover:text-[#c95720] [&::-webkit-details-marker]:hidden">
-        Bruksområder
-        <ChevronDown className="h-4 w-4 transition group-open:rotate-180" />
-      </summary>
-      <div className="absolute left-0 top-full z-30 mt-3 w-[min(20rem,calc(100vw-3rem))] rounded-xl border border-[#dfd0c2] bg-[#fbf6f0] p-2 text-[#173348] shadow-[0_22px_60px_rgba(15,45,66,0.16)] md:left-1/2 md:mt-4 md:-translate-x-1/2">
-        <Link
-          href="/#tjenester"
-          className="block rounded-lg px-4 py-3 text-xs font-bold uppercase tracking-[0.12em] text-[#c95720] transition hover:bg-white/70"
-        >
-          Alle bruksområder
-        </Link>
-        <div className="my-1 h-px bg-[#dfd0c2]" />
-        {productLinks.map(([label, href]) => (
-          <Link
-            key={href}
-            href={href}
-            className="block rounded-lg px-4 py-3 text-sm font-semibold transition hover:bg-white/70 hover:text-[#c95720]"
-          >
-            {label}
-          </Link>
-        ))}
-      </div>
-    </details>
-  );
-}
-
 function Logo({ priority = false }: { priority?: boolean }) {
   return (
     <Image
@@ -99,14 +70,14 @@ function NorwegianFlag() {
 
 export function SiteHeader() {
   return (
-    <header className="border-b border-[#dfd0c2] bg-[#f7f1ea]/92 backdrop-blur">
+    <header className="relative z-50 border-b border-[#dfd0c2] bg-[#f7f1ea]/92 backdrop-blur">
       <nav className="mx-auto max-w-7xl px-6 py-5 lg:px-10">
         <div className="flex items-center justify-between">
           <Link href="/" aria-label="ANAi forside">
             <Logo priority />
           </Link>
           <div className="hidden items-center gap-6 text-sm font-medium text-[#173348] lg:gap-8 md:flex">
-            <ProductDropdown />
+            <ProductDropdown links={productLinks} />
             {navLinks.map(([label, href]) => (
               <Link key={label} href={href} className="transition hover:text-[#c95720]">
                 {label}
@@ -121,7 +92,7 @@ export function SiteHeader() {
           </Link>
         </div>
         <div className="mt-4 flex flex-wrap items-center gap-x-5 gap-y-3 text-sm font-medium text-[#173348] md:hidden">
-          <ProductDropdown />
+          <ProductDropdown links={productLinks} />
           {navLinks.map(([label, href]) => (
             <Link key={label} href={href} className="transition hover:text-[#c95720]">
               {label}
@@ -148,6 +119,7 @@ export function SiteFooter() {
         </div>
         <p className="mt-3 text-xs">Grunnlegger: Amias Nasser Aspenes</p>
         <p className="mt-1 text-xs">Basert i Bergen, Norge</p>
+        <p className="mt-1 text-xs">Org.nr: ikke registrert ennå</p>
         <p className="mt-6 text-xs">© 2026 ANAi. Alle rettigheter reservert.</p>
       </div>
       {footerGroups.map((group) => (
@@ -211,8 +183,19 @@ export function PageHero({
   );
 }
 
-export function ContactForm({ title = "Fortell kort hva dere vil se på" }: { title?: string }) {
-  return <LeadForm title={title} source={title.toLowerCase().includes("book") ? "booking" : "contact"} />;
+export function ContactForm({
+  title = "Fortell kort hva dere vil se på",
+  source,
+}: {
+  title?: string;
+  source?: "contact" | "booking";
+}) {
+  return (
+    <LeadForm
+      title={title}
+      source={source ?? (title.toLowerCase().includes("book") ? "booking" : "contact")}
+    />
+  );
 }
 
 export function BookingEmbed() {

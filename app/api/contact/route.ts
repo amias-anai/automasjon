@@ -36,8 +36,11 @@ export async function POST(request: Request) {
     source: clean(body.source) || "contact",
   };
 
-  if (!payload.name || !payload.company || !payload.email) {
-    return NextResponse.json({ error: "Name, company and email are required" }, { status: 400 });
+  if (!payload.name || !payload.company || !payload.email || !payload.description) {
+    return NextResponse.json(
+      { error: "Name, company, email and description are required" },
+      { status: 400 },
+    );
   }
 
   const response = await fetch(`${process.env.SUPABASE_URL}/rest/v1/lead_submissions`, {

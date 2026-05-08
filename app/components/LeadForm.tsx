@@ -59,7 +59,13 @@ export function LeadForm({
       <div className="mt-6 grid gap-4 sm:grid-cols-2">
         {fields.map(([label, name, type, required]) => (
           <label key={name} className="text-sm font-semibold text-[#173348]">
-            {label}
+            <span className="flex items-center justify-between gap-3">
+              <span>
+                {label}
+                {required ? <span className="ml-1 text-[#c95720]">*</span> : null}
+              </span>
+              {!required ? <span className="text-xs font-medium text-[#6f7f89]">valgfritt</span> : null}
+            </span>
             <input
               name={name}
               type={type}
@@ -71,10 +77,16 @@ export function LeadForm({
         ))}
       </div>
       <label className="mt-4 block text-sm font-semibold text-[#173348]">
-        Kort beskrivelse
+        <span className="flex items-center justify-between gap-3">
+          <span>
+            Kort beskrivelse
+            <span className="ml-1 text-[#c95720]">*</span>
+          </span>
+        </span>
         <textarea
           name="description"
           rows={5}
+          required
           placeholder="Hvilken arbeidsflyt tar mye tid i dag?"
           className="mt-2 w-full rounded-md border border-[#d8c7b8] bg-white/70 px-4 py-3 text-base font-normal outline-none transition focus:border-[#c95720]"
         />
@@ -88,8 +100,8 @@ export function LeadForm({
         <ArrowRight className="h-4 w-4" />
       </button>
       <p className="mt-4 text-xs leading-6 text-[#24465a]">
-        Opplysningene lagres i Supabase-prosjektet i EU-regionen eu-central-1 og brukes bare
-        til å svare på henvendelsen.
+        Felt markert med * er obligatoriske. Opplysningene lagres i Supabase-prosjektet i
+        EU-regionen eu-central-1 og brukes bare til å svare på henvendelsen.
       </p>
       {message ? (
         <p

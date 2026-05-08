@@ -55,6 +55,10 @@ export default function BookingPage() {
             startpunkt der AI kan lage utkast, sortere informasjon eller foreslå neste steg,
             mens mennesker beholder kontrollen.
           </p>
+          <p className="mt-4 max-w-xl text-sm leading-7 text-[#24465a]">
+            Kalenderen under er en direkte booking. Skjemaet lenger ned er valgfritt å bruke
+            hvis du vil sende litt kontekst før møtet eller heller ønsker at vi tar kontakt.
+          </p>
           <div className="mt-8 space-y-4">
             {[
               "Vi ser etter lavrisiko arbeidsflyter først.",
@@ -72,7 +76,7 @@ export default function BookingPage() {
       </section>
 
       <section className="mx-auto max-w-7xl px-6 pb-16 lg:px-10">
-        <ContactForm title="Send informasjon før kartleggingen" />
+        <ContactForm title="Send informasjon før kartleggingen" source="booking" />
       </section>
 
       <section className="bg-[#efe8df]">

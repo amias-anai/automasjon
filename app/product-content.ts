@@ -53,6 +53,17 @@ type MiniExample = {
   control: string;
 };
 
+type ConcreteExample = {
+  eyebrow: string;
+  title: string;
+  scenario: string;
+  steps: {
+    label: string;
+    body: string;
+  }[];
+  note: string;
+};
+
 type Faq = {
   question: string;
   answer: string;
@@ -74,6 +85,7 @@ export type ProductPageContent = {
   valueCards: IconCard[];
   process: ProcessStep[];
   miniExample: MiniExample;
+  concreteExample: ConcreteExample;
   examples: Example[];
   safety: string;
   flow: string[];
@@ -163,6 +175,18 @@ export const productPages: Record<string, ProductPageContent> = {
       output: "AI foreslår et kort sammendrag, et svarutkast i deres tone og relevante spørsmål før saken følges opp.",
       control: "Teamet redigerer, vurderer fakta og godkjenner før svaret sendes til kunden.",
     },
+    concreteExample: {
+      eyebrow: "Eksempel på kundedialog",
+      title: "Fra rotete henvendelse til klart svarutkast",
+      scenario:
+        "En kunde spør om dere kan levere før fredag, om produktet passer et bestemt behov og om dokumentasjon kan sendes sammen med tilbudet.",
+      steps: [
+        { label: "AI-sammendrag", body: "Kunden trenger rask levering, teknisk avklaring og dokumentasjon før de kan ta beslutning." },
+        { label: "Foreslått neste steg", body: "Sjekk lager/kapasitet, bekreft egnethet med fagansvarlig og legg ved relevant PDF." },
+        { label: "Svarutkast", body: "Takk for henvendelsen. Vi sjekker levering før fredag nå, og sender dokumentasjon sammen med en anbefaling." },
+      ],
+      note: "Teamet kvalitetssikrer fakta, justerer tonen og sender først når svaret er godkjent.",
+    },
     examples: [
       { label: "E-post", title: "Svarutkast på vanlige spørsmål", body: "AI foreslår svar på pris, levering, booking, status eller dokumentasjon." },
       { label: "Salg", title: "Leads som trenger oppfølging", body: "Nye henvendelser kan oppsummeres og sendes til riktig person med anbefalt neste steg." },
@@ -214,6 +238,18 @@ export const productPages: Record<string, ProductPageContent> = {
       input: "Løse notater fra et internt møte, prosjektmøte eller kundemøte.",
       output: "AI strukturerer beslutninger, ansvarlige, frister og et kort utkast til kundeoppdatering.",
       control: "Ansvarlig person kontrollerer innholdet, justerer formuleringer og avgjør hva som deles.",
+    },
+    concreteExample: {
+      eyebrow: "Eksempel på administrasjon",
+      title: "Fra møtenotater til oppgaver og kort rapport",
+      scenario:
+        "Et prosjektmøte ender med korte notater: leverandør må purres, kunden skal få status, og intern frist flyttes til tirsdag.",
+      steps: [
+        { label: "Oppgaveliste", body: "Purre leverandør, oppdatere kunde, flytte intern frist og registrere hvem som eier hvert punkt." },
+        { label: "Rapportutkast", body: "Prosjektet er i rute, men avventer leverandøravklaring. Neste oppdatering sendes etter intern frist tirsdag." },
+        { label: "Kontrollpunkt", body: "Prosjektansvarlig bekrefter frister, ansvarlige og hvilke formuleringer som kan deles med kunden." },
+      ],
+      note: "Eksempelet viser strukturering av lavrisiko notater, ikke automatisk beslutningstaking.",
     },
     examples: [
       { label: "Møter", title: "Fra notat til oppgaveliste", body: "AI trekker ut beslutninger, frister og ansvarlige fra uferdige notater." },
@@ -267,6 +303,18 @@ export const productPages: Record<string, ProductPageContent> = {
       output: "AI lager forslag til oppfølgingsmelding, neste steg og et strukturert CRM-notat.",
       control: "Salgsansvarlig kvalitetssikrer behov, pris, løfter og timing før noe sendes eller registreres.",
     },
+    concreteExample: {
+      eyebrow: "Eksempel på salgsflyt",
+      title: "Fra kundemøte til CRM-notat og oppfølging",
+      scenario:
+        "Et salgsmøte gir flere løse punkter: kunden ønsker pilot, må avklare budsjett internt og vil ha forslag før neste ledermøte.",
+      steps: [
+        { label: "CRM-notat", body: "Behov: pilot på dokumentflyt. Hindring: budsjettavklaring. Neste steg: sende kort forslag innen torsdag." },
+        { label: "Oppfølgingsutkast", body: "Hyggelig å snakke med dere. Her er et kort forslag til pilot, avgrensning og hva vi trenger for å starte." },
+        { label: "Salgsaktivitet", body: "Opprett oppgave: følg opp to dager etter ledermøtet hvis kunden ikke har svart." },
+      ],
+      note: "Priser, løfter og kommersielle vurderinger kontrolleres av salgsansvarlig før noe sendes.",
+    },
     examples: [
       { label: "Tilbud", title: "Førsteutkast med riktig struktur", body: "Teamet får et utkast de kan redigere, kvalitetssikre og sende." },
       { label: "CRM", title: "Mindre friksjon etter møter", body: "Notater, neste steg og oppgaver kan opprettes raskere etter kundemøter." },
@@ -318,6 +366,18 @@ export const productPages: Record<string, ProductPageContent> = {
       input: "Interne rutiner, FAQ-er, maler og dokumenter som ansatte ofte leter etter.",
       output: "AI svarer på interne spørsmål med henvisning til relevante kilder og dokumenter.",
       control: "Ansatte ser kildene, vurderer om svaret passer situasjonen og bruker etablerte rutiner ved tvil.",
+    },
+    concreteExample: {
+      eyebrow: "Eksempel på intern kunnskap",
+      title: "Fra ansattspørsmål til svar med kilde",
+      scenario:
+        "En ny ansatt spør: Hvordan skal reiseregning leveres, og hvilken mal brukes når kunden ber om prosjektstatus?",
+      steps: [
+        { label: "Svar", body: "Reiseregning leveres innen den 5. hver måned. Prosjektstatus skal bruke malen for kundeoppdatering." },
+        { label: "Kilder", body: "Personalhåndbok kapittel 4.2 og dokumentet Kundeoppdatering mal v3." },
+        { label: "Usikkerhet", body: "Hvis reisen gjelder utland eller prosjektet har egen rapportmal, bør nærmeste leder bekrefte." },
+      ],
+      note: "Assistenten viser grunnlaget, slik at ansatte kan kontrollere svaret før de bruker det.",
     },
     examples: [
       { label: "HR", title: "Svar på rutiner og policy", body: "Ansatte kan spørre om ferie, reiseregninger, onboarding eller interne regler." },
@@ -371,6 +431,18 @@ export const productPages: Record<string, ProductPageContent> = {
       output: "AI strukturerer behov, lager oppgave eller varsel og kan foreslå et første tilbudsutkast.",
       control: "Riktig person kontrollerer fakta, omfang og pris før oppgaven lukkes eller tilbud sendes.",
     },
+    concreteExample: {
+      eyebrow: "Eksempel på automasjon",
+      title: "Fra skjema til CRM, oppgave og varsel",
+      scenario:
+        "Et nettskjema kommer inn med kontaktinfo, behov, ønsket oppstart og vedlegg. I dag kopieres dette manuelt mellom flere systemer.",
+      steps: [
+        { label: "CRM", body: "Opprett lead med kontaktinfo, behovstype, ønsket frist og kort AI-sammendrag." },
+        { label: "Oppgave", body: "Lag oppgave til riktig ansvarlig med frist og lenke til original henvendelse." },
+        { label: "Varsel", body: "Send internt varsel når henvendelsen matcher høy prioritet eller mangler viktig informasjon." },
+      ],
+      note: "Automasjonen kan stoppe ved avvik, manglende samtykke eller uklart innhold.",
+    },
     examples: [
       { label: "Salg", title: "Kontaktskjema til CRM", body: "Nye leads registreres, oppsummeres og varsles til riktig person." },
       { label: "Admin", title: "Dokumenter til riktig mappe", body: "Vedlegg kan klassifiseres, navngis og sendes til kontroll før arkivering." },
@@ -422,6 +494,18 @@ export const productPages: Record<string, ProductPageContent> = {
       input: "Én valgt arbeidsflyt med dagens steg, eksempler på input og tydelige regler for hva AI ikke skal gjøre.",
       output: "En liten prototype som tolker input, lager forslag og sender viktige steg til godkjenning.",
       control: "Piloten testes med teamet, justeres på reelle eksempler og utvides først når kontrollpunktene fungerer.",
+    },
+    concreteExample: {
+      eyebrow: "Eksempel på skreddersøm",
+      title: "En tilpasset flyt fra behov til kontrollert pilot",
+      scenario:
+        "Teamet har en særskilt prosess der e-post, regneark og dokumenter må vurderes sammen før en anbefaling lages.",
+      steps: [
+        { label: "1. Innhent", body: "Samle relevant e-post, dokument og felt fra regneark med begrenset tilgang." },
+        { label: "2. Foreslå", body: "AI lager et forslag med begrunnelse, usikkerhet og hvilke kilder som ble brukt." },
+        { label: "3. Godkjenn", body: "Ansvarlig person velger godkjenn, send tilbake eller be om mer informasjon." },
+      ],
+      note: "Flyten bygges først som pilot og utvides bare hvis teamet opplever at kontrollpunktene fungerer.",
     },
     examples: [
       { label: "Drift", title: "AI-assistent for en intern prosess", body: "En assistent kan veilede ansatte gjennom rutiner, dokumentasjon og beslutninger." },
