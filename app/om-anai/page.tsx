@@ -37,13 +37,15 @@ export default function AboutPage() {
         eyebrow="Om ANAi"
         title="Vi hjelper norske bedrifter å bruke AI på en praktisk og kontrollert måte"
         intro="ANAi er bygget for små og mellomstore bedrifter som vil spare tid i hverdagen uten å gi AI frie tøyler. Vi finner konkrete arbeidsflyter, bygger små piloter og forbedrer dem sammen med teamet."
-        image="/landing/hero-fjord.png"
+        visualVariant="custom"
       />
 
       <section className="mx-auto grid max-w-7xl gap-10 px-6 py-16 lg:grid-cols-[0.9fr_1.1fr] lg:px-10">
         <div>
           <p className="text-sm font-bold text-[#c95720]">Misjon</p>
-          <h2 className="mt-3 font-display text-4xl text-[#0b3048] sm:text-5xl">AI som faktisk passer inn i arbeidsdagen</h2>
+          <h2 className="mt-3 font-display text-4xl text-[#0b3048] sm:text-5xl">
+            Bygget for praktisk bruk, ikke AI-hype
+          </h2>
           <div className="mt-8 rounded-lg border border-[#dfd0c2] bg-[#fbf6f0] p-6 text-sm leading-7 text-[#24465a]">
             <p>
               <span className="font-bold text-[#0f2d42]">Grunnlegger:</span> Amias Nasser Aspenes
@@ -62,6 +64,11 @@ export default function AboutPage() {
           <p>
             Vi unngår løse løfter om full autonomi. Løsningene våre skal lage bedre utkast,
             gi bedre oversikt og spare tid, med klare rammer for data, godkjenning og ansvar.
+          </p>
+          <p>
+            Arbeidet starter som regel smalt: en repetitiv henvendelse, en dokumentflyt, en
+            intern kunnskapsrutine eller en manuell systemoverføring. Først når en lavrisiko
+            pilot fungerer i praksis, vurderer vi om den bør utvides.
           </p>
         </div>
       </section>

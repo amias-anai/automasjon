@@ -15,6 +15,7 @@ import {
   PageHero,
   SafetyNote,
 } from "../components/MarketingPage";
+import { ThreeStepProof, WorkflowVisual, type WorkflowVisualVariant } from "../components/WorkflowVisuals";
 
 export const metadata: Metadata = {
   title: "Eksempler på arbeidsflyter | ANAi",
@@ -35,6 +36,7 @@ const workflows = [
     why:
       "Tidsbruken kan reduseres fordi teamet starter med et ryddig utkast i stedet for blank side, samtidig som faglig vurdering beholdes.",
     icon: PenLine,
+    visualVariant: "sales" as WorkflowVisualVariant,
   },
   {
     title: "Kundehenvendelse → svarutkast",
@@ -48,6 +50,7 @@ const workflows = [
     why:
       "Teamet slipper å lese og skrive alt fra bunnen hver gang, og færre saker blir liggende uten tydelig neste steg.",
     icon: MessageCircle,
+    visualVariant: "customer" as WorkflowVisualVariant,
   },
   {
     title: "Møtenotater → oppgaver og kundeoppdatering",
@@ -61,6 +64,7 @@ const workflows = [
     why:
       "Verdien ligger i mindre etterarbeid og tydeligere oppfølging, ikke i at AI tar beslutninger på vegne av teamet.",
     icon: ClipboardCheck,
+    visualVariant: "admin" as WorkflowVisualVariant,
   },
 ];
 
@@ -78,7 +82,7 @@ export default function WorkflowExamplesPage() {
         eyebrow="Eksempler på arbeidsflyter"
         title="Praktiske AI-eksempler uten frie tøyler"
         intro="Dette er illustrasjoner av arbeidsflyter ANAi kan bygge eller tilpasse. De er ikke kundecaser, referanser eller dokumenterte resultater, men viser hvordan kontrollert AI kan støtte vanlige oppgaver i norske SMB-er."
-        image="/landing/cta-coast.png"
+        visualVariant="bottleneck"
       />
 
       <section className="mx-auto max-w-7xl px-6 py-16 lg:px-10">
@@ -106,6 +110,9 @@ export default function WorkflowExamplesPage() {
                   </span>
                   <h3 className="mt-5 font-display text-3xl text-[#0b3048]">{workflow.title}</h3>
                   <p className="mt-4 text-sm leading-7 text-[#24465a]">{workflow.intro}</p>
+                  <div className="mt-5">
+                    <WorkflowVisual variant={workflow.visualVariant} compact />
+                  </div>
                 </div>
                 <div className="grid gap-4 md:grid-cols-2">
                   {detailRows.map(([label, key, Icon]) => (
@@ -120,6 +127,13 @@ export default function WorkflowExamplesPage() {
                     </div>
                   ))}
                 </div>
+              </div>
+              <div className="mt-6 rounded-lg border border-[#dfd0c2] bg-[#fffaf4]/72 p-5">
+                <ThreeStepProof
+                  input={workflow.input}
+                  output={workflow.output}
+                  control={workflow.control}
+                />
               </div>
             </article>
           ))}

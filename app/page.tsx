@@ -18,12 +18,18 @@ import {
   Users,
 } from "lucide-react";
 import { SiteFooter, SiteHeader } from "./components/MarketingPage";
+import {
+  ThreeStepProof,
+  WorkflowVisual,
+  type WorkflowVisualVariant,
+} from "./components/WorkflowVisuals";
 
 const services = [
   {
     title: "Kundehenvendelser og oppfølging",
     image: "/landing/service-customer-inquiries.png",
     imageAlt: "Innboks og AI-assistert svarutkast for kundehenvendelser",
+    visualVariant: "customer" as WorkflowVisualVariant,
     icon: MessageCircle,
     href: "/kundehenvendelser-og-oppfolging",
     price: "Raskere svar",
@@ -38,6 +44,7 @@ const services = [
     title: "Administrasjon og dokumentasjon",
     image: "/landing/service-admin-documentation.png",
     imageAlt: "Notater og skjemaer strukturert til rapport og sjekkliste",
+    visualVariant: "admin" as WorkflowVisualVariant,
     icon: FileSearch,
     href: "/administrasjon-og-dokumentasjon",
     price: "Mindre manuelt arbeid",
@@ -52,6 +59,7 @@ const services = [
     title: "Salg, tilbud og rapportering",
     image: "/landing/service-sales-crm.png",
     imageAlt: "Befaringsnotater gjort om til tilbudsutkast og CRM-notat",
+    visualVariant: "sales" as WorkflowVisualVariant,
     icon: Bot,
     href: "/salg-tilbud-og-rapportering",
     price: "Bedre oppfølging",
@@ -66,6 +74,7 @@ const services = [
     title: "Intern kunnskap",
     image: "/landing/service-internal-knowledge.png",
     imageAlt: "Intern kunnskapssøk med svar fra rutiner og kilder",
+    visualVariant: "knowledge" as WorkflowVisualVariant,
     icon: FileSearch,
     href: "/intern-kunnskap",
     price: "Raskere svar internt",
@@ -80,6 +89,7 @@ const services = [
     title: "AI-automatisering",
     image: "/landing/service-ai-automation-flow.png",
     imageAlt: "Enkel flyt mellom e-post, CRM, oppgaver og dokumenter",
+    visualVariant: "automation" as WorkflowVisualVariant,
     icon: Code2,
     href: "/ai-automatisering",
     price: "Mer flyt mellom systemer",
@@ -94,6 +104,7 @@ const services = [
     title: "Skreddersydde AI-løsninger",
     image: "/landing/service-custom-workflow-map.png",
     imageAlt: "Whiteboard med arbeidsflytkart og prosessdiagram",
+    visualVariant: "custom" as WorkflowVisualVariant,
     icon: Sparkles,
     href: "/skreddersydde-ai-losninger",
     price: "Tilpasset arbeidsflyten",
@@ -144,6 +155,27 @@ const workflowExamples = [
     title: "Møtenotater → oppgaver og kundeoppdatering",
     body: "Løse møtenotater blir til oppgaver, ansvarlige og et kort kundeutkast som kan redigeres og sendes av ansvarlig person.",
     icon: FileSearch,
+  },
+];
+
+const proofExamples = [
+  {
+    title: "Kundehenvendelse",
+    input: "E-post med flere spørsmål, litt historikk og uklar hastegrad.",
+    output: "Sammendrag, prioritet, manglende informasjon og svarutkast.",
+    control: "Ansvarlig sjekker fakta og godkjenner før sending.",
+  },
+  {
+    title: "Befaringsnotater",
+    input: "Stikkord fra befaring, kundebehov, bilder og interne maler.",
+    output: "Tilbudsutkast, omfang, forbehold og sjekkliste.",
+    control: "Fagperson verifiserer pris, leveranse og vilkår.",
+  },
+  {
+    title: "Møtenotater",
+    input: "Løse notater med beslutninger, frister og avklaringer.",
+    output: "Oppgaver, ansvarlige og kort kundeoppdatering.",
+    control: "Møteeier bekrefter ansvar, frister og hva som deles.",
   },
 ];
 
@@ -206,7 +238,7 @@ export default function Home() {
             <div className="mt-14 grid max-w-2xl gap-4 text-xs font-medium text-[#24465a] sm:grid-cols-3">
               <div className="flex items-center gap-2">
                 <ShieldCheck className="h-4 w-4" />
-                Trygt og GDPR-bevisst
+                Personvernbevisst
               </div>
               <div className="flex items-center gap-2">
                 <Users className="h-4 w-4" />
@@ -237,24 +269,8 @@ export default function Home() {
               href={service.href}
               className="overflow-hidden rounded-lg border border-[#dfd0c2] bg-[#fbf6f0] shadow-[0_18px_50px_rgba(15,45,66,0.08)]"
             >
-              <div className="relative h-64 overflow-hidden">
-                <Image
-                  src={service.image}
-                  alt={service.imageAlt}
-                  fill
-                  className="object-cover transition duration-700 hover:scale-105"
-                  sizes="(min-width: 1024px) 33vw, 100vw"
-                />
-                <div className="absolute inset-x-4 bottom-4 rounded-lg border border-white/65 bg-[#fffaf4]/88 p-4 text-[#0f2d42] shadow-[0_16px_34px_rgba(15,45,66,0.16)] backdrop-blur-md">
-                  <p className="text-[0.68rem] font-bold uppercase tracking-[0.13em] text-[#c95720]">
-                    {service.visual.label}
-                  </p>
-                  <p className="mt-1 text-sm font-bold leading-5">{service.visual.title}</p>
-                  <p className="mt-1 text-xs leading-5 text-[#24465a]">{service.visual.body}</p>
-                </div>
-                <div className="absolute left-5 top-5 flex h-14 w-14 items-center justify-center rounded-full border border-white/60 bg-[#0f2d42] text-white shadow-lg">
-                  <service.icon className="h-6 w-6" />
-                </div>
+              <div className="relative overflow-hidden p-4">
+                <WorkflowVisual variant={service.visualVariant} compact />
               </div>
               <div className="p-7">
                 <h3 className="font-display text-3xl text-[#0b3048]">{service.title}</h3>
@@ -269,6 +285,38 @@ export default function Home() {
               </div>
             </Link>
           ))}
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-7xl px-6 py-10 lg:px-10">
+        <div className="rounded-xl border border-[#dfd0c2] bg-[#fbf6f0] p-7 shadow-[0_18px_50px_rgba(15,45,66,0.08)] md:p-9">
+          <div className="flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
+            <div className="max-w-3xl">
+              <p className="text-sm font-bold text-[#c95720]">Illustrative eksempler</p>
+              <h2 className="mt-3 font-display text-4xl text-[#0b3048] sm:text-5xl">
+                Fra rotete input til kontrollert utkast
+              </h2>
+              <p className="mt-4 text-base leading-7 text-[#24465a]">
+                Eksemplene viser hvordan en arbeidsflyt kan se ut. Dette er ikke kundecaser,
+                dokumenterte resultater eller garantier.
+              </p>
+            </div>
+            <span className="rounded-full border border-[#d8c7b8] bg-white/58 px-4 py-2 text-xs font-bold text-[#24465a]">
+              AI foreslår. Mennesker godkjenner.
+            </span>
+          </div>
+          <div className="mt-8 grid gap-5">
+            {proofExamples.map((example) => (
+              <article key={example.title} className="rounded-lg border border-[#dfd0c2] bg-[#fffaf4]/72 p-5">
+                <h3 className="mb-4 text-lg font-bold text-[#0b3048]">{example.title}</h3>
+                <ThreeStepProof
+                  input={example.input}
+                  output={example.output}
+                  control={example.control}
+                />
+              </article>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -310,14 +358,8 @@ export default function Home() {
 
       <section id="losninger" className="mx-auto max-w-7xl px-6 pb-6 lg:px-10">
         <div className="grid overflow-hidden rounded-xl border border-[#dfd0c2] bg-[#fbf6f0] shadow-[0_18px_50px_rgba(15,45,66,0.06)] lg:grid-cols-[1fr_2.35fr]">
-          <div className="relative min-h-56">
-            <Image
-              src="/landing/cta-coast.png"
-              alt="Norsk kyst og moderne arbeidsplass"
-              fill
-              className="object-cover"
-              sizes="(min-width: 1024px) 30vw, 100vw"
-            />
+          <div className="min-h-56 p-5">
+            <WorkflowVisual variant="bottleneck" compact />
           </div>
           <div className="grid gap-6 p-8 md:grid-cols-3">
             {[

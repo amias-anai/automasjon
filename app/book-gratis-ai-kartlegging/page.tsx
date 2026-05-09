@@ -43,7 +43,8 @@ export default function BookingPage() {
       <PageHero
         eyebrow="Gratis AI-kartlegging"
         title="Finn én konkret AI-mulighet som er verdt å starte med"
-        intro="I en kort kartlegging ser vi på hvor manuelt arbeid, oppfølging eller dokumentasjon tar tid i dag, og vurderer hva som kan forbedres med en kontrollert AI-arbeidsflyt."
+        intro="I en gratis og uforpliktende kartlegging på ca. 30 minutter ser vi på hvor manuelt arbeid, oppfølging eller dokumentasjon tar tid i dag, og vurderer hva som kan forbedres med en kontrollert AI-arbeidsflyt."
+        visualVariant="mapping"
       />
 
       <section className="mx-auto grid max-w-7xl gap-10 px-6 py-16 lg:grid-cols-[0.8fr_1.2fr] lg:px-10">
@@ -58,6 +59,10 @@ export default function BookingPage() {
           <p className="mt-4 max-w-xl text-sm leading-7 text-[#24465a]">
             Kalenderen under er en direkte booking. Skjemaet lenger ned er valgfritt å bruke
             hvis du vil sende litt kontekst før møtet eller heller ønsker at vi tar kontakt.
+          </p>
+          <p className="mt-4 max-w-xl rounded-lg border border-[#dfd0c2] bg-[#fbf6f0] px-5 py-4 text-sm leading-7 text-[#24465a]">
+            Finner du ikke et tidspunkt som passer? Send skjemaet under, så avtaler vi direkte.
+            Ikke send sensitive personopplysninger i skjemaet.
           </p>
           <div className="mt-8 space-y-4">
             {[
