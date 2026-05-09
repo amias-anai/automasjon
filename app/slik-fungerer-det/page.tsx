@@ -74,7 +74,7 @@ export default function ProcessPage() {
         eyebrow="Slik fungerer det"
         title="Fra manuell arbeidsflyt til kontrollert AI-løsning"
         intro="ANAi jobber trinnvis. Først finner vi et tydelig problem, så bygger vi en liten løsning med rammer, testing og menneskelig godkjenning før den tas i bruk."
-        visualVariant="custom"
+        image="/landing/admin-service-hero.png"
       />
 
       <section className="mx-auto max-w-7xl px-6 py-16 lg:px-10">

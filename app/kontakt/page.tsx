@@ -21,7 +21,6 @@ export default function ContactPage() {
         eyebrow="Kontakt"
         title="Ta kontakt om en konkret arbeidsflyt"
         intro="Skriv kort hva som tar tid i hverdagen, så svarer vi med et forslag til neste steg eller en gratis AI-kartlegging."
-        visualVariant="bottleneck"
       />
 
       <section className="mx-auto grid max-w-7xl gap-10 px-6 py-16 lg:grid-cols-[0.8fr_1.2fr] lg:px-10">
@@ -41,10 +40,6 @@ export default function ContactPage() {
               Bergen, Norge
             </li>
           </ul>
-          <div className="mt-6 rounded-lg border border-[#dfd0c2] bg-[#fbf6f0] p-5 text-sm leading-7 text-[#24465a]">
-            <p>Vi svarer vanligvis innen 1-2 virkedager.</p>
-            <p className="mt-2">Ikke send sensitive personopplysninger i skjemaet.</p>
-          </div>
           <Link
             href="/book-gratis-ai-kartlegging"
             className="mt-8 inline-flex h-14 items-center justify-center gap-3 rounded-md border border-[#0f2d42]/45 px-8 text-base font-semibold text-[#0f2d42] transition hover:border-[#c95720] hover:text-[#c95720]"

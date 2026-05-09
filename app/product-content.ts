@@ -22,7 +22,6 @@ import {
   Users,
   Workflow,
 } from "lucide-react";
-import type { WorkflowVisualVariant } from "./components/WorkflowVisuals";
 
 type Metric = {
   value: string;
@@ -76,7 +75,8 @@ export type ProductPageContent = {
   eyebrow: string;
   title: string;
   intro: string;
-  visualVariant: WorkflowVisualVariant;
+  heroImage: string;
+  heroAlt: string;
   heroIcon: LucideIcon;
   metrics: Metric[];
   controlNote: string;
@@ -148,7 +148,8 @@ export const productPages: Record<string, ProductPageContent> = {
     title: "Raskere svar uten at kvaliteten glipper",
     intro:
       "ANAi hjelper dere å sortere henvendelser, lage svarutkast, oppsummere kundedialog og foreslå neste steg, slik at teamet følger opp raskere og mer konsistent.",
-    visualVariant: "customer",
+    heroImage: "/landing/admin-automation.png",
+    heroAlt: "Kundehenvendelser strukturert med AI på et moderne arbeidsbord",
     heroIcon: MessageCircle,
     metrics: [
       { value: "Raskere", label: "førsteutkast til svar" },
@@ -211,7 +212,8 @@ export const productPages: Record<string, ProductPageContent> = {
     title: "Gjør løse notater om til ryddig arbeid",
     intro:
       "Vi bygger AI-flyter som gjør notater, skjemaer, møtereferater og beskjeder om til strukturerte utkast, sjekklister, rapporter og oppgaver.",
-    visualVariant: "admin",
+    heroImage: "/landing/customer-service.png",
+    heroAlt: "Dokumentasjon og administrative utkast strukturert i et digitalt grensesnitt",
     heroIcon: FileSearch,
     metrics: [
       { value: "Mindre", label: "manuelt skrivearbeid" },
@@ -274,7 +276,8 @@ export const productPages: Record<string, ProductPageContent> = {
     title: "Bedre oppfølging fra første kontakt til rapport",
     intro:
       "ANAi hjelper salgs- og driftsteam med tilbudsutkast, CRM-notater, oppfølginger, statusoppdateringer og rapporter som gir bedre oversikt.",
-    visualVariant: "sales",
+    heroImage: "/landing/ai-agents.png",
+    heroAlt: "AI-assistert salg, tilbud og rapportering visualisert med koblede arbeidsflyter",
     heroIcon: Bot,
     metrics: [
       { value: "Bedre", label: "oppfølging av kunder" },
@@ -337,7 +340,8 @@ export const productPages: Record<string, ProductPageContent> = {
     title: "Gjør kunnskapen i bedriften enklere å bruke",
     intro:
       "Vi bygger AI-assistenter som hjelper ansatte å finne rutiner, maler, svar, dokumenter og erfaringer uten å avbryte nøkkelpersoner.",
-    visualVariant: "knowledge",
+    heroImage: "/landing/internal-knowledge.png",
+    heroAlt: "Intern kunnskap organisert og søkbar med AI",
     heroIcon: FolderSearch,
     metrics: [
       { value: "Raskere", label: "svar på interne spørsmål" },
@@ -400,7 +404,8 @@ export const productPages: Record<string, ProductPageContent> = {
     title: "Koble sammen arbeidsflyter som i dag gjøres manuelt",
     intro:
       "Vi bygger kontrollerte automasjoner som flytter informasjon mellom systemer, lager oppgaver, sender varsler og gir teamet bedre flyt i hverdagen.",
-    visualVariant: "automation",
+    heroImage: "/landing/ai-automation.png",
+    heroAlt: "AI-automatisering som kobler sammen systemer og oppgaver",
     heroIcon: Code2,
     metrics: [
       { value: "Timer", label: "spart på repeterende steg" },
@@ -463,7 +468,8 @@ export const productPages: Record<string, ProductPageContent> = {
     title: "AI-løsninger bygget rundt måten dere faktisk jobber på",
     intro:
       "Når standardverktøy ikke passer, utvikler vi praktiske AI-assistenter, automasjoner og kontrollerte agentflyter tilpasset deres prosesser.",
-    visualVariant: "custom",
+    heroImage: "/landing/custom-ai-solutions.png",
+    heroAlt: "Skreddersydde AI-løsninger bygget av kontrollerte arbeidsflytmoduler",
     heroIcon: Sparkles,
     metrics: [
       { value: "Tilpasset", label: "deres rutiner og systemer" },

@@ -101,8 +101,7 @@ export function LeadForm({
       </button>
       <p className="mt-4 text-xs leading-6 text-[#24465a]">
         Felt markert med * er obligatoriske. Opplysningene lagres i Supabase-prosjektet i
-        EU-regionen eu-central-1 og brukes bare til å svare på henvendelsen. Ikke send
-        sensitive personopplysninger i skjemaet.
+        EU-regionen eu-central-1 og brukes bare til å svare på henvendelsen.
       </p>
       {message ? (
         <p

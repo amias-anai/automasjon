@@ -12,7 +12,6 @@ import {
 import { productList } from "../product-content";
 import { LeadForm } from "./LeadForm";
 import { ProductDropdown } from "./ProductDropdown";
-import { WorkflowVisual, type WorkflowVisualVariant } from "./WorkflowVisuals";
 
 export const contactEmail = "system@anai.no";
 export const contactPhone = "+47 41 40 97 53";
@@ -162,30 +161,23 @@ export function PageHero({
   eyebrow,
   title,
   intro,
-  image,
-  visualVariant = "mapping",
+  image = "/landing/cta-coast.png",
 }: {
   eyebrow: string;
   title: string;
   intro: string;
   image?: string;
-  visualVariant?: WorkflowVisualVariant;
 }) {
   return (
     <section className="relative overflow-hidden border-b border-[#dfd0c2]">
-      {image ? <Image src={image} alt="" fill priority className="object-cover" sizes="100vw" /> : null}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_82%_18%,rgba(201,87,32,0.11),transparent_34%),linear-gradient(90deg,rgba(247,241,234,0.98),rgba(247,241,234,0.92)_48%,rgba(239,232,223,0.72)_100%)]" />
-      <div className="relative mx-auto grid max-w-7xl gap-10 px-6 py-20 lg:grid-cols-[1fr_0.8fr] lg:px-10 lg:py-28">
-        <div>
-          <p className="text-sm font-bold text-[#c95720]">{eyebrow}</p>
-          <h1 className="mt-4 max-w-4xl font-display text-4xl leading-[1.02] text-[#0b3048] sm:text-6xl sm:leading-[0.98] lg:text-[5.2rem]">
-            {title}
-          </h1>
-          <p className="mt-6 max-w-2xl text-lg leading-8 text-[#24465a]">{intro}</p>
-        </div>
-        <div className="hidden items-end lg:flex">
-          <WorkflowVisual variant={visualVariant} />
-        </div>
+      <Image src={image} alt="" fill priority className="object-cover" sizes="100vw" />
+      <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(247,241,234,0.98),rgba(247,241,234,0.9)_46%,rgba(247,241,234,0.42)_100%)]" />
+      <div className="relative mx-auto max-w-7xl px-6 py-20 lg:px-10 lg:py-28">
+        <p className="text-sm font-bold text-[#c95720]">{eyebrow}</p>
+        <h1 className="mt-4 max-w-4xl font-display text-4xl leading-[1.02] text-[#0b3048] sm:text-6xl sm:leading-[0.98] lg:text-[5.2rem]">
+          {title}
+        </h1>
+        <p className="mt-6 max-w-2xl text-lg leading-8 text-[#24465a]">{intro}</p>
       </div>
     </section>
   );
@@ -212,10 +204,6 @@ export function BookingEmbed() {
       <div className="border-b border-[#dfd0c2] px-6 py-5">
         <p className="text-sm font-bold text-[#c95720]">Direkte booking</p>
         <h2 className="mt-1 font-display text-3xl text-[#0b3048]">Velg tidspunkt i kalenderen</h2>
-        <p className="mt-3 text-sm leading-6 text-[#24465a]">
-          Gratis og uforpliktende, ca. 30 minutter. Finner du ikke et tidspunkt som passer?
-          Send skjemaet under, så avtaler vi direkte.
-        </p>
       </div>
       <iframe
         title="Book gratis AI-kartlegging hos ANAi"
@@ -232,10 +220,8 @@ export function CtaBand() {
   return (
     <section className="mx-auto max-w-7xl px-6 py-12 lg:px-10">
       <div className="relative overflow-hidden rounded-xl border border-[#dfd0c2] bg-[#fbf6f0] p-8 shadow-[0_18px_50px_rgba(15,45,66,0.08)] md:p-12">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_84%_26%,rgba(201,87,32,0.12),transparent_32%),linear-gradient(90deg,rgba(251,246,240,0.98),rgba(251,246,240,0.9)_52%,rgba(239,232,223,0.78))]" />
-        <div className="absolute right-8 top-8 hidden w-[23rem] opacity-70 lg:block">
-          <WorkflowVisual variant="bottleneck" compact />
-        </div>
+        <Image src="/landing/cta-coast.png" alt="" fill className="object-cover opacity-45" sizes="100vw" />
+        <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(251,246,240,0.96),rgba(251,246,240,0.82)_48%,rgba(251,246,240,0.18))]" />
         <div className="relative z-10 flex flex-col gap-8 md:flex-row md:items-center md:justify-between">
           <div className="max-w-2xl">
             <h2 className="font-display text-4xl text-[#0b3048] md:text-5xl">
@@ -247,7 +233,7 @@ export function CtaBand() {
             </p>
           </div>
           <Link
-            href="/book-gratis-ai-kartlegging"
+            href={bookingUrl}
             className="inline-flex h-14 shrink-0 items-center justify-center gap-3 rounded-md bg-[#c95720] px-8 text-base font-semibold text-white shadow-[0_18px_40px_rgba(201,87,32,0.28)] transition hover:bg-[#b74a18]"
           >
             <CalendarDays className="h-5 w-5" />

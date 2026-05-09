@@ -12,7 +12,6 @@ import {
   PageHero,
   SafetyNote,
 } from "../components/MarketingPage";
-import { WorkflowVisual } from "../components/WorkflowVisuals";
 
 export const metadata: Metadata = {
   title: "AI-kartlegging | ANAi",
@@ -50,7 +49,7 @@ export default function AiMappingPage() {
         eyebrow="AI-kartlegging"
         title="En praktisk gjennomgang av hvor AI kan gi mest verdi først"
         intro="AI-kartleggingen hjelper dere å prioritere. Vi ser på arbeidsflyter, tidstyver, datagrunnlag og risiko før vi anbefaler en realistisk første pilot."
-        visualVariant="mapping"
+        image="/landing/ai-automation.png"
       />
 
       <section className="mx-auto grid max-w-7xl gap-6 px-6 py-16 md:grid-cols-2 lg:grid-cols-4 lg:px-10">
@@ -79,47 +78,6 @@ export default function AiMappingPage() {
               Vi hjelper dere å jobbe strukturert med personvern og databehandleravtaler der
               det er relevant, men gir ikke juridiske compliance-garantier.
             </p>
-          </div>
-        </div>
-      </section>
-
-      <section className="mx-auto grid max-w-7xl gap-8 px-6 py-16 lg:grid-cols-[0.82fr_1.18fr] lg:px-10 lg:items-start">
-        <div>
-          <p className="text-sm font-bold text-[#c95720]">Illustrativt eksempel</p>
-          <h2 className="mt-3 font-display text-4xl text-[#0b3048] sm:text-5xl">
-            Dette får dere ut av kartleggingen
-          </h2>
-          <p className="mt-5 leading-8 text-[#24465a]">
-            Kortet viser hvordan en leveranse kan se ut etter en kartlegging. Det er et eksempel,
-            ikke et kundecase eller garantert resultat.
-          </p>
-          <div className="mt-6">
-            <WorkflowVisual variant="mapping" compact />
-          </div>
-        </div>
-        <div className="rounded-xl border border-[#dfd0c2] bg-[#fbf6f0] p-7 shadow-[0_18px_50px_rgba(15,45,66,0.08)]">
-          <div className="border-b border-[#dfd0c2] pb-5">
-            <p className="text-xs font-bold uppercase tracking-[0.14em] text-[#c95720]">
-              Eksempel på kartleggingsnotat
-            </p>
-            <h3 className="mt-2 text-2xl font-bold text-[#0b3048]">Anbefalt første pilot</h3>
-            <p className="mt-2 text-sm leading-7 text-[#24465a]">
-              Kundehenvendelser fra kontaktskjema til AI-sammendrag og svarutkast med manuell godkjenning.
-            </p>
-          </div>
-          <div className="mt-5 grid gap-4 sm:grid-cols-2">
-            {[
-              ["Hvor tiden forsvinner i dag", "Manuell lesing, sortering og første svar på like henvendelser."],
-              ["Data/systemer som trengs", "Kontaktskjema, innboks, svarmaler og relevante interne rutiner."],
-              ["Risiko og avgrensning", "Ingen automatisk utsending. AI bruker bare avklarte kilder og lavrisiko input."],
-              ["Menneskelig godkjenning", "Ansvarlig medarbeider kontrollerer fakta, tone og eventuelle forbehold."],
-              ["Neste steg", "Test på 10-20 representative henvendelser før eventuell pilot."],
-            ].map(([label, body]) => (
-              <div key={label} className="rounded-lg border border-[#dfd0c2] bg-white/58 p-4">
-                <p className="text-xs font-bold uppercase tracking-[0.12em] text-[#c95720]">{label}</p>
-                <p className="mt-2 text-sm leading-6 text-[#24465a]">{body}</p>
-              </div>
-            ))}
           </div>
         </div>
       </section>

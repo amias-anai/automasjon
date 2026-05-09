@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import type { LucideIcon } from "lucide-react";
 import {
@@ -9,7 +10,6 @@ import {
 } from "lucide-react";
 import type { ProductPageContent } from "../product-content";
 import { SiteFooter, SiteHeader } from "./MarketingPage";
-import { WorkflowVisual } from "./WorkflowVisuals";
 
 function ProductIcon({ icon: Icon }: { icon: LucideIcon }) {
   return (
@@ -72,7 +72,16 @@ export function ProductServicePage({ product }: { product: ProductPageContent })
       <SiteHeader />
 
       <section className="relative overflow-hidden border-b border-[#dfd0c2]">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_18%,rgba(201,87,32,0.10),transparent_32%),linear-gradient(180deg,#f7f1ea,#efe8df)]" />
+        <Image
+          src={product.heroImage}
+          alt={product.heroAlt}
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover"
+        />
+        <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(247,241,234,0.98)_0%,rgba(247,241,234,0.92)_42%,rgba(247,241,234,0.48)_72%,rgba(247,241,234,0.16)_100%)]" />
+        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(247,241,234,0.36),rgba(247,241,234,0.88))]" />
         <div className="relative mx-auto grid max-w-7xl gap-10 px-6 py-20 lg:grid-cols-[0.92fr_1.08fr] lg:px-10 lg:py-28">
           <div>
             <Link
@@ -106,8 +115,7 @@ export function ProductServicePage({ product }: { product: ProductPageContent })
 
           <div className="flex items-end">
             <div className="w-full rounded-xl border border-white/60 bg-[#fffaf4]/74 p-5 shadow-[0_22px_60px_rgba(15,45,66,0.14)] backdrop-blur-xl">
-              <WorkflowVisual variant={product.visualVariant} />
-              <div className="mt-5 grid gap-3 sm:grid-cols-3">
+              <div className="grid gap-3 sm:grid-cols-3">
                 {product.metrics.map((metric) => (
                   <div key={metric.value} className="rounded-lg border border-[#dfd0c2] bg-white/55 p-5">
                     <div className="text-3xl font-semibold text-[#0b3048]">{metric.value}</div>
@@ -281,10 +289,8 @@ export function ProductServicePage({ product }: { product: ProductPageContent })
 
       <section className="mx-auto max-w-7xl px-6 pb-20 lg:px-10">
         <div className="relative overflow-hidden rounded-xl border border-[#dfd0c2] bg-[#fbf6f0] p-8 shadow-[0_18px_50px_rgba(15,45,66,0.08)] md:p-12">
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_86%_24%,rgba(201,87,32,0.12),transparent_32%),linear-gradient(90deg,rgba(251,246,240,0.98),rgba(251,246,240,0.92)_56%,rgba(239,232,223,0.7))]" />
-          <div className="absolute right-8 top-8 hidden w-[24rem] opacity-70 lg:block">
-            <WorkflowVisual variant="mapping" compact />
-          </div>
+          <Image src="/landing/cta-coast.png" alt="" fill className="object-cover opacity-45" sizes="100vw" />
+          <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(251,246,240,0.96),rgba(251,246,240,0.82)_48%,rgba(251,246,240,0.18))]" />
           <div className="relative z-10 flex flex-col gap-8 md:flex-row md:items-center md:justify-between">
             <div className="max-w-2xl">
               <h2 className="font-display text-4xl text-[#0b3048] md:text-5xl">{product.ctaTitle}</h2>
