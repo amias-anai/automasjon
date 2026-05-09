@@ -245,16 +245,6 @@ export default function Home() {
                   className="object-cover transition duration-700 hover:scale-105"
                   sizes="(min-width: 1024px) 33vw, 100vw"
                 />
-                <div className="absolute inset-x-4 bottom-4 rounded-lg border border-white/65 bg-[#fffaf4]/88 p-4 text-[#0f2d42] shadow-[0_16px_34px_rgba(15,45,66,0.16)] backdrop-blur-md">
-                  <p className="text-[0.68rem] font-bold uppercase tracking-[0.13em] text-[#c95720]">
-                    {service.visual.label}
-                  </p>
-                  <p className="mt-1 text-sm font-bold leading-5">{service.visual.title}</p>
-                  <p className="mt-1 text-xs leading-5 text-[#24465a]">{service.visual.body}</p>
-                </div>
-                <div className="absolute left-5 top-5 flex h-14 w-14 items-center justify-center rounded-full border border-white/60 bg-[#0f2d42] text-white shadow-lg">
-                  <service.icon className="h-6 w-6" />
-                </div>
               </div>
               <div className="p-7">
                 <h3 className="font-display text-3xl text-[#0b3048]">{service.title}</h3>
