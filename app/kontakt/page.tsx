@@ -21,6 +21,8 @@ export default function ContactPage() {
         eyebrow="Kontakt"
         title="Ta kontakt om en konkret arbeidsflyt"
         intro="Skriv kort hva som tar tid i hverdagen, så svarer vi med et forslag til neste steg eller en gratis AI-kartlegging."
+        image="/landing/hero-contact-workflow.svg"
+        imageAlt="Kontakt ANAi om en konkret arbeidsflyt eller AI-kartlegging"
       />
 
       <section className="mx-auto grid max-w-7xl gap-10 px-6 py-16 lg:grid-cols-[0.8fr_1.2fr] lg:px-10">

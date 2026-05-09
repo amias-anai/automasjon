@@ -148,8 +148,8 @@ export const productPages: Record<string, ProductPageContent> = {
     title: "Raskere svar uten at kvaliteten glipper",
     intro:
       "ANAi hjelper dere å sortere henvendelser, lage svarutkast, oppsummere kundedialog og foreslå neste steg, slik at teamet følger opp raskere og mer konsistent.",
-    heroImage: "/landing/admin-automation.png",
-    heroAlt: "Kundehenvendelser strukturert med AI på et moderne arbeidsbord",
+    heroImage: "/landing/hero-customer-inquiries-workflow.svg",
+    heroAlt: "Kundehenvendelse gjort om til sammendrag, svarutkast og godkjenning",
     heroIcon: MessageCircle,
     metrics: [
       { value: "Raskere", label: "førsteutkast til svar" },
@@ -212,8 +212,8 @@ export const productPages: Record<string, ProductPageContent> = {
     title: "Gjør løse notater om til ryddig arbeid",
     intro:
       "Vi bygger AI-flyter som gjør notater, skjemaer, møtereferater og beskjeder om til strukturerte utkast, sjekklister, rapporter og oppgaver.",
-    heroImage: "/landing/customer-service.png",
-    heroAlt: "Dokumentasjon og administrative utkast strukturert i et digitalt grensesnitt",
+    heroImage: "/landing/hero-admin-documentation-workflow.svg",
+    heroAlt: "Notater og skjemaer strukturert til rapport, sjekkliste og oppgaver",
     heroIcon: FileSearch,
     metrics: [
       { value: "Mindre", label: "manuelt skrivearbeid" },
@@ -276,8 +276,8 @@ export const productPages: Record<string, ProductPageContent> = {
     title: "Bedre oppfølging fra første kontakt til rapport",
     intro:
       "ANAi hjelper salgs- og driftsteam med tilbudsutkast, CRM-notater, oppfølginger, statusoppdateringer og rapporter som gir bedre oversikt.",
-    heroImage: "/landing/ai-agents.png",
-    heroAlt: "AI-assistert salg, tilbud og rapportering visualisert med koblede arbeidsflyter",
+    heroImage: "/landing/hero-sales-offers-reporting-workflow.svg",
+    heroAlt: "Befaringsnotater gjort om til tilbudsutkast, CRM-notat og oppfølging",
     heroIcon: Bot,
     metrics: [
       { value: "Bedre", label: "oppfølging av kunder" },
@@ -340,8 +340,8 @@ export const productPages: Record<string, ProductPageContent> = {
     title: "Gjør kunnskapen i bedriften enklere å bruke",
     intro:
       "Vi bygger AI-assistenter som hjelper ansatte å finne rutiner, maler, svar, dokumenter og erfaringer uten å avbryte nøkkelpersoner.",
-    heroImage: "/landing/internal-knowledge.png",
-    heroAlt: "Intern kunnskap organisert og søkbar med AI",
+    heroImage: "/landing/hero-internal-knowledge-workflow.svg",
+    heroAlt: "Intern kunnskapssøk med svar og synlige kilder fra rutiner og dokumenter",
     heroIcon: FolderSearch,
     metrics: [
       { value: "Raskere", label: "svar på interne spørsmål" },
@@ -404,8 +404,8 @@ export const productPages: Record<string, ProductPageContent> = {
     title: "Koble sammen arbeidsflyter som i dag gjøres manuelt",
     intro:
       "Vi bygger kontrollerte automasjoner som flytter informasjon mellom systemer, lager oppgaver, sender varsler og gir teamet bedre flyt i hverdagen.",
-    heroImage: "/landing/ai-automation.png",
-    heroAlt: "AI-automatisering som kobler sammen systemer og oppgaver",
+    heroImage: "/landing/hero-ai-automation-workflow.svg",
+    heroAlt: "Automatisert flyt mellom skjema, CRM, oppgave, varsel og dokumenter",
     heroIcon: Code2,
     metrics: [
       { value: "Timer", label: "spart på repeterende steg" },
@@ -468,8 +468,8 @@ export const productPages: Record<string, ProductPageContent> = {
     title: "AI-løsninger bygget rundt måten dere faktisk jobber på",
     intro:
       "Når standardverktøy ikke passer, utvikler vi praktiske AI-assistenter, automasjoner og kontrollerte agentflyter tilpasset deres prosesser.",
-    heroImage: "/landing/custom-ai-solutions.png",
-    heroAlt: "Skreddersydde AI-løsninger bygget av kontrollerte arbeidsflytmoduler",
+    heroImage: "/landing/hero-custom-ai-workflow.svg",
+    heroAlt: "Skreddersydd AI-arbeidsflyt kartlagt fra prosess til kontrollert pilot",
     heroIcon: Sparkles,
     metrics: [
       { value: "Tilpasset", label: "deres rutiner og systemer" },

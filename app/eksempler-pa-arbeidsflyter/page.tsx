@@ -78,7 +78,8 @@ export default function WorkflowExamplesPage() {
         eyebrow="Eksempler på arbeidsflyter"
         title="Praktiske AI-eksempler uten frie tøyler"
         intro="Dette er illustrasjoner av arbeidsflyter ANAi kan bygge eller tilpasse. De er ikke kundecaser, referanser eller dokumenterte resultater, men viser hvordan kontrollert AI kan støtte vanlige oppgaver i norske SMB-er."
-        image="/landing/cta-coast.png"
+        image="/landing/hero-workflow-examples.svg"
+        imageAlt="Eksempler på AI-arbeidsflyter fra input til kontrollert utkast"
       />
 
       <section className="mx-auto max-w-7xl px-6 py-16 lg:px-10">

@@ -128,7 +128,8 @@ export default function PrivacyPage() {
         eyebrow="Personvern"
         title="Personvernerklæring for ANAi"
         intro="Denne siden forklarer hvordan ANAi behandler personopplysninger i forbindelse med nettsiden, henvendelser, booking og B2B-leveranser."
-        image="/landing/hero-fjord.png"
+        image="/landing/hero-privacy-control.svg"
+        imageAlt="Personvernbevisst håndtering av data, dokumenter og AI-tilgang"
       />
 
       <section className="mx-auto grid max-w-7xl gap-10 px-6 py-16 lg:grid-cols-[0.75fr_1.25fr] lg:px-10">

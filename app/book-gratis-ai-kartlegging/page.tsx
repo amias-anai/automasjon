@@ -44,6 +44,8 @@ export default function BookingPage() {
         eyebrow="Gratis AI-kartlegging"
         title="Finn én konkret AI-mulighet som er verdt å starte med"
         intro="I en kort kartlegging ser vi på hvor manuelt arbeid, oppfølging eller dokumentasjon tar tid i dag, og vurderer hva som kan forbedres med en kontrollert AI-arbeidsflyt."
+        image="/landing/hero-book-ai-kartlegging.svg"
+        imageAlt="Booking av gratis AI-kartlegging med kalender og forberedende sjekkliste"
       />
 
       <section className="mx-auto grid max-w-7xl gap-10 px-6 py-16 lg:grid-cols-[0.8fr_1.2fr] lg:px-10">

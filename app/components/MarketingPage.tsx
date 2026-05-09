@@ -161,17 +161,19 @@ export function PageHero({
   eyebrow,
   title,
   intro,
-  image = "/landing/cta-coast.png",
+  image = "/landing/hero-ai-kartlegging-checklist.svg",
+  imageAlt = "",
 }: {
   eyebrow: string;
   title: string;
   intro: string;
   image?: string;
+  imageAlt?: string;
 }) {
   return (
     <section className="relative overflow-hidden border-b border-[#dfd0c2]">
-      <Image src={image} alt="" fill priority className="object-cover" sizes="100vw" />
-      <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(247,241,234,0.98),rgba(247,241,234,0.9)_46%,rgba(247,241,234,0.42)_100%)]" />
+      <Image src={image} alt={imageAlt} fill priority className="object-cover" sizes="100vw" />
+      <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(247,241,234,0.98),rgba(247,241,234,0.84)_46%,rgba(247,241,234,0.24)_100%)]" />
       <div className="relative mx-auto max-w-7xl px-6 py-20 lg:px-10 lg:py-28">
         <p className="text-sm font-bold text-[#c95720]">{eyebrow}</p>
         <h1 className="mt-4 max-w-4xl font-display text-4xl leading-[1.02] text-[#0b3048] sm:text-6xl sm:leading-[0.98] lg:text-[5.2rem]">
@@ -220,7 +222,7 @@ export function CtaBand() {
   return (
     <section className="mx-auto max-w-7xl px-6 py-12 lg:px-10">
       <div className="relative overflow-hidden rounded-xl border border-[#dfd0c2] bg-[#fbf6f0] p-8 shadow-[0_18px_50px_rgba(15,45,66,0.08)] md:p-12">
-        <Image src="/landing/cta-coast.png" alt="" fill className="object-cover opacity-45" sizes="100vw" />
+        <Image src="/landing/hero-ai-kartlegging-checklist.svg" alt="" fill className="object-cover opacity-45" sizes="100vw" />
         <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(251,246,240,0.96),rgba(251,246,240,0.82)_48%,rgba(251,246,240,0.18))]" />
         <div className="relative z-10 flex flex-col gap-8 md:flex-row md:items-center md:justify-between">
           <div className="max-w-2xl">

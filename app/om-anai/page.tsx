@@ -37,7 +37,8 @@ export default function AboutPage() {
         eyebrow="Om ANAi"
         title="Vi hjelper norske bedrifter å bruke AI på en praktisk og kontrollert måte"
         intro="ANAi er bygget for små og mellomstore bedrifter som vil spare tid i hverdagen uten å gi AI frie tøyler. Vi finner konkrete arbeidsflyter, bygger små piloter og forbedrer dem sammen med teamet."
-        image="/landing/hero-fjord.png"
+        image="/landing/hero-about-practical-ai.svg"
+        imageAlt="Praktisk arbeid med AI-arbeidsflyter for norske bedrifter"
       />
 
       <section className="mx-auto grid max-w-7xl gap-10 px-6 py-16 lg:grid-cols-[0.9fr_1.1fr] lg:px-10">

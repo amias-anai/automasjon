@@ -49,7 +49,8 @@ export default function AiMappingPage() {
         eyebrow="AI-kartlegging"
         title="En praktisk gjennomgang av hvor AI kan gi mest verdi først"
         intro="AI-kartleggingen hjelper dere å prioritere. Vi ser på arbeidsflyter, tidstyver, datagrunnlag og risiko før vi anbefaler en realistisk første pilot."
-        image="/landing/ai-automation.png"
+        image="/landing/hero-ai-kartlegging-checklist.svg"
+        imageAlt="Sjekkliste for AI-kartlegging med pilot, risiko og neste steg"
       />
 
       <section className="mx-auto grid max-w-7xl gap-6 px-6 py-16 md:grid-cols-2 lg:grid-cols-4 lg:px-10">

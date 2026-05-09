@@ -22,8 +22,8 @@ import { SiteFooter, SiteHeader } from "./components/MarketingPage";
 const services = [
   {
     title: "Kundehenvendelser og oppfølging",
-    image: "/landing/service-customer-inquiries.png",
-    imageAlt: "Innboks og AI-assistert svarutkast for kundehenvendelser",
+    image: "/landing/service-card-customer-inquiries-v2.svg",
+    imageAlt: "Kundehenvendelse gjort om til AI-sammendrag, svarutkast og godkjenning",
     icon: MessageCircle,
     href: "/kundehenvendelser-og-oppfolging",
     price: "Raskere svar",
@@ -36,8 +36,8 @@ const services = [
   },
   {
     title: "Administrasjon og dokumentasjon",
-    image: "/landing/service-admin-documentation.png",
-    imageAlt: "Notater og skjemaer strukturert til rapport og sjekkliste",
+    image: "/landing/service-card-admin-documentation-v2.svg",
+    imageAlt: "Notater strukturert til rapport, sjekkliste, oppgaver og frist",
     icon: FileSearch,
     href: "/administrasjon-og-dokumentasjon",
     price: "Mindre manuelt arbeid",
@@ -50,8 +50,8 @@ const services = [
   },
   {
     title: "Salg, tilbud og rapportering",
-    image: "/landing/service-sales-crm.png",
-    imageAlt: "Befaringsnotater gjort om til tilbudsutkast og CRM-notat",
+    image: "/landing/service-card-sales-offers-reporting-v2.svg",
+    imageAlt: "Befaring gjort om til tilbudsutkast, CRM-notat og oppfølging",
     icon: Bot,
     href: "/salg-tilbud-og-rapportering",
     price: "Bedre oppfølging",
@@ -64,8 +64,8 @@ const services = [
   },
   {
     title: "Intern kunnskap",
-    image: "/landing/service-internal-knowledge.png",
-    imageAlt: "Intern kunnskapssøk med svar fra rutiner og kilder",
+    image: "/landing/service-card-internal-knowledge-v2.svg",
+    imageAlt: "Intern kunnskapssøk med svar, rutine, mal, FAQ og synlige kilder",
     icon: FileSearch,
     href: "/intern-kunnskap",
     price: "Raskere svar internt",
@@ -78,8 +78,8 @@ const services = [
   },
   {
     title: "AI-automatisering",
-    image: "/landing/service-ai-automation-flow.png",
-    imageAlt: "Enkel flyt mellom e-post, CRM, oppgaver og dokumenter",
+    image: "/landing/service-card-ai-automation-v2.svg",
+    imageAlt: "Automatisk flyt mellom skjema, CRM, oppgave, varsel og dokument",
     icon: Code2,
     href: "/ai-automatisering",
     price: "Mer flyt mellom systemer",
@@ -92,8 +92,8 @@ const services = [
   },
   {
     title: "Skreddersydde AI-løsninger",
-    image: "/landing/service-custom-workflow-map.png",
-    imageAlt: "Whiteboard med arbeidsflytkart og prosessdiagram",
+    image: "/landing/service-card-custom-workflows-v2.svg",
+    imageAlt: "Skreddersydd arbeidsflyt med kartlegging, pilot, godkjenning og forbedring",
     icon: Sparkles,
     href: "/skreddersydde-ai-losninger",
     price: "Tilpasset arbeidsflyten",
@@ -312,8 +312,8 @@ export default function Home() {
         <div className="grid overflow-hidden rounded-xl border border-[#dfd0c2] bg-[#fbf6f0] shadow-[0_18px_50px_rgba(15,45,66,0.06)] lg:grid-cols-[1fr_2.35fr]">
           <div className="relative min-h-56">
             <Image
-              src="/landing/cta-coast.png"
-              alt="Norsk kyst og moderne arbeidsplass"
+              src="/landing/hero-ai-kartlegging-checklist.svg"
+              alt="Sjekkliste for AI-kartlegging med tidstyv, første pilot, risiko og neste steg"
               fill
               className="object-cover"
               sizes="(min-width: 1024px) 30vw, 100vw"
