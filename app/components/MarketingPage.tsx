@@ -222,7 +222,7 @@ export function CtaBand() {
   return (
     <section className="mx-auto max-w-7xl px-6 py-12 lg:px-10">
       <div className="relative overflow-hidden rounded-xl border border-[#dfd0c2] bg-[#fbf6f0] p-8 shadow-[0_18px_50px_rgba(15,45,66,0.08)] md:p-12">
-        <Image src="/landing/hero-ai-kartlegging-checklist.svg" alt="" fill className="object-cover opacity-45" sizes="100vw" />
+        <Image src="/landing/frontpage-ai-kartlegging-checklist.png" alt="" fill className="object-cover opacity-70" sizes="100vw" />
         <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(251,246,240,0.96),rgba(251,246,240,0.82)_48%,rgba(251,246,240,0.18))]" />
         <div className="relative z-10 flex flex-col gap-8 md:flex-row md:items-center md:justify-between">
           <div className="max-w-2xl">
