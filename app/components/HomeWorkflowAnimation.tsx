@@ -7,7 +7,6 @@ import {
   Database,
   FileText,
   Mail,
-  MessageSquareText,
   SearchCheck,
   Sparkles,
   UserCheck,
@@ -82,7 +81,6 @@ export function HomeWorkflowAnimation() {
   }, []);
 
   const packetOffset = `${progress * 78}%`;
-  const packetLift = `${Math.sin(progress * Math.PI) * -42}px`;
   const manualOpacity = 1 - clamp(progress * 1.8);
   const supportedOpacity = clamp((progress - 0.28) * 1.8);
 
@@ -168,14 +166,6 @@ export function HomeWorkflowAnimation() {
                     <p className="text-sm font-bold text-white/78">{node.label}</p>
                   </div>
                 ))}
-              </div>
-              <div
-                className="absolute left-[8%] top-[calc(50%-1.9rem)] flex h-14 w-14 items-center justify-center rounded-full border border-[#e8a05c] bg-[#fbf6f0] text-[#0f2d42] shadow-[0_18px_40px_rgba(232,160,92,0.26)]"
-                style={{
-                  transform: `translate3d(${packetOffset}, ${packetLift}, 0)`,
-                }}
-              >
-                <MessageSquareText className="h-6 w-6" />
               </div>
             </div>
 

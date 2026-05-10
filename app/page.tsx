@@ -239,17 +239,9 @@ export default function Home() {
     <main className="min-h-screen bg-[#f7f1ea] text-[#0f2d42]">
       <SiteHeader />
 
-      <section className="relative isolate overflow-hidden border-b border-[#d8c7b8]">
-        <Image
-          src="/landing/frontpage-human-workflow-hero-v2.png"
-          alt="Norsk bedriftsleder som vurderer AI-støttede arbeidsflyter på kontoret"
-          fill
-          priority
-          className="object-cover object-center"
-          sizes="100vw"
-        />
-        <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(250,242,233,0.98)_0%,rgba(250,242,233,0.93)_36%,rgba(250,242,233,0.58)_66%,rgba(250,242,233,0.22)_100%)]" />
-        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(247,241,234,0.02)_0%,rgba(247,241,234,0.70)_100%)]" />
+      <section className="relative isolate overflow-hidden border-b border-[#d8c7b8] bg-[#f7f1ea]">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_78%_18%,rgba(201,87,32,0.14),transparent_30%),radial-gradient(circle_at_18%_72%,rgba(15,45,66,0.08),transparent_34%),linear-gradient(180deg,rgba(255,250,244,0.84),rgba(247,241,234,0.96))]" />
+        <div className="absolute inset-x-0 bottom-0 h-32 bg-[linear-gradient(180deg,transparent,rgba(247,241,234,0.98))]" />
 
         <div className="relative z-10 mx-auto grid min-h-[700px] max-w-7xl gap-10 px-6 py-16 lg:grid-cols-[0.95fr_1.05fr] lg:px-10 lg:py-20">
           <div className="relative z-20 max-w-3xl self-center">

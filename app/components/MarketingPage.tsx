@@ -3,11 +3,18 @@ import Link from "next/link";
 import type { ReactNode } from "react";
 import {
   ArrowRight,
+  BrainCircuit,
   CalendarDays,
+  CheckCircle2,
+  ClipboardCheck,
+  Database,
+  Layers3,
   Mail,
   MapPin,
   Phone,
   ShieldCheck,
+  Sparkles,
+  UserCheck,
 } from "lucide-react";
 import { productList } from "../product-content";
 import { LeadForm } from "./LeadForm";
@@ -44,6 +51,20 @@ const footerGroups = [
   },
 ];
 
+const headerBuildSteps = [
+  { label: "Kartlegg", icon: BrainCircuit },
+  { label: "Vurder risiko", icon: ShieldCheck },
+  { label: "Bygg pilot", icon: Sparkles },
+];
+
+const headerControlItems = [
+  { label: "Kilder", icon: Database },
+  { label: "Utkast", icon: ClipboardCheck },
+  { label: "Godkjenning", icon: UserCheck },
+];
+
+const headerPillItems = ["Data", "Verktøy", "Team"];
+
 function Logo({ priority = false }: { priority?: boolean }) {
   return (
     <Image
@@ -65,6 +86,72 @@ function NorwegianFlag() {
       <span className="absolute inset-y-0 left-[6px] w-[3px] bg-[#00205b]" />
       <span className="absolute inset-x-0 top-[5px] h-[3px] bg-[#00205b]" />
     </span>
+  );
+}
+
+function HeaderWorkbenchVisual() {
+  return (
+    <div className="relative hidden lg:block">
+      <div className="absolute -right-8 top-8 h-64 w-64 rounded-full bg-[#c95720]/10 blur-3xl" />
+      <div className="absolute -left-10 bottom-8 h-48 w-48 rounded-full bg-[#0f2d42]/10 blur-3xl" />
+      <div className="relative ml-auto max-w-xl rounded-[8px] border border-[#dfd0c2] bg-[#fbf6f0]/86 p-5 shadow-[0_28px_80px_rgba(15,45,66,0.12)] backdrop-blur">
+        <div className="flex items-center justify-between border-b border-[#dfd0c2] pb-4">
+          <div className="flex items-center gap-2">
+            <span className="h-3 w-3 rounded-full bg-[#c95720]" />
+            <span className="h-3 w-3 rounded-full bg-[#e8a05c]" />
+            <span className="h-3 w-3 rounded-full bg-[#0f2d42]" />
+          </div>
+          <span className="rounded-full bg-[#0f2d42]/8 px-3 py-1 text-xs font-bold text-[#0f2d42]">
+            ANAi arbeidsflate
+          </span>
+        </div>
+
+        <div className="mt-5 grid gap-4 md:grid-cols-[0.92fr_1.08fr]">
+          <div className="space-y-3">
+            {headerBuildSteps.map((step) => (
+              <div key={step.label} className="flex items-center gap-3 rounded-md border border-[#dfd0c2] bg-white/60 p-4">
+                <span className="flex h-10 w-10 items-center justify-center rounded-full bg-[#0f2d42] text-white">
+                  <step.icon className="h-5 w-5" />
+                </span>
+                <div>
+                  <p className="font-bold text-[#0b3048]">{step.label}</p>
+                  <div className="mt-2 h-2 w-24 rounded-full bg-[#0f2d42]/12" />
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div className="rounded-lg border border-[#dfd0c2] bg-[#0f2d42] p-5 text-white">
+            <p className="text-xs font-bold uppercase tracking-[0.14em] text-[#e8a05c]">
+              Kontrollert flyt
+            </p>
+            <div className="mt-5 space-y-4">
+              {headerControlItems.map((item) => (
+                <div key={item.label} className="flex items-center justify-between gap-4">
+                  <span className="flex items-center gap-3 text-sm font-semibold text-white/78">
+                    <item.icon className="h-4 w-4 text-[#e8a05c]" />
+                    {item.label}
+                  </span>
+                  <CheckCircle2 className="h-4 w-4 text-[#e8a05c]" />
+                </div>
+              ))}
+            </div>
+            <div className="mt-6 rounded-md border border-white/10 bg-white/[0.055] p-4 text-sm leading-6 text-white/70">
+              Bruk AI på toppen av systemene dere allerede har, med mennesker i kontroll.
+            </div>
+          </div>
+        </div>
+
+        <div className="mt-4 grid grid-cols-3 gap-3 text-xs font-bold text-[#24465a]">
+          {headerPillItems.map((item) => (
+            <div key={item} className="rounded-md border border-[#dfd0c2] bg-white/55 px-3 py-2">
+              <Layers3 className="mb-2 h-4 w-4 text-[#c95720]" />
+              {item}
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
   );
 }
 
@@ -161,8 +248,6 @@ export function PageHero({
   eyebrow,
   title,
   intro,
-  image = "/landing/hero-ai-kartlegging-checklist.svg",
-  imageAlt = "",
 }: {
   eyebrow: string;
   title: string;
@@ -171,15 +256,17 @@ export function PageHero({
   imageAlt?: string;
 }) {
   return (
-    <section className="relative overflow-hidden border-b border-[#dfd0c2]">
-      <Image src={image} alt={imageAlt} fill priority className="object-cover" sizes="100vw" />
-      <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(247,241,234,0.98),rgba(247,241,234,0.84)_46%,rgba(247,241,234,0.24)_100%)]" />
-      <div className="relative mx-auto max-w-7xl px-6 py-20 lg:px-10 lg:py-28">
-        <p className="text-sm font-bold text-[#c95720]">{eyebrow}</p>
-        <h1 className="mt-4 max-w-4xl font-display text-4xl leading-[1.02] text-[#0b3048] sm:text-6xl sm:leading-[0.98] lg:text-[5.2rem]">
-          {title}
-        </h1>
-        <p className="mt-6 max-w-2xl text-lg leading-8 text-[#24465a]">{intro}</p>
+    <section className="relative overflow-hidden border-b border-[#dfd0c2] bg-[#f7f1ea]">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_78%_18%,rgba(201,87,32,0.12),transparent_30%),radial-gradient(circle_at_18%_76%,rgba(15,45,66,0.08),transparent_34%),linear-gradient(180deg,rgba(255,250,244,0.88),rgba(247,241,234,0.98))]" />
+      <div className="relative mx-auto grid max-w-7xl gap-12 px-6 py-20 lg:grid-cols-[0.95fr_1.05fr] lg:items-center lg:px-10 lg:py-24">
+        <div>
+          <p className="text-sm font-bold text-[#c95720]">{eyebrow}</p>
+          <h1 className="mt-4 max-w-4xl font-display text-4xl leading-[1.02] text-[#0b3048] sm:text-6xl sm:leading-[0.98] lg:text-[4.9rem]">
+            {title}
+          </h1>
+          <p className="mt-6 max-w-2xl text-lg leading-8 text-[#24465a]">{intro}</p>
+        </div>
+        <HeaderWorkbenchVisual />
       </div>
     </section>
   );
