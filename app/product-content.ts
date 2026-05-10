@@ -205,6 +205,70 @@ export const productPages: Record<string, ProductPageContent> = {
         "ANAi hjelper norske bedrifter med AI-assistert kundedialog, svarutkast, oppsummering og trygg oppfølging.",
     },
   },
+  "saksbehandling": {
+    slug: "saksbehandling",
+    navTitle: "Saksbehandling",
+    eyebrow: "Saksbehandling",
+    title: "Ryddigere saker fra første henvendelse til neste steg",
+    intro:
+      "ANAi hjelper team med å klassifisere saker, hente frem relevant kontekst, lage saksnotater og foreslå oppfølging med tydelig menneskelig kontroll.",
+    heroImage: "/landing/hero-customer-inquiries-workflow.svg",
+    heroAlt: "Kundehenvendelse klassifisert til sak, svarutkast, CRM-forslag og godkjenning",
+    heroIcon: ClipboardCheck,
+    metrics: [
+      { value: "Raskere", label: "første vurdering av saken" },
+      { value: "Bedre", label: "struktur i saksnotater" },
+      { value: "Trygt", label: "ansvarlig person godkjenner" },
+    ],
+    controlNote:
+      "AI-en kan sortere, oppsummere og foreslå neste steg, men ansvarlig person vurderer saken før det tas beslutninger eller sendes svar.",
+    challenge:
+      "Saker starter ofte som e-post, skjema, telefonnotat eller intern beskjed. Informasjon må tolkes, sjekkes mot rutiner og følges opp i riktig system, noe som lett blir ujevnt og tidkrevende.",
+    solution:
+      "Vi lager en kontrollert saksflyt som klassifiserer innholdet, trekker ut nøkkelinfo, finner relevante kilder og lager et første saksnotat eller svarutkast. Mennesker beholder ansvar for vurdering og godkjenning.",
+    valueCards: [
+      { title: "Klassifisering", body: "Henvendelser kan sorteres etter type, hastegrad, risiko eller ansvarlig team.", icon: SearchCheck },
+      { title: "Saksnotat", body: "AI kan oppsummere historikk, behov, manglende informasjon og foreslått neste steg.", icon: ClipboardCheck },
+      { title: "Kontekst", body: "Relevante rutiner, tidligere saker eller dokumenter kan hentes frem som beslutningsstøtte.", icon: FolderSearch },
+      { title: "Godkjenning", body: "Viktige steg stoppes for manuell vurdering før svar, oppdatering eller eskalering.", icon: ShieldCheck },
+    ],
+    process: standardProcess,
+    miniExample: {
+      title: "Henvendelse → saksnotat + neste steg",
+      input: "En innkommende e-post eller et skjema med behov, spørsmål, vedlegg og ustrukturert kontekst.",
+      output: "AI foreslår sakstype, sammendrag, manglende informasjon, relevante kilder og et første svarutkast.",
+      control: "Saksbehandler vurderer fakta, justerer teksten og godkjenner neste steg før kunden eller systemet oppdateres.",
+    },
+    concreteExample: {
+      eyebrow: "Eksempel på saksflyt",
+      title: "Fra innkommende henvendelse til ryddig saksgrunnlag",
+      scenario:
+        "En kunde sender en henvendelse med et problem, tidligere dialog og et vedlegg. Teamet må forstå saken, finne riktig rutine og svare uten å miste oppfølging.",
+      steps: [
+        { label: "Klassifiser", body: "AI foreslår sakstype, hastegrad og hvilket team som bør eie oppfølgingen." },
+        { label: "Saksgrunnlag", body: "Relevant kontekst, tidligere dialog og manglende informasjon samles i et kort notat." },
+        { label: "Neste steg", body: "Svarutkast, CRM-oppdatering og oppfølging foreslås for menneskelig godkjenning." },
+      ],
+      note: "Saksbehandleren beholder ansvaret og kan stoppe, endre eller sende saken videre når noe er uklart.",
+    },
+    examples: [
+      { label: "Kunde", title: "Henvendelse til sak", body: "E-post og skjema kan bli til strukturert saksgrunnlag med foreslått oppfølging." },
+      { label: "Internt", title: "Ruting til riktig person", body: "Saker kan sorteres og sendes videre med kontekst i stedet for bare videresendt tekst." },
+      { label: "Kvalitet", title: "Færre glemte steg", body: "Oppgaver, frister og oppfølging kan foreslås før saken lukkes." },
+    ],
+    safety:
+      "Saksbehandling kan inneholde persondata og vurderinger som krever kontroll. Vi starter med avgrensede sakstyper, dataminimering og tydelige godkjenningspunkter.",
+    flow: ["Sak kommer inn", "AI klassifiserer og oppsummerer", "Kilder og neste steg foreslås", "Saksbehandler godkjenner"],
+    faqs: standardFaqs,
+    ctaTitle: "Vil dere behandle saker mer strukturert?",
+    ctaBody:
+      "Book en kartlegging, så finner vi hvilke sakstyper som egner seg best for en trygg første AI-støttet flyt.",
+    metadata: {
+      title: "Saksbehandling | ANAi",
+      description:
+        "AI-støttet saksbehandling for norske bedrifter med klassifisering, saksnotater, svarutkast og menneskelig godkjenning.",
+    },
+  },
   "administrasjon-og-dokumentasjon": {
     slug: "administrasjon-og-dokumentasjon",
     navTitle: "Administrasjon og dokumentasjon",
@@ -267,6 +331,70 @@ export const productPages: Record<string, ProductPageContent> = {
       title: "Administrasjon og dokumentasjon | ANAi",
       description:
         "Praktiske AI-løsninger for administrasjon, dokumentasjon, møtereferater, sjekklister og rapporter.",
+    },
+  },
+  "okonomi-og-regnskap": {
+    slug: "okonomi-og-regnskap",
+    navTitle: "Økonomi og regnskap",
+    eyebrow: "Økonomi og regnskap",
+    title: "Mindre manuelt arbeid rundt bilag, avvik og rapportering",
+    intro:
+      "ANAi hjelper økonomi- og administrasjonsteam med å strukturere bilag, oppsummere avvik, forberede purringer og lage rapportutkast med kontroll før noe sendes eller bokføres.",
+    heroImage: "/landing/hero-admin-documentation-workflow.svg",
+    heroAlt: "Økonomidokumenter strukturert til avvik, sjekkliste, rapport og godkjenning",
+    heroIcon: LineChart,
+    metrics: [
+      { value: "Mindre", label: "kopiering mellom systemer" },
+      { value: "Bedre", label: "oversikt over avvik" },
+      { value: "Kontroll", label: "før utsending og bokføring" },
+    ],
+    controlNote:
+      "AI kan foreslå struktur, tekst og neste steg, men økonomiske handlinger, bokføring og utsendinger skal godkjennes av mennesker.",
+    challenge:
+      "Økonomiarbeid inneholder mange små manuelle steg: hente informasjon fra e-post og vedlegg, sjekke avvik, skrive purringer, oppdatere regneark og lage statusrapporter.",
+    solution:
+      "Vi bygger AI-støttede arbeidsflyter som leser og strukturerer informasjon, flagger mangler og lager utkast til oppfølging eller rapportering. Flyten tilpasses økonomisystemer, rutiner og kontrollpunkter.",
+    valueCards: [
+      { title: "Bilagsflyt", body: "Vedlegg og e-post kan sorteres, oppsummeres og sendes til riktig kontrollpunkt.", icon: FileSearch },
+      { title: "Avvik", body: "Manglende informasjon, uvanlige beløp eller uklare referanser kan flagges for manuell vurdering.", icon: SearchCheck },
+      { title: "Purringer", body: "AI kan lage høflige utkast til oppfølging basert på status, historikk og tone.", icon: MailCheck },
+      { title: "Rapportutkast", body: "Uke- eller månedsstatus kan samles til et tydelig utkast før ledelsen bruker det.", icon: LineChart },
+    ],
+    process: standardProcess,
+    miniExample: {
+      title: "Bilag/e-post → avvik + oppfølgingsutkast",
+      input: "En e-post med fakturavedlegg, manglende referanse eller spørsmål fra kunde/leverandør.",
+      output: "AI trekker ut nøkkelinfo, foreslår kategori, flagger mangler og lager utkast til oppfølging.",
+      control: "Økonomiansvarlig kontrollerer beløp, referanser, mottaker og formulering før noe sendes eller føres.",
+    },
+    concreteExample: {
+      eyebrow: "Eksempel på økonomiflyt",
+      title: "Fra fakturae-post til kontrollert oppfølging",
+      scenario:
+        "En leverandør sender faktura med vedlegg, men referansen mangler og beløpet må sjekkes mot avtalt ordre.",
+      steps: [
+        { label: "Trekk ut", body: "AI finner leverandør, beløp, dato, vedlegg og hvilke felt som mangler." },
+        { label: "Flagg avvik", body: "Manglende referanse og behov for ordresjekk markeres for ansvarlig person." },
+        { label: "Utkast", body: "Et kort oppfølgingsutkast lages, men sendes først etter manuell godkjenning." },
+      ],
+      note: "Flyten er ment som støtte rundt struktur og oppfølging, ikke som automatisk økonomisk beslutning.",
+    },
+    examples: [
+      { label: "Bilag", title: "Sortering av vedlegg", body: "E-post og dokumenter kan klassifiseres før de sendes til riktig kontroll." },
+      { label: "Avvik", title: "Mangler flagges tidlig", body: "AI kan foreslå hva som mangler før noen bruker tid på å lete manuelt." },
+      { label: "Rapport", title: "Status til ledelse", body: "Tall og kommentarer kan samles i rapportutkast som kvalitetssikres." },
+    ],
+    safety:
+      "Økonomi krever ekstra tydelige rammer. Vi legger opp til lavrisiko piloter, begrenset datatilgang og menneskelig godkjenning før utsending, bokføring eller beslutninger.",
+    flow: ["Dokument eller e-post kommer inn", "AI trekker ut nøkkelinfo", "Avvik og neste steg foreslås", "Økonomiansvarlig godkjenner"],
+    faqs: standardFaqs,
+    ctaTitle: "Vil dere redusere manuelt økonomiarbeid?",
+    ctaBody:
+      "Book en kartlegging, så finner vi en lavrisiko økonomiflyt der AI kan spare tid uten å gi fra seg kontroll.",
+    metadata: {
+      title: "Økonomi og regnskap | ANAi",
+      description:
+        "AI-støttede arbeidsflyter for bilag, avvik, purring og økonomirapportering med menneskelig kontroll.",
     },
   },
   "salg-tilbud-og-rapportering": {
@@ -395,6 +523,70 @@ export const productPages: Record<string, ProductPageContent> = {
       title: "Intern kunnskap | ANAi",
       description:
         "AI-assistenter for intern kunnskap, rutiner, dokumenter, onboarding og bedre informasjonsflyt.",
+    },
+  },
+  "ai-opplaering": {
+    slug: "ai-opplaering",
+    navTitle: "AI-opplæring",
+    eyebrow: "AI-opplæring",
+    title: "Gjør teamet tryggere på praktisk AI-bruk",
+    intro:
+      "ANAi lærer ansatte å bruke Copilot, ChatGPT og andre AI-verktøy på en måte som passer arbeidsoppgavene, dataene og kontrollbehovet i bedriften.",
+    heroImage: "/landing/hero-how-it-works.svg",
+    heroAlt: "Opplæringsflyt for trygg bruk av AI i eksisterende arbeidsprosesser",
+    heroIcon: Users,
+    metrics: [
+      { value: "Tryggere", label: "bruk av AI-verktøy" },
+      { value: "Likere", label: "praksis på tvers av team" },
+      { value: "Mer", label: "nytte i hverdagsoppgaver" },
+    ],
+    controlNote:
+      "Opplæringen handler ikke bare om prompts. Teamet lærer hvilke data som kan brukes, når AI bør stoppes og hvordan forslag kvalitetssikres.",
+    challenge:
+      "Mange ansatte prøver AI på egen hånd, men uten felles rammer blir bruken ujevn. Noen deler for mye data, noen får lite verdi, og mange vet ikke når AI-resultater må kontrolleres.",
+    solution:
+      "Vi lager praktisk opplæring rundt deres faktiske arbeidsoppgaver. Teamet får eksempler, retningslinjer og en enkel måte å vurdere risiko, kvalitet og riktig verktøyvalg på.",
+    valueCards: [
+      { title: "Praktiske øvelser", body: "Opplæringen tar utgangspunkt i reelle oppgaver, ikke generelle AI-foredrag.", icon: PenLine },
+      { title: "Verktøyvalg", body: "Teamet lærer når Copilot, ChatGPT, Gemini, automasjon eller en intern løsning passer best.", icon: BrainCircuit },
+      { title: "Databevissthet", body: "Ansatte får tydelige rammer for persondata, bedriftsdata og kildekritikk.", icon: ShieldCheck },
+      { title: "Felles praksis", body: "Vi hjelper dere å lage enkle regler for hvordan AI skal brukes i hverdagen.", icon: ClipboardCheck },
+    ],
+    process: standardProcess,
+    miniExample: {
+      title: "Arbeidsoppgave → trygg AI-praksis",
+      input: "En konkret oppgave teamet gjør ofte: skrive svar, oppsummere dokumenter, lage rapport eller forberede møte.",
+      output: "Ansatte lærer en trygg arbeidsmåte med riktig prompt, kildekontroll, datagrense og godkjenning.",
+      control: "Teamet får sjekklister for når AI-resultater kan brukes, må endres eller må stoppes.",
+    },
+    concreteExample: {
+      eyebrow: "Eksempel på opplæring",
+      title: "Fra tilfeldig AI-bruk til felles arbeidsmåte",
+      scenario:
+        "Et team bruker Copilot og ChatGPT ulikt. Noen får gode resultater, andre stoler for mye på svarene, og ingen har en felles grense for bedriftsdata.",
+      steps: [
+        { label: "Kartlegg", body: "Vi finner oppgavene teamet faktisk vil bruke AI til og hvilke data som inngår." },
+        { label: "Tren", body: "Teamet jobber med praktiske eksempler, kvalitetssjekk og trygg promptstruktur." },
+        { label: "Rammer", body: "Dere får en enkel praksis for verktøyvalg, databruk, kontroll og videre forbedring." },
+      ],
+      note: "Målet er ikke at alle skal bli AI-eksperter, men at teamet bruker AI bedre og tryggere i hverdagen.",
+    },
+    examples: [
+      { label: "Kontorarbeid", title: "Skrive og oppsummere bedre", body: "Praktisk bruk av AI til e-post, referater, rapporter og dokumentutkast." },
+      { label: "Kundeservice", title: "Svarutkast med kontroll", body: "Hvordan ansatte kan få hjelp uten at AI bestemmer hva kunden får." },
+      { label: "Ledelse", title: "Felles retningslinjer", body: "Enkle rammer for databruk, kvalitetssikring og ansvar." },
+    ],
+    safety:
+      "God opplæring reduserer risiko. Vi gjør personvern, dataminimering, kildekritikk og menneskelig kontroll til en praktisk del av hverdagsbruken.",
+    flow: ["Oppgaver kartlegges", "Trygge eksempler trenes", "Felles regler etableres", "Teamet forbedrer praksis"],
+    faqs: standardFaqs,
+    ctaTitle: "Vil dere bruke AI tryggere i teamet?",
+    ctaBody:
+      "Book en kartlegging, så finner vi hvilke team, verktøy og arbeidsoppgaver som bør prioriteres i opplæringen.",
+    metadata: {
+      title: "AI-opplæring | ANAi",
+      description:
+        "Praktisk AI-opplæring for norske bedrifter som vil bruke Copilot, ChatGPT og andre AI-verktøy trygt og nyttig.",
     },
   },
   "ai-automatisering": {

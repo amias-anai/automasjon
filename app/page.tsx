@@ -2,149 +2,136 @@ import Image from "next/image";
 import Link from "next/link";
 import {
   ArrowRight,
-  Bot,
+  BookOpenCheck,
+  BrainCircuit,
   CalendarDays,
-  Clock3,
-  Code2,
+  CheckCircle2,
+  ClipboardCheck,
   FileSearch,
-  Headphones,
-  LineChart,
-  MessageCircle,
+  GraduationCap,
+  Layers3,
   PenLine,
   Rocket,
   ShieldCheck,
   Sparkles,
   Target,
   Users,
+  Workflow,
 } from "lucide-react";
+import { HomeWorkflowAnimation } from "./components/HomeWorkflowAnimation";
 import { SiteFooter, SiteHeader } from "./components/MarketingPage";
 
-const services = [
+const trustChips = [
+  { label: "Trygt og GDPR-bevisst", icon: ShieldCheck },
+  { label: "Mennesker i kontroll", icon: Users },
+  { label: "Bygget for norske SMB-er", icon: Sparkles },
+];
+
+const offerPaths = [
   {
-    title: "Kundehenvendelser og oppfølging",
-    image: "/landing/service-card-customer-inquiries-v2.svg",
-    imageAlt: "Kundehenvendelse gjort om til AI-sammendrag, svarutkast og godkjenning",
-    icon: MessageCircle,
-    href: "/kundehenvendelser-og-oppfolging",
-    price: "Raskere svar",
-    body: "Sorter henvendelser, lag svarutkast, oppsummer kundedialog og foreslå neste steg — slik at kunder får raskere oppfølging og færre saker faller mellom stolene.",
-    visual: {
-      label: "Innboks",
-      title: "Svarutkast klart",
-      body: "Oppsummering, neste steg og forslag til svar.",
-    },
-  },
-  {
-    title: "Administrasjon og dokumentasjon",
-    image: "/landing/service-card-admin-documentation-v2.svg",
-    imageAlt: "Notater strukturert til rapport, sjekkliste, oppgaver og frist",
+    title: "AI-kartlegging",
+    body: "For selskaper som vet at AI kan spare tid, men trenger å finne riktig startpunkt først.",
+    href: "/ai-kartlegging",
     icon: FileSearch,
-    href: "/administrasjon-og-dokumentasjon",
-    price: "Mindre manuelt arbeid",
-    body: "Gjør notater, skjemaer, møtereferater og løse beskjeder om til strukturerte utkast, sjekklister, rapporter og oppgaver.",
-    visual: {
-      label: "Notater",
-      title: "Rapport + sjekkliste",
-      body: "Løse punkter blir ansvar, frister og struktur.",
-    },
+    action: "Finn riktig pilot",
   },
   {
-    title: "Salg, tilbud og rapportering",
-    image: "/landing/service-card-sales-offers-reporting-v2.svg",
-    imageAlt: "Befaring gjort om til tilbudsutkast, CRM-notat og oppfølging",
-    icon: Bot,
+    title: "AI-opplæring",
+    body: "For team som vil bruke Copilot, ChatGPT og andre AI-verktøy praktisk, trygt og likt i hverdagen.",
+    href: "/ai-opplaering",
+    icon: GraduationCap,
+    action: "Lær trygg bruk",
+  },
+  {
+    title: "AI-arbeidsflyter",
+    body: "For bedrifter som vil automatisere konkrete prosesser med klare roller, dataflyt og godkjenning.",
+    href: "/ai-automatisering",
+    icon: Workflow,
+    action: "Bygg kontrollert flyt",
+  },
+];
+
+const workAreas = [
+  {
+    title: "Kundeservice",
+    body: "Svarutkast, oppsummering og oppfølging.",
+    href: "/kundehenvendelser-og-oppfolging",
+  },
+  {
+    title: "Saksbehandling",
+    body: "Klassifisering, saksnotat og neste steg.",
+    href: "/saksbehandling",
+  },
+  {
+    title: "Administrasjon",
+    body: "Notater, referater, rapporter og oppgaver.",
+    href: "/administrasjon-og-dokumentasjon",
+  },
+  {
+    title: "Økonomi og regnskap",
+    body: "Bilag, avvik, purring og rapportutkast.",
+    href: "/okonomi-og-regnskap",
+  },
+  {
+    title: "Salg",
+    body: "Tilbud, CRM-notater og oppfølging.",
     href: "/salg-tilbud-og-rapportering",
-    price: "Bedre oppfølging",
-    body: "Lag bedre salgsoppfølging, tilbudsutkast, CRM-notater, statusoppdateringer og rapporter — med AI som hjelper teamet å holde flyt og oversikt.",
-    visual: {
-      label: "Befaring",
-      title: "Tilbud + CRM-notat",
-      body: "Behov, omfang og oppfølging samles raskere.",
-    },
   },
   {
     title: "Intern kunnskap",
-    image: "/landing/service-card-internal-knowledge-v2.svg",
-    imageAlt: "Intern kunnskapssøk med svar, rutine, mal, FAQ og synlige kilder",
-    icon: FileSearch,
+    body: "Søk, kilder, rutiner og maler.",
     href: "/intern-kunnskap",
-    price: "Raskere svar internt",
-    body: "Gjør dokumenter, rutiner, maler og erfaringer enklere å finne igjen — med AI-assistenter som gir relevante utkast og peker teamet mot riktig kunnskap.",
-    visual: {
-      label: "Spørsmål",
-      title: "Hvordan gjør vi dette?",
-      body: "Svar fra rutiner, maler og dokumenter.",
-    },
   },
   {
     title: "AI-automatisering",
-    image: "/landing/service-card-ai-automation-v2.svg",
-    imageAlt: "Automatisk flyt mellom skjema, CRM, oppgave, varsel og dokument",
-    icon: Code2,
+    body: "Flyt mellom e-post, skjema, CRM og oppgaver.",
     href: "/ai-automatisering",
-    price: "Mer flyt mellom systemer",
-    body: "Koble sammen manuelle steg, varsler, oppgaver og informasjonsflyt slik at mindre tid går til kopiering, sortering og oppfølging på tvers av verktøy.",
-    visual: {
-      label: "Flyt",
-      title: "E-post → CRM → Oppgave",
-      body: "Dokumenter og varsler følger riktig prosess.",
-    },
   },
   {
-    title: "Skreddersydde AI-løsninger",
-    image: "/landing/service-card-custom-workflows-v2.svg",
-    imageAlt: "Skreddersydd arbeidsflyt med kartlegging, pilot, godkjenning og forbedring",
-    icon: Sparkles,
+    title: "Skreddersydd løsning",
+    body: "Når arbeidsflyten trenger en egen assistent.",
     href: "/skreddersydde-ai-losninger",
-    price: "Tilpasset arbeidsflyten",
-    body: "Utvikle kontrollerte AI-løsninger rundt deres egne prosesser, data og rutiner — fra første pilot til en trygg løsning teamet faktisk tar i bruk.",
-    visual: {
-      label: "Skreddersøm",
-      title: "Kartlegg → Pilot → Godkjenn",
-      body: "En løsning rundt måten teamet faktisk jobber.",
-    },
   },
 ];
 
-const process = [
+const principles = [
   {
-    title: "Kartlegg arbeidsflyten",
-    icon: FileSearch,
-    body: "Vi starter med å forstå hvor tiden forsvinner: manuelle oppgaver, gjentakende spørsmål, dokumentasjon, rapportering, oppfølging eller koordinering.",
+    title: "Praktisk før imponerende",
+    body: "AI skal løse faktiske arbeidsoppgaver, ikke bare se avansert ut i en demo.",
+    icon: Target,
   },
   {
-    title: "Velg riktig startpunkt",
-    icon: PenLine,
-    body: "Sammen velger vi én konkret arbeidsflyt med tydelig verdi og lav risiko. Målet er å skape nytte raskt — ikke å gjøre alt på én gang.",
+    title: "Trygt før autonomt",
+    body: "Vi starter med kontroll, godkjenning og lav risiko før noe skaleres videre.",
+    icon: ShieldCheck,
   },
   {
-    title: "Utvikle og test løsningen",
-    icon: Code2,
-    body: "Vi utvikler en praktisk AI-assistent eller automasjon som passer inn i dagens rutiner, med menneskelig kontroll og tydelige rammer.",
+    title: "Eksisterende systemer først",
+    body: "Vi bygger rundt verktøyene dere allerede bruker, ikke unødvendige nye plattformer.",
+    icon: Layers3,
   },
   {
-    title: "Forbedre og utvid",
-    icon: LineChart,
-    body: "Når løsningen fungerer i praksis, måler vi effekt, justerer arbeidsflyten og vurderer neste område hvor AI kan skape verdi.",
+    title: "Opplæring er en del av løsningen",
+    body: "En AI-løsning fungerer først når teamet forstår når og hvordan den skal brukes.",
+    icon: BookOpenCheck,
   },
 ];
 
-const workflowExamples = [
-  {
-    title: "Befaring → tilbudsutkast",
-    body: "Notater, bilder eller skjema fra befaring struktureres til et første tilbudsutkast som teamet kvalitetssikrer før kunden får noe.",
-    icon: PenLine,
-  },
-  {
-    title: "Kundehenvendelse → svarutkast",
-    body: "En innkommende e-post eller skjemasak oppsummeres, får forslag til svar og relevante oppfølgingsspørsmål før menneskelig godkjenning.",
-    icon: MessageCircle,
-  },
-  {
-    title: "Møtenotater → oppgaver og kundeoppdatering",
-    body: "Løse møtenotater blir til oppgaver, ansvarlige og et kort kundeutkast som kan redigeres og sendes av ansvarlig person.",
-    icon: FileSearch,
-  },
+const implementationSteps = [
+  "Kartlegg arbeidsflyten",
+  "Vurder risiko og data",
+  "Velg riktig verktøy",
+  "Test én konkret pilot",
+  "Tren teamet",
+  "Forbedre",
+];
+
+const controlPrinciples = [
+  "Lavrisiko pilot først",
+  "Minst mulig persondata",
+  "Menneskelig godkjenning ved viktige handlinger",
+  "Leverandører og API-er avklares per prosjekt",
+  "Ingen tilfeldig bruk av forbruker-AI med bedriftsdata",
 ];
 
 function NorwegianFlag() {
@@ -158,37 +145,127 @@ function NorwegianFlag() {
   );
 }
 
+function HeroWorkflowVisual() {
+  return (
+    <div className="pointer-events-none relative hidden min-h-[560px] lg:block">
+      <div className="absolute right-0 top-8 h-[470px] w-[620px] overflow-hidden rounded-[8px] border border-white/55 bg-[#fffaf4]/70 shadow-[0_34px_90px_rgba(15,45,66,0.18)] backdrop-blur-md">
+        <div className="flex items-center justify-between border-b border-[#dfd0c2]/70 px-5 py-4">
+          <div className="flex items-center gap-2">
+            <span className="h-3 w-3 rounded-full bg-[#c95720]" />
+            <span className="h-3 w-3 rounded-full bg-[#e8a05c]" />
+            <span className="h-3 w-3 rounded-full bg-[#0f2d42]" />
+          </div>
+          <span className="rounded-full bg-[#0f2d42]/8 px-3 py-1 text-xs font-bold text-[#0f2d42]">
+            Arbeidsflyt
+          </span>
+        </div>
+        <div className="grid h-full grid-cols-[0.72fr_1fr]">
+          <div className="border-r border-[#dfd0c2]/80 p-5">
+            <p className="text-xs font-bold uppercase tracking-[0.14em] text-[#c95720]">Innboks</p>
+            <div className="mt-5 space-y-3">
+              {["Ny kundehenvendelse", "Vedlegg mottatt", "Mangler kontekst", "Oppfølging"].map((item, index) => (
+                <div
+                  key={item}
+                  className="rounded-md border border-[#dfd0c2] bg-white/70 p-3 shadow-[0_10px_24px_rgba(15,45,66,0.05)]"
+                  style={{ transform: `translateX(${index === 1 ? 16 : 0}px)` }}
+                >
+                  <div className="h-2 w-16 rounded-full bg-[#c95720]/35" />
+                  <div className="mt-3 h-2 w-full rounded-full bg-[#0f2d42]/14" />
+                  <div className="mt-2 h-2 w-2/3 rounded-full bg-[#0f2d42]/10" />
+                </div>
+              ))}
+            </div>
+          </div>
+          <div className="relative p-6">
+            <div className="absolute inset-x-6 top-28 h-px bg-[#d8c7b8]" />
+            <div className="relative grid grid-cols-3 gap-4">
+              {[
+                ["Klassifiser", BrainCircuit],
+                ["Svarutkast", PenLine],
+                ["Godkjenn", ClipboardCheck],
+              ].map(([label, Icon], index) => (
+                <div key={label as string} className="text-center">
+                  <span className="mx-auto flex h-12 w-12 items-center justify-center rounded-full border border-[#dfd0c2] bg-[#0f2d42] text-white shadow-[0_12px_26px_rgba(15,45,66,0.20)]">
+                    <Icon className="h-5 w-5" />
+                  </span>
+                  <p className="mt-3 text-xs font-bold text-[#24465a]">{label as string}</p>
+                  {index < 2 ? (
+                    <span className="absolute top-6 h-px w-[72px] translate-x-10 bg-[#c95720]/55" />
+                  ) : null}
+                </div>
+              ))}
+            </div>
+
+            <div className="mt-12 rounded-lg border border-[#dfd0c2] bg-white/70 p-5 shadow-[0_18px_44px_rgba(15,45,66,0.08)]">
+              <div className="flex items-center justify-between gap-3">
+                <div>
+                  <p className="text-xs font-bold uppercase tracking-[0.14em] text-[#c95720]">
+                    AI-forslag
+                  </p>
+                  <h3 className="mt-2 text-xl font-bold text-[#0b3048]">Svarutkast klart</h3>
+                </div>
+                <span className="rounded-full border border-[#dfd0c2] bg-[#fffaf4] px-3 py-1 text-xs font-bold text-[#24465a]">
+                  Må godkjennes
+                </span>
+              </div>
+              <div className="mt-5 space-y-2">
+                <div className="h-2 w-full rounded-full bg-[#0f2d42]/14" />
+                <div className="h-2 w-11/12 rounded-full bg-[#0f2d42]/12" />
+                <div className="h-2 w-8/12 rounded-full bg-[#0f2d42]/10" />
+              </div>
+            </div>
+
+            <div className="mt-5 grid grid-cols-2 gap-3">
+              <div className="rounded-md border border-[#dfd0c2] bg-[#fffaf4]/76 p-4 text-sm font-bold text-[#0f2d42]">
+                CRM-forslag
+              </div>
+              <div className="rounded-md border border-[#dfd0c2] bg-[#fffaf4]/76 p-4 text-sm font-bold text-[#0f2d42]">
+                Oppfølging
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="absolute right-[500px] top-[395px] rounded-lg border border-[#dfd0c2] bg-[#fbf6f0] px-5 py-4 shadow-[0_18px_44px_rgba(15,45,66,0.14)]">
+        <p className="text-xs font-bold uppercase tracking-[0.14em] text-[#c95720]">Prinsipp</p>
+        <p className="mt-1 font-semibold text-[#0f2d42]">Menneske godkjenner</p>
+      </div>
+    </div>
+  );
+}
+
 export default function Home() {
   return (
     <main className="min-h-screen bg-[#f7f1ea] text-[#0f2d42]">
       <SiteHeader />
-      <section className="relative min-h-[680px] overflow-hidden border-b border-[#d8c7b8] lg:min-h-[760px]">
+
+      <section className="relative isolate overflow-hidden border-b border-[#d8c7b8]">
         <Image
           src="/landing/frontpage-human-workflow-hero-v2.png"
-          alt="Norsk bedriftsleder som går gjennom arbeidsflyter med laptop og notater"
+          alt="Norsk bedriftsleder som vurderer AI-støttede arbeidsflyter på kontoret"
           fill
           priority
           className="object-cover object-center"
           sizes="100vw"
         />
-        <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(250,242,233,0.97)_0%,rgba(250,242,233,0.86)_38%,rgba(250,242,233,0.38)_68%,rgba(15,45,66,0.08)_100%)]" />
+        <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(250,242,233,0.98)_0%,rgba(250,242,233,0.93)_36%,rgba(250,242,233,0.58)_66%,rgba(250,242,233,0.22)_100%)]" />
+        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(247,241,234,0.02)_0%,rgba(247,241,234,0.70)_100%)]" />
 
-        <div className="relative z-10 mx-auto max-w-7xl px-6 py-20 lg:px-10 lg:py-28">
-          <div className="relative z-20 max-w-2xl">
-            <div className="mb-8 flex items-center gap-3 text-sm font-medium text-[#173348]">
+        <div className="relative z-10 mx-auto grid min-h-[700px] max-w-7xl gap-10 px-6 py-16 lg:grid-cols-[0.95fr_1.05fr] lg:px-10 lg:py-20">
+          <div className="relative z-20 max-w-3xl self-center">
+            <div className="mb-8 flex items-center gap-3 text-sm font-semibold text-[#173348]">
               <NorwegianFlag />
-              <span>Praktiske AI-løsninger for norske bedrifter</span>
+              <span>Praktisk AI-innføring for norske bedrifter</span>
             </div>
-            <h1 className="font-display text-5xl leading-[0.98] tracking-normal text-[#0b3048] sm:text-7xl sm:leading-[0.94] lg:text-[5.7rem]">
-              Få AI til å skape faktisk verdi i bedriften
+            <h1 className="max-w-4xl font-display text-5xl leading-[0.98] tracking-normal text-[#0b3048] sm:text-6xl sm:leading-[0.94] lg:text-[4.55rem]">
+              AI som fungerer i arbeidsflytene dere allerede har
             </h1>
-            <p className="mt-7 max-w-xl text-lg leading-8 text-[#1c3c52]">
-              Mange bedrifter vet at AI kan spare tid, men er usikre på hvor de skal starte.
-              ANAi hjelper dere å finne, utvikle og ta i bruk konkrete AI-løsninger som
-              reduserer manuelt arbeid, forbedrer arbeidsflyten og gir teamet mer tid til
-              det som skaper verdi.
+            <p className="mt-7 max-w-2xl text-lg leading-8 text-[#1c3c52]">
+              ANAi hjelper norske SMB-er med å kartlegge, lære opp ansatte og
+              implementere AI-støttede arbeidsflyter på toppen av systemene de
+              allerede bruker, trygt, praktisk og med mennesker i kontroll.
             </p>
-            <div className="mt-8 flex flex-col gap-4 sm:flex-row">
+            <div className="mt-9 flex flex-col gap-4 sm:flex-row">
               <Link
                 href="/book-gratis-ai-kartlegging"
                 className="inline-flex h-14 items-center justify-center gap-3 rounded-md bg-[#c95720] px-8 text-base font-semibold text-white shadow-[0_18px_40px_rgba(201,87,32,0.28)] transition hover:bg-[#b74a18]"
@@ -197,169 +274,233 @@ export default function Home() {
                 <ArrowRight className="h-4 w-4" />
               </Link>
               <a
-                href="#tjenester"
-                className="inline-flex h-14 items-center justify-center rounded-md border border-[#0f2d42]/45 bg-[#f7f1ea]/70 px-8 text-base font-semibold text-[#0f2d42] backdrop-blur transition hover:border-[#c95720] hover:text-[#c95720]"
+                href="#arbeidsflyt"
+                className="inline-flex h-14 items-center justify-center rounded-md border border-[#0f2d42]/45 bg-[#f7f1ea]/72 px-8 text-base font-semibold text-[#0f2d42] backdrop-blur transition hover:border-[#c95720] hover:text-[#c95720]"
               >
-                Se hva vi kan automatisere
+                Se arbeidsflyt
               </a>
             </div>
-            <div className="mt-14 grid max-w-2xl gap-4 text-xs font-medium text-[#24465a] sm:grid-cols-3">
-              <div className="flex items-center gap-2">
-                <ShieldCheck className="h-4 w-4" />
-                Trygt og GDPR-bevisst
-              </div>
-              <div className="flex items-center gap-2">
-                <Users className="h-4 w-4" />
-                Mennesker i kontroll
-              </div>
-              <div className="flex items-center gap-2">
-                <Sparkles className="h-4 w-4" />
-                Laget for norske SMB-er
-              </div>
+            <div className="mt-12 grid max-w-2xl gap-3 text-sm font-semibold text-[#24465a] sm:grid-cols-3">
+              {trustChips.map((chip) => (
+                <div key={chip.label} className="flex items-center gap-2 rounded-full border border-[#dfd0c2] bg-[#fbf6f0]/74 px-4 py-3 shadow-[0_12px_28px_rgba(15,45,66,0.06)] backdrop-blur">
+                  <chip.icon className="h-4 w-4 text-[#c95720]" />
+                  {chip.label}
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <HeroWorkflowVisual />
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-7xl px-6 py-16 lg:px-10">
+        <div className="grid gap-10 lg:grid-cols-[0.88fr_1.12fr] lg:items-end">
+          <div>
+            <p className="text-sm font-bold text-[#c95720]">Utfordringen</p>
+            <h2 className="mt-3 max-w-2xl font-display text-4xl leading-[1.05] text-[#0b3048] sm:text-5xl">
+              AI-verktøyene finnes allerede. Utfordringen er å bruke dem riktig.
+            </h2>
+          </div>
+          <p className="max-w-2xl text-base leading-8 text-[#24465a]">
+            Mange selskaper har Copilot, ChatGPT, Microsoft 365, Google Workspace,
+            CRM, regneark og interne rutiner. Likevel stopper verdien ofte i uklare
+            startpunkter, personvernsusikkerhet, lite opplæring og manuelle steg
+            som fortsatt ligger mellom systemene.
+          </p>
+        </div>
+      </section>
+
+      <section className="bg-[#0f2d42] text-white">
+        <div className="mx-auto grid max-w-7xl gap-12 px-6 py-20 lg:grid-cols-[0.92fr_1.08fr] lg:items-center lg:px-10">
+          <div>
+            <p className="text-sm font-bold text-[#e8a05c]">Ikke enda en plattform</p>
+            <h2 className="mt-3 max-w-2xl font-display text-4xl leading-[1.05] sm:text-5xl">
+              Vi bygger ikke enda en plattform dere må bytte til
+            </h2>
+            <p className="mt-5 max-w-2xl text-base leading-8 text-white/74">
+              Vi hjelper dere å bruke AI sammen med systemene dere allerede har:
+              e-post, dokumenter, CRM, Microsoft 365, Copilot, ChatGPT, Google
+              Workspace, regneark og interne verktøy.
+            </p>
+          </div>
+          <div className="rounded-[8px] border border-white/12 bg-white/[0.045] p-6 shadow-[0_24px_70px_rgba(0,0,0,0.16)]">
+            <p className="text-xl font-semibold leading-8">
+              Noen ganger er riktig løsning opplæring. Andre ganger er det en
+              automasjon, en Copilot-flyt, en API-integrasjon eller en
+              skreddersydd AI-assistent.
+            </p>
+            <div className="mt-6 grid gap-3 sm:grid-cols-2">
+              {["Opplæring", "Automasjon", "AI-assistent", "Integrasjon"].map((item) => (
+                <div key={item} className="flex items-center gap-3 rounded-md border border-white/10 bg-white/[0.05] p-4 text-sm font-semibold text-white/78">
+                  <CheckCircle2 className="h-4 w-4 text-[#e8a05c]" />
+                  {item}
+                </div>
+              ))}
             </div>
           </div>
         </div>
       </section>
 
-      <section id="tjenester" className="mx-auto max-w-7xl px-6 py-10 lg:px-10">
-        <h2 className="text-center font-display text-4xl text-[#0b3048] sm:text-5xl">
-          AI-løsninger for arbeidsflytene som tar mest tid
-        </h2>
-        <p className="mx-auto mt-4 max-w-3xl text-center text-base leading-7 text-[#24465a]">
-          Vi lager praktiske AI-assistenter og automasjoner rundt oppgavene som allerede finnes
-          i bedriften — fra kundeoppfølging og dokumentasjon til salg, rapportering og intern
-          kunnskap.
-        </p>
-        <div className="mt-8 grid gap-6 lg:grid-cols-3">
-          {services.map((service) => (
+      <section id="tjenester" className="mx-auto max-w-7xl px-6 py-20 lg:px-10">
+        <div className="max-w-3xl">
+          <p className="text-sm font-bold text-[#c95720]">Tre måter vi hjelper på</p>
+          <h2 className="mt-3 font-display text-4xl text-[#0b3048] sm:text-5xl">
+            Fra usikker start til AI som faktisk brukes
+          </h2>
+        </div>
+        <div className="mt-10 grid gap-6 lg:grid-cols-3">
+          {offerPaths.map((offer) => (
             <Link
-              key={service.title}
-              href={service.href}
-              className="overflow-hidden rounded-lg border border-[#dfd0c2] bg-[#fbf6f0] shadow-[0_18px_50px_rgba(15,45,66,0.08)]"
+              key={offer.title}
+              href={offer.href}
+              className="group flex min-h-[290px] flex-col justify-between rounded-[8px] border border-[#dfd0c2] bg-[#fbf6f0] p-7 shadow-[0_18px_50px_rgba(15,45,66,0.06)] transition hover:-translate-y-1 hover:border-[#c95720]/55 hover:shadow-[0_24px_70px_rgba(15,45,66,0.11)]"
             >
-              <div className="relative h-64 overflow-hidden">
-                <Image
-                  src={service.image}
-                  alt={service.imageAlt}
-                  fill
-                  className="object-cover transition duration-700 hover:scale-105"
-                  sizes="(min-width: 1024px) 33vw, 100vw"
-                />
+              <div>
+                <span className="flex h-12 w-12 items-center justify-center rounded-full border border-[#d8c7b8] bg-white/70 text-[#0f2d42]">
+                  <offer.icon className="h-6 w-6" />
+                </span>
+                <h3 className="mt-7 font-display text-3xl text-[#0b3048]">{offer.title}</h3>
+                <p className="mt-4 text-sm leading-7 text-[#24465a]">{offer.body}</p>
               </div>
-              <div className="p-7">
-                <h3 className="font-display text-3xl text-[#0b3048]">{service.title}</h3>
-                <p className="mt-3 min-h-[88px] text-sm leading-7 text-[#24465a]">{service.body}</p>
-                <div className="mt-5 flex flex-wrap items-center gap-x-5 gap-y-2">
-                  <span className="inline-flex items-center gap-2 text-sm font-bold text-[#c95720]">
-                    Les mer
-                    <ArrowRight className="h-4 w-4" />
-                  </span>
-                  <span className="text-sm font-semibold text-[#24465a]">{service.price}</span>
-                </div>
-              </div>
+              <span className="mt-7 inline-flex items-center gap-2 text-sm font-bold text-[#c95720]">
+                {offer.action}
+                <ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" />
+              </span>
             </Link>
           ))}
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-6 py-10 lg:px-10">
-        <div className="flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
-          <div className="max-w-3xl">
-            <p className="text-sm font-bold text-[#c95720]">Arbeidsflyter</p>
-            <h2 className="mt-3 font-display text-4xl text-[#0b3048] sm:text-5xl">
-              Eksempler på AI-arbeidsflyter
+      <div id="arbeidsflyt">
+        <HomeWorkflowAnimation />
+      </div>
+
+      <section className="mx-auto max-w-7xl px-6 py-20 lg:px-10">
+        <div className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr]">
+          <div>
+            <p className="text-sm font-bold text-[#c95720]">Hva vi hjelper med</p>
+            <h2 className="mt-3 max-w-xl font-display text-4xl leading-[1.05] text-[#0b3048] sm:text-5xl">
+              Arbeidsområdene vi ofte starter med
             </h2>
-            <p className="mt-4 text-base leading-7 text-[#24465a]">
-              Dette er illustrative eksempler på hvordan ANAi kan støtte eksisterende rutiner.
-              De er ikke kundecaser eller dokumenterte resultater.
+            <p className="mt-5 max-w-xl text-base leading-8 text-[#24465a]">
+              Finn riktig inngang basert på hvor tiden forsvinner, hvilke systemer
+              dere bruker og hvor kontrollpunktene bør ligge.
             </p>
           </div>
-          <Link
-            href="/eksempler-pa-arbeidsflyter"
-            className="inline-flex h-12 shrink-0 items-center justify-center gap-3 rounded-md border border-[#0f2d42]/35 px-5 text-sm font-semibold text-[#0f2d42] transition hover:border-[#c95720] hover:text-[#c95720]"
-          >
-            Se flere detaljer
-            <ArrowRight className="h-4 w-4" />
-          </Link>
-        </div>
-        <div className="mt-8 grid gap-6 md:grid-cols-3">
-          {workflowExamples.map((example) => (
-            <article
-              key={example.title}
-              className="rounded-lg border border-[#dfd0c2] bg-[#fbf6f0] p-7 shadow-[0_14px_38px_rgba(15,45,66,0.06)]"
-            >
-              <span className="flex h-12 w-12 items-center justify-center rounded-full border border-[#d8c7b8] bg-white/60 text-[#0f2d42]">
-                <example.icon className="h-5 w-5" />
-              </span>
-              <h3 className="mt-5 text-xl font-bold text-[#0b3048]">{example.title}</h3>
-              <p className="mt-3 text-sm leading-7 text-[#24465a]">{example.body}</p>
-            </article>
-          ))}
+          <div className="grid gap-3 sm:grid-cols-2">
+            {workAreas.map((area) => (
+              <Link
+                key={area.title}
+                href={area.href}
+                className="group rounded-[8px] border border-[#dfd0c2] bg-[#fbf6f0] p-5 transition hover:border-[#c95720]/55 hover:bg-white/58"
+              >
+                <div className="flex items-start justify-between gap-4">
+                  <div>
+                    <h3 className="font-bold text-[#0b3048]">{area.title}</h3>
+                    <p className="mt-2 text-sm leading-6 text-[#24465a]">{area.body}</p>
+                  </div>
+                  <ArrowRight className="mt-1 h-4 w-4 shrink-0 text-[#c95720] transition group-hover:translate-x-1" />
+                </div>
+              </Link>
+            ))}
+          </div>
         </div>
       </section>
 
-      <section id="losninger" className="mx-auto max-w-7xl px-6 pb-6 lg:px-10">
-        <div className="grid overflow-hidden rounded-xl border border-[#dfd0c2] bg-[#fbf6f0] shadow-[0_18px_50px_rgba(15,45,66,0.06)] lg:grid-cols-[1fr_2.35fr]">
-          <div className="relative min-h-56">
-            <Image
-              src="/landing/hero-ai-kartlegging-checklist.svg"
-              alt="Sjekkliste for AI-kartlegging med tidstyv, første pilot, risiko og neste steg"
-              fill
-              className="object-cover"
-              sizes="(min-width: 1024px) 30vw, 100vw"
-            />
+      <section className="bg-[#efe8df]">
+        <div className="mx-auto max-w-7xl px-6 py-20 lg:px-10">
+          <div className="max-w-3xl">
+            <p className="text-sm font-bold text-[#c95720]">Hva vi står for</p>
+            <h2 className="mt-3 font-display text-4xl text-[#0b3048] sm:text-5xl">
+              AI-innføring med tydelige prinsipper
+            </h2>
           </div>
-          <div className="grid gap-6 p-8 md:grid-cols-3">
-            {[
-              ["Timer spart", "mindre manuelt arbeid", Clock3, "Reduser tid brukt på repeterende oppgaver som skriving, sortering, oppsummering, dokumentasjon og oppfølging."],
-              ["Trygt i bruk", "menneskelig kontroll", Headphones, "AI-en lager forslag og utkast. Mennesker godkjenner før noe sendes, deles eller brukes i viktige beslutninger."],
-              ["Tilpasset dere", "deres rutiner og systemer", Target, "Løsningene tilpasses deres faktiske rutiner, systemer og arbeidsflyter — ikke som en generisk chatbot."],
-            ].map(([value, label, Icon, body]) => (
-              <div key={value as string} className="border-[#dfd0c2] md:border-l md:pl-8">
-                <div className="flex items-start gap-4">
-                  <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full border border-[#d8c7b8] bg-white/60">
-                    <Icon className="h-6 w-6" />
-                  </span>
-                  <div>
-                    <div className="text-3xl font-medium">{value as string}</div>
-                    <div className="text-sm font-bold text-[#24465a]">{label as string}</div>
-                  </div>
+          <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+            {principles.map((principle) => (
+              <article key={principle.title} className="rounded-[8px] border border-[#dfd0c2] bg-[#fbf6f0] p-7 shadow-[0_14px_38px_rgba(15,45,66,0.05)]">
+                <principle.icon className="h-9 w-9 text-[#0b3048]" />
+                <h3 className="mt-6 text-lg font-bold">{principle.title}</h3>
+                <p className="mt-3 text-sm leading-7 text-[#24465a]">{principle.body}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-7xl px-6 py-20 lg:px-10">
+        <div className="grid gap-10 lg:grid-cols-[0.82fr_1.18fr] lg:items-center">
+          <div>
+            <p className="text-sm font-bold text-[#c95720]">Slik innfører vi AI</p>
+            <h2 className="mt-3 max-w-2xl font-display text-4xl leading-[1.05] text-[#0b3048] sm:text-5xl">
+              Uten å gjøre det unødvendig komplisert
+            </h2>
+            <p className="mt-5 max-w-xl text-base leading-8 text-[#24465a]">
+              Vi starter i én arbeidsflyt, vurderer data og risiko, velger riktig
+              verktøy og tester med teamet før løsningen forbedres eller skaleres.
+            </p>
+          </div>
+          <div className="grid gap-4 sm:grid-cols-2">
+            {implementationSteps.map((step, index) => (
+              <div key={step} className="flex items-start gap-4 rounded-[8px] border border-[#dfd0c2] bg-[#fbf6f0] p-5 shadow-[0_12px_34px_rgba(15,45,66,0.05)]">
+                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#0f2d42] text-sm font-bold text-white">
+                  {index + 1}
+                </span>
+                <div>
+                  <h3 className="font-bold text-[#0b3048]">{step}</h3>
+                  <p className="mt-2 text-sm leading-6 text-[#24465a]">
+                    {[
+                      "Vi finner hvor tid faktisk forsvinner.",
+                      "Vi ser på personvern, systemtilganger og hvor AI passer inn.",
+                      "Copilot, ChatGPT, Azure, Gemini, automasjon, lokal modell eller noe annet.",
+                      "Vi starter lite, måler verdi og holder mennesker i kontroll.",
+                      "Ansatte må forstå løsningen, ikke bare få et nytt verktøy.",
+                      "Vi justerer kvalitet, rutiner og neste mulige arbeidsflyt.",
+                    ][index]}
+                  </p>
                 </div>
-                <p className="mt-4 text-sm leading-7 text-[#24465a]">{body as string}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      <section id="prosess" className="mx-auto max-w-7xl px-6 py-6 lg:px-10">
-        <h2 className="text-center font-display text-4xl text-[#0b3048]">
-          Fra idé til fungerende AI-løsning
-        </h2>
-        <div className="mt-8 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
-          {process.map((step, index) => (
-            <article key={step.title} className="relative rounded-lg border border-[#dfd0c2] bg-[#fbf6f0] p-6">
-              <span className="absolute left-16 top-[-12px] flex h-7 w-7 items-center justify-center rounded-full bg-[#c95720] text-sm font-bold text-white">
-                {index + 1}
-              </span>
-              <step.icon className="h-10 w-10 text-[#0b3048]" />
-              <h3 className="mt-5 text-base font-bold">{step.title}</h3>
-              <p className="mt-2 text-sm leading-6 text-[#24465a]">{step.body}</p>
-            </article>
-          ))}
+      <section className="bg-[#0f2d42] text-white">
+        <div className="mx-auto grid max-w-7xl gap-12 px-6 py-20 lg:grid-cols-[0.88fr_1.12fr] lg:items-center lg:px-10">
+          <div>
+            <p className="text-sm font-bold text-[#e8a05c]">Personvern og kontroll</p>
+            <h2 className="mt-3 max-w-2xl font-display text-4xl leading-[1.05] sm:text-5xl">
+              Trygg AI-innføring, ikke fri autonomi
+            </h2>
+            <p className="mt-5 max-w-2xl text-base leading-8 text-white/74">
+              Vi vurderer datatyper, tilganger, leverandører, lagring og menneskelig
+              kontroll før en løsning settes i drift. Målet er arbeidsflyter ansatte
+              kan forstå, bruke og kontrollere.
+            </p>
+          </div>
+          <div className="rounded-[8px] border border-white/12 bg-white/[0.045] p-6">
+            <div className="grid gap-3">
+              {controlPrinciples.map((item) => (
+                <div key={item} className="flex items-start gap-3 rounded-md border border-white/10 bg-white/[0.045] p-4">
+                  <ShieldCheck className="mt-0.5 h-5 w-5 shrink-0 text-[#e8a05c]" />
+                  <p className="font-semibold text-white/82">{item}</p>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </section>
 
-      <section id="kontakt" className="mx-auto max-w-7xl px-6 py-8 lg:px-10">
-        <div className="relative overflow-hidden rounded-xl border border-[#dfd0c2] bg-[#fbf6f0] p-8 shadow-[0_18px_50px_rgba(15,45,66,0.08)] md:p-12">
+      <section id="kontakt" className="mx-auto max-w-7xl px-6 py-20 lg:px-10">
+        <div className="relative overflow-hidden rounded-[8px] border border-[#dfd0c2] bg-[#fbf6f0] p-8 shadow-[0_18px_50px_rgba(15,45,66,0.08)] md:p-12">
           <Image
             src="/landing/frontpage-ai-kartlegging-checklist.png"
-            alt="Person som går gjennom sjekkliste for AI-kartlegging"
+            alt=""
             fill
             className="object-cover opacity-70"
             sizes="100vw"
           />
-          <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(251,246,240,0.98),rgba(251,246,240,0.88)_50%,rgba(251,246,240,0.24))]" />
+          <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(251,246,240,0.98),rgba(251,246,240,0.88)_52%,rgba(251,246,240,0.30))]" />
           <div className="relative z-10 flex flex-col gap-8 md:flex-row md:items-center md:justify-between">
             <div className="flex max-w-2xl gap-8">
               <div className="hidden h-24 w-24 shrink-0 items-center justify-center rounded-full border border-[#0f2d42]/50 md:flex">
@@ -367,15 +508,12 @@ export default function Home() {
               </div>
               <div>
                 <h2 className="font-display text-4xl text-[#0b3048] md:text-5xl">
-                  Hvor kan AI spare mest tid hos dere?
+                  Start med én arbeidsflyt
                 </h2>
                 <p className="mt-4 text-base leading-7 text-[#24465a]">
-                  Book en gratis AI-kartlegging, så finner vi konkrete arbeidsflyter hvor AI kan
-                  redusere manuelt arbeid, forbedre oppfølgingen eller gi bedre oversikt — uten
-                  at dere trenger å lage alt på nytt.
-                </p>
-                <p className="mt-3 text-sm font-semibold text-[#c95720]">
-                  Vi starter med én konkret arbeidsflyt og viser hva som er mulig.
+                  Vi kartlegger hvor AI kan spare tid, hvilke data og risikoer som
+                  må vurderes, og hvilken løsning som passer best for systemene dere
+                  allerede bruker.
                 </p>
               </div>
             </div>
