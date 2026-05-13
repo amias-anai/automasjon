@@ -8,6 +8,12 @@ type LeadFormProps = {
   source?: "contact" | "booking";
 };
 
+type ContactResponse = {
+  ok?: boolean;
+  delivery?: string[];
+  mailtoHref?: string;
+};
+
 const fields = [
   ["Navn", "name", "text", true],
   ["Bedrift", "company", "text", true],
@@ -23,31 +29,71 @@ export function LeadForm({
 }: LeadFormProps) {
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
   const [message, setMessage] = useState("");
+  const [mailtoHref, setMailtoHref] = useState("");
+
+  function createMailtoHref(payload: Record<string, FormDataEntryValue>) {
+    const subject = `Ny ANAi-henvendelse fra ${payload.company || "nettsiden"}`;
+    const body = [
+      `Kilde: ${source}`,
+      `Navn: ${payload.name || ""}`,
+      `Bedrift: ${payload.company || ""}`,
+      `E-post: ${payload.email || ""}`,
+      `Telefon: ${payload.phone || ""}`,
+      `Rolle: ${payload.role || ""}`,
+      `Bransje: ${payload.industry || ""}`,
+      "",
+      "Beskrivelse:",
+      `${payload.description || ""}`,
+    ].join("\n");
+
+    return `mailto:system@anai.no?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  }
 
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     setStatus("submitting");
     setMessage("");
+    setMailtoHref("");
 
     const form = event.currentTarget;
     const formData = new FormData(form);
     const payload = Object.fromEntries(formData.entries());
+    const fallbackMailtoHref = createMailtoHref(payload);
 
-    const response = await fetch("/api/contact", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ ...payload, source }),
-    });
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ ...payload, source }),
+      });
 
-    if (response.ok) {
-      form.reset();
-      setStatus("success");
-      setMessage("Takk. Henvendelsen er lagret, og vi følger opp.");
+      const result = (await response.json().catch(() => ({}))) as ContactResponse;
+
+      if (response.ok && result.delivery?.includes("email-fallback")) {
+        form.reset();
+        setStatus("success");
+        setMailtoHref(result.mailtoHref || fallbackMailtoHref);
+        setMessage("Skjemaet er klart som e-postutkast. Åpne utkastet og trykk send, så følger vi opp.");
+        return;
+      }
+
+      if (response.ok) {
+        form.reset();
+        setStatus("success");
+        setMessage("Takk. Henvendelsen er sendt, og vi følger opp.");
+        return;
+      }
+
+      setStatus("error");
+      setMailtoHref(fallbackMailtoHref);
+      setMessage("Automatisk innsending svarte ikke. Send e-postutkastet under, så følger vi opp.");
+      return;
+    } catch {
+      setStatus("error");
+      setMailtoHref(fallbackMailtoHref);
+      setMessage("Automatisk innsending svarte ikke. Send e-postutkastet under, så følger vi opp.");
       return;
     }
-
-    setStatus("error");
-    setMessage("Noe gikk galt. Send gjerne e-post til system@anai.no.");
   }
 
   return (
@@ -100,8 +146,8 @@ export function LeadForm({
         <ArrowRight className="h-4 w-4" />
       </button>
       <p className="mt-4 text-xs leading-6 text-[#24465a]">
-        Felt markert med * er obligatoriske. Opplysningene lagres i Supabase-prosjektet i
-        EU-regionen eu-central-1 og brukes bare til å svare på henvendelsen.
+        Felt markert med * er obligatoriske. Opplysningene brukes bare til å svare på
+        henvendelsen.
       </p>
       {message ? (
         <p
@@ -112,7 +158,17 @@ export function LeadForm({
           }`}
         >
           {status === "success" ? <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0" /> : null}
-          {message}
+          <span>
+            {message}
+            {mailtoHref ? (
+              <a
+                href={mailtoHref}
+                className="ml-2 inline-flex font-bold underline underline-offset-4"
+              >
+                Åpne e-postutkast
+              </a>
+            ) : null}
+          </span>
         </p>
       ) : null}
     </form>

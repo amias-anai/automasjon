@@ -58,8 +58,9 @@ export default function BookingPage() {
             mens mennesker beholder kontrollen.
           </p>
           <p className="mt-4 max-w-xl text-sm leading-7 text-[#24465a]">
-            Kalenderen under er en direkte booking. Skjemaet lenger ned er valgfritt å bruke
-            hvis du vil sende litt kontekst før møtet eller heller ønsker at vi tar kontakt.
+            Booking åpnes i Google Calendar med Google Meet som møteform. Skjemaet lenger ned
+            er valgfritt å bruke hvis du vil sende litt kontekst før møtet eller heller ønsker
+            at vi tar kontakt.
           </p>
           <div className="mt-8 space-y-4">
             {[

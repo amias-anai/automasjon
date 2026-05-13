@@ -3,18 +3,12 @@ import Link from "next/link";
 import type { ReactNode } from "react";
 import {
   ArrowRight,
-  BrainCircuit,
   CalendarDays,
   CheckCircle2,
-  ClipboardCheck,
-  Database,
-  Layers3,
   Mail,
   MapPin,
   Phone,
   ShieldCheck,
-  Sparkles,
-  UserCheck,
 } from "lucide-react";
 import { productList } from "../product-content";
 import { LeadForm } from "./LeadForm";
@@ -22,7 +16,18 @@ import { ProductDropdown } from "./ProductDropdown";
 
 export const contactEmail = "system@anai.no";
 export const contactPhone = "+47 41 40 97 53";
-export const bookingUrl = "https://cal.eu/anai-no/30min";
+const googleCalendarEventParams = new URLSearchParams({
+  action: "TEMPLATE",
+  text: "Gratis AI-kartlegging med ANAi",
+  details:
+    "Gratis AI-kartlegging med ANAi. Velg et tidspunkt som passer, og legg til Google Meet i kalenderinvitasjonen hvis det ikke opprettes automatisk.",
+  location: "Google Meet",
+  add: contactEmail,
+});
+
+export const googleCalendarEventUrl = `https://calendar.google.com/calendar/render?${googleCalendarEventParams.toString()}`;
+export const bookingUrl =
+  process.env.NEXT_PUBLIC_GOOGLE_CALENDAR_BOOKING_URL || googleCalendarEventUrl;
 
 const navLinks = [
   ["Eksempler", "/eksempler-pa-arbeidsflyter"],
@@ -51,20 +56,6 @@ const footerGroups = [
   },
 ];
 
-const headerBuildSteps = [
-  { label: "Kartlegg", icon: BrainCircuit },
-  { label: "Vurder risiko", icon: ShieldCheck },
-  { label: "Bygg pilot", icon: Sparkles },
-];
-
-const headerControlItems = [
-  { label: "Kilder", icon: Database },
-  { label: "Utkast", icon: ClipboardCheck },
-  { label: "Godkjenning", icon: UserCheck },
-];
-
-const headerPillItems = ["Data", "Verktøy", "Team"];
-
 function Logo({ priority = false }: { priority?: boolean }) {
   return (
     <Image
@@ -86,72 +77,6 @@ function NorwegianFlag() {
       <span className="absolute inset-y-0 left-[6px] w-[3px] bg-[#00205b]" />
       <span className="absolute inset-x-0 top-[5px] h-[3px] bg-[#00205b]" />
     </span>
-  );
-}
-
-function HeaderWorkbenchVisual() {
-  return (
-    <div className="relative hidden lg:block">
-      <div className="absolute -right-8 top-8 h-64 w-64 rounded-full bg-[#c95720]/10 blur-3xl" />
-      <div className="absolute -left-10 bottom-8 h-48 w-48 rounded-full bg-[#0f2d42]/10 blur-3xl" />
-      <div className="relative ml-auto max-w-xl rounded-[8px] border border-[#dfd0c2] bg-[#fbf6f0]/86 p-5 shadow-[0_28px_80px_rgba(15,45,66,0.12)] backdrop-blur">
-        <div className="flex items-center justify-between border-b border-[#dfd0c2] pb-4">
-          <div className="flex items-center gap-2">
-            <span className="h-3 w-3 rounded-full bg-[#c95720]" />
-            <span className="h-3 w-3 rounded-full bg-[#e8a05c]" />
-            <span className="h-3 w-3 rounded-full bg-[#0f2d42]" />
-          </div>
-          <span className="rounded-full bg-[#0f2d42]/8 px-3 py-1 text-xs font-bold text-[#0f2d42]">
-            ANAi arbeidsflate
-          </span>
-        </div>
-
-        <div className="mt-5 grid gap-4 md:grid-cols-[0.92fr_1.08fr]">
-          <div className="space-y-3">
-            {headerBuildSteps.map((step) => (
-              <div key={step.label} className="flex items-center gap-3 rounded-md border border-[#dfd0c2] bg-white/60 p-4">
-                <span className="flex h-10 w-10 items-center justify-center rounded-full bg-[#0f2d42] text-white">
-                  <step.icon className="h-5 w-5" />
-                </span>
-                <div>
-                  <p className="font-bold text-[#0b3048]">{step.label}</p>
-                  <div className="mt-2 h-2 w-24 rounded-full bg-[#0f2d42]/12" />
-                </div>
-              </div>
-            ))}
-          </div>
-
-          <div className="rounded-lg border border-[#dfd0c2] bg-[#0f2d42] p-5 text-white">
-            <p className="text-xs font-bold uppercase tracking-[0.14em] text-[#e8a05c]">
-              Kontrollert flyt
-            </p>
-            <div className="mt-5 space-y-4">
-              {headerControlItems.map((item) => (
-                <div key={item.label} className="flex items-center justify-between gap-4">
-                  <span className="flex items-center gap-3 text-sm font-semibold text-white/78">
-                    <item.icon className="h-4 w-4 text-[#e8a05c]" />
-                    {item.label}
-                  </span>
-                  <CheckCircle2 className="h-4 w-4 text-[#e8a05c]" />
-                </div>
-              ))}
-            </div>
-            <div className="mt-6 rounded-md border border-white/10 bg-white/[0.055] p-4 text-sm leading-6 text-white/70">
-              Bruk AI på toppen av systemene dere allerede har, med mennesker i kontroll.
-            </div>
-          </div>
-        </div>
-
-        <div className="mt-4 grid grid-cols-3 gap-3 text-xs font-bold text-[#24465a]">
-          {headerPillItems.map((item) => (
-            <div key={item} className="rounded-md border border-[#dfd0c2] bg-white/55 px-3 py-2">
-              <Layers3 className="mb-2 h-4 w-4 text-[#c95720]" />
-              {item}
-            </div>
-          ))}
-        </div>
-      </div>
-    </div>
   );
 }
 
@@ -257,16 +182,12 @@ export function PageHero({
 }) {
   return (
     <section className="relative overflow-hidden border-b border-[#dfd0c2] bg-[#f7f1ea]">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_78%_18%,rgba(201,87,32,0.12),transparent_30%),radial-gradient(circle_at_18%_76%,rgba(15,45,66,0.08),transparent_34%),linear-gradient(180deg,rgba(255,250,244,0.88),rgba(247,241,234,0.98))]" />
-      <div className="relative mx-auto grid max-w-7xl gap-12 px-6 py-20 lg:grid-cols-[0.95fr_1.05fr] lg:items-center lg:px-10 lg:py-24">
-        <div>
-          <p className="text-sm font-bold text-[#c95720]">{eyebrow}</p>
-          <h1 className="mt-4 max-w-4xl font-display text-4xl leading-[1.02] text-[#0b3048] sm:text-6xl sm:leading-[0.98] lg:text-[4.9rem]">
-            {title}
-          </h1>
-          <p className="mt-6 max-w-2xl text-lg leading-8 text-[#24465a]">{intro}</p>
-        </div>
-        <HeaderWorkbenchVisual />
+      <div className="relative mx-auto max-w-7xl px-6 py-20 lg:px-10 lg:py-24">
+        <p className="text-sm font-bold text-[#c95720]">{eyebrow}</p>
+        <h1 className="mt-4 max-w-5xl font-display text-4xl leading-[1.02] text-[#0b3048] sm:text-6xl sm:leading-[0.98] lg:text-[4.9rem]">
+          {title}
+        </h1>
+        <p className="mt-6 max-w-2xl text-lg leading-8 text-[#24465a]">{intro}</p>
       </div>
     </section>
   );
@@ -289,18 +210,39 @@ export function ContactForm({
 
 export function BookingEmbed() {
   return (
-    <div className="overflow-hidden rounded-xl border border-[#dfd0c2] bg-[#fbf6f0] shadow-[0_18px_50px_rgba(15,45,66,0.08)]">
+    <div className="rounded-xl border border-[#dfd0c2] bg-[#fbf6f0] p-6 shadow-[0_18px_50px_rgba(15,45,66,0.08)] md:p-8">
       <div className="border-b border-[#dfd0c2] px-6 py-5">
-        <p className="text-sm font-bold text-[#c95720]">Direkte booking</p>
-        <h2 className="mt-1 font-display text-3xl text-[#0b3048]">Velg tidspunkt i kalenderen</h2>
+        <p className="text-sm font-bold text-[#c95720]">Google Calendar og Meet</p>
+        <h2 className="mt-1 font-display text-3xl text-[#0b3048]">Book kartlegging i Google Calendar</h2>
       </div>
-      <iframe
-        title="Book gratis AI-kartlegging hos ANAi"
-        src={bookingUrl}
-        className="h-[720px] w-full bg-white"
-        loading="lazy"
-        referrerPolicy="strict-origin-when-cross-origin"
-      />
+      <div className="px-6 py-6">
+        <p className="leading-7 text-[#24465a]">
+          Velg et tidspunkt i Google Calendar. Møtet holdes på Google Meet, og invitasjonen
+          sendes til {contactEmail}.
+        </p>
+        <div className="mt-6 space-y-3">
+          {[
+            "Åpner Google Calendar med en ferdig utfylt AI-kartlegging.",
+            "Bruk en Google Meet-lenke i invitasjonen.",
+            "Du kan legge til kort kontekst i skjemaet under før møtet.",
+          ].map((item) => (
+            <div key={item} className="flex items-start gap-3">
+              <CheckCircle2 className="mt-1 h-5 w-5 shrink-0 text-[#c95720]" />
+              <p className="text-sm leading-7 text-[#24465a]">{item}</p>
+            </div>
+          ))}
+        </div>
+        <Link
+          href={bookingUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="mt-8 inline-flex h-14 items-center justify-center gap-3 rounded-md bg-[#c95720] px-8 text-base font-semibold text-white shadow-[0_18px_40px_rgba(201,87,32,0.24)] transition hover:bg-[#b74a18]"
+        >
+          <CalendarDays className="h-5 w-5" />
+          Åpne Google Calendar
+          <ArrowRight className="h-4 w-4" />
+        </Link>
+      </div>
     </div>
   );
 }
@@ -323,6 +265,8 @@ export function CtaBand() {
           </div>
           <Link
             href={bookingUrl}
+            target="_blank"
+            rel="noopener noreferrer"
             className="inline-flex h-14 shrink-0 items-center justify-center gap-3 rounded-md bg-[#c95720] px-8 text-base font-semibold text-white shadow-[0_18px_40px_rgba(201,87,32,0.28)] transition hover:bg-[#b74a18]"
           >
             <CalendarDays className="h-5 w-5" />

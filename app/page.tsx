@@ -3,14 +3,11 @@ import Link from "next/link";
 import {
   ArrowRight,
   BookOpenCheck,
-  BrainCircuit,
   CalendarDays,
   CheckCircle2,
-  ClipboardCheck,
   FileSearch,
   GraduationCap,
   Layers3,
-  PenLine,
   Rocket,
   ShieldCheck,
   Sparkles,
@@ -145,105 +142,24 @@ function NorwegianFlag() {
   );
 }
 
-function HeroWorkflowVisual() {
-  return (
-    <div className="pointer-events-none relative hidden min-h-[560px] lg:block">
-      <div className="absolute right-0 top-8 h-[470px] w-[620px] overflow-hidden rounded-[8px] border border-white/55 bg-[#fffaf4]/70 shadow-[0_34px_90px_rgba(15,45,66,0.18)] backdrop-blur-md">
-        <div className="flex items-center justify-between border-b border-[#dfd0c2]/70 px-5 py-4">
-          <div className="flex items-center gap-2">
-            <span className="h-3 w-3 rounded-full bg-[#c95720]" />
-            <span className="h-3 w-3 rounded-full bg-[#e8a05c]" />
-            <span className="h-3 w-3 rounded-full bg-[#0f2d42]" />
-          </div>
-          <span className="rounded-full bg-[#0f2d42]/8 px-3 py-1 text-xs font-bold text-[#0f2d42]">
-            Arbeidsflyt
-          </span>
-        </div>
-        <div className="grid h-full grid-cols-[0.72fr_1fr]">
-          <div className="border-r border-[#dfd0c2]/80 p-5">
-            <p className="text-xs font-bold uppercase tracking-[0.14em] text-[#c95720]">Innboks</p>
-            <div className="mt-5 space-y-3">
-              {["Ny kundehenvendelse", "Vedlegg mottatt", "Mangler kontekst", "Oppfølging"].map((item, index) => (
-                <div
-                  key={item}
-                  className="rounded-md border border-[#dfd0c2] bg-white/70 p-3 shadow-[0_10px_24px_rgba(15,45,66,0.05)]"
-                  style={{ transform: `translateX(${index === 1 ? 16 : 0}px)` }}
-                >
-                  <div className="h-2 w-16 rounded-full bg-[#c95720]/35" />
-                  <div className="mt-3 h-2 w-full rounded-full bg-[#0f2d42]/14" />
-                  <div className="mt-2 h-2 w-2/3 rounded-full bg-[#0f2d42]/10" />
-                </div>
-              ))}
-            </div>
-          </div>
-          <div className="relative p-6">
-            <div className="absolute inset-x-6 top-28 h-px bg-[#d8c7b8]" />
-            <div className="relative grid grid-cols-3 gap-4">
-              {[
-                ["Klassifiser", BrainCircuit],
-                ["Svarutkast", PenLine],
-                ["Godkjenn", ClipboardCheck],
-              ].map(([label, Icon], index) => (
-                <div key={label as string} className="text-center">
-                  <span className="mx-auto flex h-12 w-12 items-center justify-center rounded-full border border-[#dfd0c2] bg-[#0f2d42] text-white shadow-[0_12px_26px_rgba(15,45,66,0.20)]">
-                    <Icon className="h-5 w-5" />
-                  </span>
-                  <p className="mt-3 text-xs font-bold text-[#24465a]">{label as string}</p>
-                  {index < 2 ? (
-                    <span className="absolute top-6 h-px w-[72px] translate-x-10 bg-[#c95720]/55" />
-                  ) : null}
-                </div>
-              ))}
-            </div>
-
-            <div className="mt-12 rounded-lg border border-[#dfd0c2] bg-white/70 p-5 shadow-[0_18px_44px_rgba(15,45,66,0.08)]">
-              <div className="flex items-center justify-between gap-3">
-                <div>
-                  <p className="text-xs font-bold uppercase tracking-[0.14em] text-[#c95720]">
-                    AI-forslag
-                  </p>
-                  <h3 className="mt-2 text-xl font-bold text-[#0b3048]">Svarutkast klart</h3>
-                </div>
-                <span className="rounded-full border border-[#dfd0c2] bg-[#fffaf4] px-3 py-1 text-xs font-bold text-[#24465a]">
-                  Må godkjennes
-                </span>
-              </div>
-              <div className="mt-5 space-y-2">
-                <div className="h-2 w-full rounded-full bg-[#0f2d42]/14" />
-                <div className="h-2 w-11/12 rounded-full bg-[#0f2d42]/12" />
-                <div className="h-2 w-8/12 rounded-full bg-[#0f2d42]/10" />
-              </div>
-            </div>
-
-            <div className="mt-5 grid grid-cols-2 gap-3">
-              <div className="rounded-md border border-[#dfd0c2] bg-[#fffaf4]/76 p-4 text-sm font-bold text-[#0f2d42]">
-                CRM-forslag
-              </div>
-              <div className="rounded-md border border-[#dfd0c2] bg-[#fffaf4]/76 p-4 text-sm font-bold text-[#0f2d42]">
-                Oppfølging
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div className="absolute right-[500px] top-[395px] rounded-lg border border-[#dfd0c2] bg-[#fbf6f0] px-5 py-4 shadow-[0_18px_44px_rgba(15,45,66,0.14)]">
-        <p className="text-xs font-bold uppercase tracking-[0.14em] text-[#c95720]">Prinsipp</p>
-        <p className="mt-1 font-semibold text-[#0f2d42]">Menneske godkjenner</p>
-      </div>
-    </div>
-  );
-}
-
 export default function Home() {
   return (
     <main className="min-h-screen bg-[#f7f1ea] text-[#0f2d42]">
       <SiteHeader />
 
       <section className="relative isolate overflow-hidden border-b border-[#d8c7b8] bg-[#f7f1ea]">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_78%_18%,rgba(201,87,32,0.14),transparent_30%),radial-gradient(circle_at_18%_72%,rgba(15,45,66,0.08),transparent_34%),linear-gradient(180deg,rgba(255,250,244,0.84),rgba(247,241,234,0.96))]" />
+        <Image
+          src="/landing/frontpage-google-workflow-hero.png"
+          alt=""
+          fill
+          priority
+          className="object-cover object-center"
+          sizes="100vw"
+        />
+        <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(247,241,234,0.98),rgba(247,241,234,0.86)_42%,rgba(247,241,234,0.36)_74%,rgba(247,241,234,0.12))]" />
         <div className="absolute inset-x-0 bottom-0 h-32 bg-[linear-gradient(180deg,transparent,rgba(247,241,234,0.98))]" />
 
-        <div className="relative z-10 mx-auto grid min-h-[700px] max-w-7xl gap-10 px-6 py-16 lg:grid-cols-[0.95fr_1.05fr] lg:px-10 lg:py-20">
+        <div className="relative z-10 mx-auto flex min-h-[700px] max-w-7xl items-center px-6 py-16 lg:px-10 lg:py-20">
           <div className="relative z-20 max-w-3xl self-center">
             <div className="mb-8 flex items-center gap-3 text-sm font-semibold text-[#173348]">
               <NorwegianFlag />
@@ -281,8 +197,6 @@ export default function Home() {
               ))}
             </div>
           </div>
-
-          <HeroWorkflowVisual />
         </div>
       </section>
 

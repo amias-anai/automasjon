@@ -24,7 +24,7 @@ const sections = [
     title: "2. Innsamling",
     body: [
       "Når du kontakter oss eller booker en AI-kartlegging, kan vi samle inn navn, bedrift, rolle, bransje, e-postadresse, telefonnummer og en kort beskrivelse av behovet.",
-      "Kontaktskjema lagres i Supabase-prosjektet vårt i EU-regionen eu-central-1. Kalenderbooking skjer via Cal.eu. Nettsiden hostes hos Vercel, som kan registrere tekniske drifts- og sikkerhetslogger som IP-adresse, nettleser, tidspunkt og forespurt side.",
+      "Kontaktskjema kan lagres i Supabase-prosjektet vårt i EU-regionen eu-central-1 og/eller videresendes til ANAi på e-post. Kalenderbooking skjer via Google Calendar og Google Meet. Nettsiden hostes hos Vercel, som kan registrere tekniske drifts- og sikkerhetslogger som IP-adresse, nettleser, tidspunkt og forespurt side.",
     ],
   },
   {
@@ -72,7 +72,7 @@ const sections = [
   {
     title: "9. Tredjeparter",
     body: [
-      "Vi bruker Vercel til hosting av nettsiden, Supabase EU til lagring av kontaktskjema, Cal.eu til booking og Google Workspace til e-post. Vi bruker ikke analyseleverandør eller markedsføringssporing på nettsiden per i dag.",
+      "Vi bruker Vercel til hosting av nettsiden, Supabase EU og/eller e-post til kontaktskjema, og Google Workspace med Google Calendar og Google Meet til booking og e-post. Vi bruker ikke analyseleverandør eller markedsføringssporing på nettsiden per i dag.",
       "Nettsiden har ikke egen AI-infrastruktur. I kundeprosjekter velges AI-leverandører etter behov, risiko og kundens preferanser, og aktuelle leverandører, databehandleravtaler og eventuelle overføringer avklares før løsningen tas i bruk.",
       "Vi selger ikke personopplysninger. Opplysninger deles ikke med andre med mindre det er nødvendig for å levere tjenesten, følge opp en avtale eller oppfylle lovpålagte krav.",
     ],
@@ -115,7 +115,7 @@ const sections = [
   {
     title: "15. Tredjeparts databehandlere",
     body: [
-      "For nettsiden er aktuelle databehandlere Vercel for hosting, Supabase EU for kontaktskjema, Cal.eu for booking og Google Workspace for e-post. Det brukes ikke analyseleverandør eller AI-leverandør direkte på nettsiden per i dag.",
+      "For nettsiden er aktuelle databehandlere Vercel for hosting, Supabase EU og/eller e-postleverandør for kontaktskjema, og Google Workspace for booking, Google Meet og e-post. Det brukes ikke analyseleverandør eller AI-leverandør direkte på nettsiden per i dag.",
       "I kundeprosjekter avklarer vi hvilke leverandører som brukes, hvilke data som behandles og om databehandleravtale er nødvendig.",
     ],
   },

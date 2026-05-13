@@ -66,71 +66,13 @@ function ConcreteExampleMockup({ product }: { product: ProductPageContent }) {
   );
 }
 
-function ProductHeroPanel({ product }: { product: ProductPageContent }) {
-  return (
-    <div className="relative hidden lg:block">
-      <div className="absolute -right-8 top-6 h-64 w-64 rounded-full bg-[#c95720]/10 blur-3xl" />
-      <div className="absolute -left-6 bottom-6 h-56 w-56 rounded-full bg-[#0f2d42]/10 blur-3xl" />
-      <div className="relative rounded-[8px] border border-[#dfd0c2] bg-[#fbf6f0]/88 p-5 shadow-[0_28px_80px_rgba(15,45,66,0.13)] backdrop-blur">
-        <div className="flex items-start justify-between gap-5 border-b border-[#dfd0c2] pb-5">
-          <div className="flex items-start gap-4">
-            <ProductIcon icon={product.heroIcon} />
-            <div>
-              <p className="text-xs font-bold uppercase tracking-[0.14em] text-[#c95720]">
-                Kontrollert AI i praksis
-              </p>
-              <h2 className="mt-2 text-xl font-bold text-[#0b3048]">{product.navTitle}</h2>
-            </div>
-          </div>
-          <span className="rounded-full bg-[#0f2d42]/8 px-3 py-1 text-xs font-bold text-[#0f2d42]">
-            Pilot først
-          </span>
-        </div>
-
-        <div className="mt-5 grid gap-3 sm:grid-cols-3">
-          {product.metrics.map((metric) => (
-            <div key={metric.value} className="rounded-lg border border-[#dfd0c2] bg-white/58 p-4">
-              <div className="text-2xl font-semibold text-[#0b3048]">{metric.value}</div>
-              <p className="mt-2 text-xs font-semibold leading-5 text-[#24465a]">{metric.label}</p>
-            </div>
-          ))}
-        </div>
-
-        <div className="mt-5 rounded-lg border border-[#dfd0c2] bg-[#0f2d42] p-5 text-white">
-          <p className="text-sm font-semibold text-[#e8a05c]">Arbeidsflyt med kontrollpunkter</p>
-          <div className="mt-4 space-y-3">
-            {product.flow.map((item, index) => (
-              <div key={item} className="flex items-center gap-3 rounded-md border border-white/10 bg-white/[0.045] px-4 py-3">
-                <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-white/10 text-xs font-bold text-[#e8a05c]">
-                  {index + 1}
-                </span>
-                <p className="text-sm font-semibold text-white/76">{item}</p>
-                {index === product.flow.length - 1 ? (
-                  <CheckCircle2 className="ml-auto h-4 w-4 shrink-0 text-[#e8a05c]" />
-                ) : (
-                  <ChevronRight className="ml-auto h-4 w-4 shrink-0 text-white/28" />
-                )}
-              </div>
-            ))}
-          </div>
-        </div>
-
-        <p className="mt-5 rounded-lg border border-[#dfd0c2] bg-white/58 p-5 text-sm leading-7 text-[#24465a]">
-          {product.controlNote}
-        </p>
-      </div>
-    </div>
-  );
-}
-
 export function ProductServicePage({ product }: { product: ProductPageContent }) {
   return (
     <main className="min-h-screen bg-[#f7f1ea] text-[#0f2d42]">
       <SiteHeader />
 
       <section className="relative overflow-hidden border-b border-[#dfd0c2] bg-[#f7f1ea]">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_18%,rgba(201,87,32,0.12),transparent_31%),radial-gradient(circle_at_18%_72%,rgba(15,45,66,0.08),transparent_35%),linear-gradient(180deg,rgba(255,250,244,0.88),rgba(247,241,234,0.98))]" />
-        <div className="relative mx-auto grid max-w-7xl gap-12 px-6 py-20 lg:grid-cols-[0.92fr_1.08fr] lg:items-center lg:px-10 lg:py-24">
+        <div className="relative mx-auto max-w-7xl px-6 py-20 lg:px-10 lg:py-24">
           <div>
             <Link
               href="/"
@@ -160,8 +102,6 @@ export function ProductServicePage({ product }: { product: ProductPageContent })
               </a>
             </div>
           </div>
-
-          <ProductHeroPanel product={product} />
         </div>
       </section>
 
