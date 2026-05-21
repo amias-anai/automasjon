@@ -131,7 +131,7 @@ export function SiteFooter() {
         </div>
         <p className="mt-3 text-xs">Grunnlegger: Amias Nasser Aspenes</p>
         <p className="mt-1 text-xs">Basert i Bergen, Norge</p>
-        <p className="mt-1 text-xs">Org.nr: ikke registrert ennå</p>
+        <p className="mt-1 text-xs">Org.nr: 937 738 366</p>
         <p className="mt-6 text-xs">© 2026 ANAi. Alle rettigheter reservert.</p>
       </div>
       {footerGroups.map((group) => (

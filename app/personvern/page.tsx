@@ -144,7 +144,7 @@ export default function PrivacyPage() {
             <div className="mt-5 space-y-2 border-t border-[#dfd0c2] pt-5 text-sm leading-6 text-[#24465a]">
               <p className="font-bold text-[#0b3048]">ANAi</p>
               <p>Bergen, Norge</p>
-              <p>Org.nr: ikke registrert ennå</p>
+              <p>Org.nr: 937 738 366</p>
               <p>Kontakt: {contactEmail}</p>
             </div>
             <Link href="/kontakt" className="mt-5 inline-flex font-bold text-[#c95720]">
